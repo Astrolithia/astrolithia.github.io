@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- 标题 -->
-<title>Hello World | Astrolithia</title>
+<title>Astrolithia</title>
 
 <!-- 网站描述 -->
 <meta name="description" content="喜欢二次元、游戏，会发计算机和有时自己拍的照片，欢迎关注！">
@@ -15,9 +15,9 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="Astrolithia">
 <meta property="og:description" content="喜欢二次元、游戏，会发计算机和有时自己拍的照片，欢迎关注！">
-<meta property="og:url" content="http://example.com/2026/03/26/hello-world/index.html">
+<meta property="og:url" content="http://example.com/2026/03/02/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-02/index.html">
 <meta property="og:site_name" content="Astrolithia">
 
 
@@ -43,7 +43,7 @@
 
 
 <!-- 规范链接 -->
-<link rel="canonical" href="http://example.com/2026/03/26/hello-world/index.html">
+<link rel="canonical" href="http://example.com/2026/03/02/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-02/index.html">
 
 <!-- 主题色 -->
 <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
@@ -176,7 +176,7 @@
   <article class="post-article">
     <!-- 文章头部 -->
     <header class="post-header">
-      <h1 class="post-title">Hello World</h1>
+      <h1 class="post-title"></h1>
       
       <!-- 元信息 -->
       <div class="post-meta">
@@ -188,12 +188,22 @@
       <line x1="8" x2="8" y1="2" y2="6"></line>
       <line x1="3" x2="21" y1="10" y2="10"></line>
     </svg>
-    <time datetime="2026-03-26">
-      2026-03-26
+    <time datetime="2026-03-02">
+      2026-03-02
     </time>
   </span>
 
   <!-- 更新日期 -->
+  
+    <span class="meta-item meta-updated">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+        <path d="M21 3v5h-5"></path>
+      </svg>
+      <time datetime="2026-03-02">
+        更新于 2026-03-02
+      </time>
+    </span>
   
 
   <!-- 字数统计 -->
@@ -205,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      444 字
+      2.0k 字
     </span>
   
 
@@ -217,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 2 分钟
+      约 7 分钟
     </span>
   
 
@@ -232,19 +242,18 @@
 
     <!-- 文章内容 -->
     <div class="post-content markdown-body">
-      <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+      <p>抽象出具体的流程<br>先复制具体的实现类，把代码中的完整方法抽离成一个一个子写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@Override  </span><br><span class="line">    public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) &#123;  </span><br><span class="line">//        System.setSecurityManager(new DenySecurityManager());  </span><br><span class="line">  </span><br><span class="line">        List&lt;String&gt; inputList = executeCodeRequest.getInputList();  </span><br><span class="line">        String code = executeCodeRequest.getCode();  </span><br><span class="line">        String language = executeCodeRequest.getLanguage();  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">        // 1.把用户的代码保存为文件  </span><br><span class="line">        File userCodeFile = saveCodeToFile(code);  </span><br><span class="line">  </span><br><span class="line">        // 2. 编译代码，得到 class 文件  </span><br><span class="line">        ExecuteMessage compileFileExecuteMessage = compileFile(userCodeFile);  </span><br><span class="line">        System.out.println(compileFileExecuteMessage);  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">        // 3. 执行代码，得到输出结果  </span><br><span class="line">        List&lt;ExecuteMessage&gt; executeMessageList = runFile(userCodeFile, inputList);  </span><br><span class="line">  </span><br><span class="line">        // 4. 收集整理输出结果  </span><br><span class="line">        ExecuteCodeResponse outputResponse = getOutputResponse(executeMessageList);  </span><br><span class="line">  </span><br><span class="line">        // 5. 文件清理  </span><br><span class="line">        boolean b = deleteFile(userCodeFile);  </span><br><span class="line">        if (!b) &#123;  </span><br><span class="line">            log.error(&quot;deleteFile error, userCodeFilePath = &#123;&#125;&quot;, userCodeFile.getAbsolutePath());  </span><br><span class="line">        &#125;  </span><br><span class="line">        return outputResponse;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>调用前，在调用时补充请求头：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Override  </span><br><span class="line">public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) &#123;  </span><br><span class="line">    System.out.println(&quot;远程代码沙箱&quot;);  </span><br><span class="line">    String url = &quot;http://localhost:8090/executeCode&quot;;  </span><br><span class="line">    String json = JSONUtil.toJsonStr(executeCodeRequest);  </span><br><span class="line">    String responseStr = HttpUtil.createPost(url)  </span><br><span class="line">            .header(AUTH_REQUEST_HEADER, AUTH_REQUEST_SECRET)  </span><br><span class="line">            .body(json)  </span><br><span class="line">            .execute()  </span><br><span class="line">            .body();  </span><br><span class="line">    if (StringUtils.isBlank(responseStr)) &#123;  </span><br><span class="line">        throw new BusinessException(ErrorCode.API_REQUEST_ERROR, &quot;executeCode remoteSandbox error&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return JSONUtil.toBean(responseStr, ExecuteCodeResponse.class);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<ol start="2">
+<li>API 签名认证<ol>
+<li>给允许调用的人员分配 accessKey、secretKey, 然后校验这两组 key 是否匹配</li>
+</ol>
+</li>
+</ol>
 
     </div>
 
@@ -255,7 +264,7 @@
     
       <div class="post-copyright">
         <p><strong>本文作者：</strong>Zwickyc</p>
-        <p><strong>本文链接：</strong><a href="http://example.com/2026/03/26/hello-world/">http://example.com/2026/03/26/hello-world/</a></p>
+        <p><strong>本文链接：</strong><a href="http://example.com/2026/03/02/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-02/">http://example.com/2026/03/02/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-02/</a></p>
         <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</p>
       </div>
     
@@ -263,14 +272,14 @@
     <!-- 上一篇 / 下一篇 -->
     <nav class="post-nav">
       
-        <a href="/2026/03/26/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-26/" class="post-nav-item prev">
+        <a href="/2026/03/03/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-03/" class="post-nav-item prev">
           <span class="post-nav-label">上一篇</span>
-          <span class="post-nav-title"> 2026-03-26</span>
+          <span class="post-nav-title"></span>
         </a>
       
       
       
-        <a href="/2026/03/25/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-25/" class="post-nav-item next">
+        <a href="/2026/03/01/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-01/" class="post-nav-item next">
           <span class="post-nav-label">下一篇</span>
           <span class="post-nav-title"></span>
         </a>
@@ -284,7 +293,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+          
         </div>
       </div>
     </aside>
