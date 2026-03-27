@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      6.5k 字
+      7.1k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 22 分钟
+      约 24 分钟
     </span>
   
 
@@ -261,7 +261,11 @@
 
 <p>配置文档过滤规则<br>通过文档过滤规则可以控制查询范围，提高检索精度和效率。主要应用场景：<br>![[Pasted image 20260326100726.png]]</p>
 <h3 id="查询增强和关联"><a href="#查询增强和关联" class="headerlink" title="查询增强和关联"></a>查询增强和关联</h3><p>生成阶段是 RAG 流程的最终环节，负责将检索到的文档与用户查询结合起来，为 AI 提供必要的上下文，从而生成更准确、更相关的回答</p>
-<h4 id="QuestionAnswerAdvisor-查询增强"><a href="#QuestionAnswerAdvisor-查询增强" class="headerlink" title="QuestionAnswerAdvisor 查询增强"></a>QuestionAnswerAdvisor 查询增强</h4><p>当用户问题发送到 AI 模型时，Advisor 会查询向量数据库来获取与用户问题相关的文档，并将这些文档作为上下文附加到用户查询中</p>
+<h4 id="QuestionAnswerAdvisor-查询增强"><a href="#QuestionAnswerAdvisor-查询增强" class="headerlink" title="QuestionAnswerAdvisor 查询增强"></a>QuestionAnswerAdvisor 查询增强</h4><p>当用户问题发送到 AI 模型时，Advisor 会查询向量数据库来获取与用户问题相关的文档，并将这些文档作为上下文附加到用户查询中<br>基本用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ChatResponse response = ChatClient.builder(chatModel)</span><br><span class="line">        .build().prompt()</span><br><span class="line">        .advisors(new QuestionAnswerAdvisor(vectorStore))</span><br><span class="line">        .user(userText)</span><br><span class="line">        .call()</span><br><span class="line">        .chatResponse();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以通过 builder 模式配置更精细的参数，比如文档过滤条件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var qaAdvisor = QuestionAnswerAdvisor.builder(vectorStore)</span><br><span class="line">              // 相似度阈值为 0.8，并返回最相关的前 6 个结果</span><br><span class="line">        .searchRequest(SearchRequest.builder().similarityThreshold(0.8d).topK(6).build())</span><br><span class="line">        .build();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>此外<br><code>QuestionAnswerAdvisor</code> 的实现原理很简单，把用户提示词和检索到的文档等上下文信息拼成一个新的 Prompt，再调用 AI</p>
 <h4 id="RetrievalAugmentationAdvisor-查询增强"><a href="#RetrievalAugmentationAdvisor-查询增强" class="headerlink" title="RetrievalAugmentationAdvisor 查询增强"></a>RetrievalAugmentationAdvisor 查询增强</h4><h4 id="ContextualQueryAugmenter-空上下文处理"><a href="#ContextualQueryAugmenter-空上下文处理" class="headerlink" title="ContextualQueryAugmenter 空上下文处理"></a>ContextualQueryAugmenter 空上下文处理</h4><h4 id="错误处理机制"><a href="#错误处理机制" class="headerlink" title="错误处理机制"></a>错误处理机制</h4><p>异常处理主要包括：</p>
 <ol>
 <li>允许空上下文查询</li>
@@ -285,7 +289,7 @@
 
 <h4 id="部分数据呈现乱码"><a href="#部分数据呈现乱码" class="headerlink" title="部分数据呈现乱码"></a>部分数据呈现乱码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;(https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott). Take a [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) about the basics of ML. --- # Assignment [Get up and running](assignment.md)&quot; &quot;# Get Up and Running ## Instructions In this non-graded assignment, you should brush up on Python and get your environment up and running and able to run notebooks. Take this [Python Learning Path](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), and then get your systems setup by going through these introductory videos: https://www.youtube.com/playlist?list=PLlrxD0HtieHhS8VzuMCfQD4uJ9yne1mE6&quot; &quot;�PNG  IHDR���OgAMA���a cHRMz&amp;�����u0�`:�p��Q&lt;�eXIfMM*V^(�if�������7� pHYsMM�ʍ/�iTXtXML:com.adobe.xmp&lt;x:xmpmeta xmlns:x=&quot;&quot;adobe:ns:meta/&quot;&quot; x:xmptk=&quot;&quot;XMP Core 6.0.0&quot;&quot;&gt; &lt;rdf:RDF xmlns:rdf=&quot;&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&quot;&gt; &lt;rdf:Description rdf:about=&quot;&quot;&quot;&quot; xmlns:exif=&quot;&quot;http://ns.adobe.com/exif/1.0/&quot;&quot; xmlns:tiff=&quot;&quot;http://ns.adobe.com/tiff/1.0/&quot;&quot;&gt; &lt;exif:PixelXDimension&gt;1308&lt;/exif:PixelXDimension&gt; &lt;exif:ColorSpace&gt;1&lt;/exif:ColorSpace&gt; &lt;exif:PixelYDimension&gt;1224&lt;/exif:PixelYDimension&gt; &lt;tiff:ResolutionUnit&gt;2&lt;/tiff:ResolutionUnit&gt; &lt;tiff:PhotometricInterpretation&gt;2&lt;/tiff:PhotometricInterpretation&gt; &lt;tiff:Orientation&gt;1&lt;/tiff:Orientation&gt; &lt;/rdf:Description&gt; &lt;/rdf:RDF&gt; &lt;/x:xmpmeta&gt; ��2;@IDATx�&#125;�]Gy�&#123;۾�]I�*�.Kn��ޱ�6&amp;�Bh�y���&lt;�G^�5$�)��b��&#123;��-��ծ�׻���&#125;s��-��;#�=�2g�?3�7�I$1�P�P�P�P�P��pڸl�h�������LC0000�=Xپ�L X�6`(`(`(`(`&#123; ��&#125;�    �2m�P�P�P�P��0`e�*240000`eڀ���������)`���Ud&quot; &quot;h(`(`(`(`�ʴCCCC�S������P�P�P�P���i�������+�W�)���������+�lOV��&quot;&quot;S@CCCCV�     ؞�l_E�������L0000�=Xپ�L X�6`(`(`(`(`&#123; ��&#125;�    �2m�P�P�P�P��p۾���%G��,_��l�&gt;&#125;��Li��3=k�  ��$R~�`�^����&amp;�&amp;��HX��ʡ�&quot;&quot;����5&#123;CC��)`�jj�����f�z�J��b�$�qT�q�q���h�&lt;f��B��?\8�V&#123;N�����&#123;�ߥߣ��l����@(`�*D.�W�3n&#125;L�=��z`3�H�( c?�~����R�0��=C��^���cl(�B~���w�R�%��8��!�9��2�� �N�Ta��z�;�R�r�k��9�c��%gĐ�xJ??iMV�&amp;aqg0Δq�=-(�B���DB:!��Ҋ���w`�[&gt;�T����4��*K��8�#��n�Ie���5��D����wc��&#125;*C���&#125;&gt;r^���~��)5.���w5��؇p~:c�*� /�-�k������)`�j�$,��c��~*���z&gt;����a;�����ݸ�&lt;��Rz���`O�!�g�d�s� �����3%����l߫Ԏ��Fp�o���;��Z�Z k�F0���� ��pm:�1��r�gm� f����iT�w��jF��i�|�BmQ�������D`G&lt;��&#123;��( 1?�?&quot;</span><br></pre></td></tr></table></figure>
 <p>原因：无法被解析的二进制数据被当成文本读取并存入了数据库，<code>buildBatch()</code> 在遇到 png&#x2F;pdf 时抛出异常并跳过，但部分二进制文件<strong>没有触发异常</strong></p>
-<h1 id="⭐-Inspiration"><a href="#⭐-Inspiration" class="headerlink" title="⭐ Inspiration"></a>⭐ Inspiration</h1><p>复活了博客，将 GitHub 作为图床<br>哈哈</p>
+<h1 id="⭐-Inspiration"><a href="#⭐-Inspiration" class="headerlink" title="⭐ Inspiration"></a>⭐ Inspiration</h1><p>复活了曾经的博客，将 GitHub 作为图床，会陆陆续续将之前写的日记整理整理放上去<br>利用 <code>ln -s 原文件夹 目标文件夹</code> 可以在原文件夹和目标文件夹之间设置软链接，今天利用软链接把 Obsidian 日记同步到博客上去，要养成每天写博客的好习惯 &#x3D;)</p>
 
     </div>
 
@@ -304,7 +308,10 @@
     <!-- 上一篇 / 下一篇 -->
     <nav class="post-nav">
       
-        <div class="post-nav-item prev disabled"></div>
+        <a href="/2026/03/27/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-27/" class="post-nav-item prev">
+          <span class="post-nav-label">上一篇</span>
+          <span class="post-nav-title"> 2026-03-27</span>
+        </a>
       
       
       
