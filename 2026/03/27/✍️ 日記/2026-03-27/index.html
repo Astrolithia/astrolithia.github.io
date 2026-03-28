@@ -200,8 +200,8 @@
         <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
         <path d="M21 3v5h-5"></path>
       </svg>
-      <time datetime="2026-03-27">
-        更新于 2026-03-27
+      <time datetime="2026-03-28">
+        更新于 2026-03-28
       </time>
     </span>
   
@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      9.3k 字
+      14.9k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 32 分钟
+      约 50 分钟
     </span>
   
 
@@ -242,7 +242,7 @@
 
     <!-- 文章内容 -->
     <div class="post-content markdown-body">
-      <h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系"><a href="#请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系" class="headerlink" title="请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系"></a>请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系</h2><p>整个云图库项目的后端拆分为以下几个核心模块：</p>
+      <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系"><a href="#请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系" class="headerlink" title="请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系"></a>请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系</h3><p>整个云图库项目的后端拆分为以下几个核心模块：</p>
 <ul>
 <li>用户模块<ul>
 <li>提供用户注册、登陆、鉴权等功能，利用 Redis 实现分布式 Session 登陆</li>
@@ -263,9 +263,33 @@
 <li><h2 id="协作模块-基于-WebSocket-实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用"><a href="#协作模块-基于-WebSocket-实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用" class="headerlink" title="协作模块  - 基于 WebSocket 实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用"></a>协作模块<br>  - 基于 WebSocket 实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用</h2></li>
 <li>分析模块</li>
 <li>分表模块</li>
-<li>缓存模块</li>
+<li>缓存模块<br>负责优化 MySQL 数据库表结构，针对高频查询字段添加索引（如流水号、记账时间）建立联合索引，账单列表接口查询<strong>耗时降低约 40%</strong><br>使用 Redis 对财务报表统计数据进行缓存预热与及时更新，减少数据库重复查询，<strong>接口响应时间从 800 ms 优化至 300 ms 以内</strong><br>如何使用 AI<br><strong>代理模式</strong><br><strong>策略模式</strong><br><strong>Java 安全管理器</strong><br>Redis+Caffeine <strong>多级缓存</strong><br>Jsoup CompletableFuture<br><strong>图片秒传</strong><br><strong>AI 绘图</strong><br>Docker<br>WebSocket</li>
 </ul>
-<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h3 id="Redis-是什么"><a href="#Redis-是什么" class="headerlink" title="Redis 是什么"></a>Redis 是什么</h3><p>数据存储系统 数据缓存 消息队列<br>NoSQL<br>访问量越来越大 受限于IO 磁盘读写速度<br>Redis 基于内存<br>支持多种数据结构<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327122717164.png?imageSlim"></p>
+<h3 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h3><ul>
+<li>项目的用户量<ul>
+<li>用户不多，可以讲还没上线，只给身边朋友用了，有哪些反馈，有哪些计划改进的地方</li>
+</ul>
+</li>
+<li>项目中遇到的难点<ul>
+<li>考察实践能力和问题解决能力</li>
+<li>有问题随时记录到文档，面试前过一遍项目文档</li>
+<li>哪怕没有遇到特别难的技术或问题，也可以选择一个相对较复杂的点来回答</li>
+</ul>
+</li>
+<li>用什么方法和工具提高了测试效率</li>
+<li><h2 id="为什么使用这个技术，这个技术相对其他的有什么优势-把两个对象都介绍一下（共同点，差异点），然后围绕差异点-项目来谈"><a href="#为什么使用这个技术，这个技术相对其他的有什么优势-把两个对象都介绍一下（共同点，差异点），然后围绕差异点-项目来谈" class="headerlink" title="为什么使用这个技术，这个技术相对其他的有什么优势  - 把两个对象都介绍一下（共同点，差异点），然后围绕差异点+项目来谈"></a>为什么使用这个技术，这个技术相对其他的有什么优势<br>  - 把两个对象都介绍一下（共同点，差异点），然后围绕差异点+项目来谈</h2></li>
+</ul>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
+<li>你这个 40% 是怎么优化出来的？</li>
+<li>为什么要用联合索引？</li>
+<li>索引是怎么设计的？</li>
+</ul>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
+<li>为什么用 Redis？</li>
+<li>缓存更新怎么保证一致性？</li>
+<li>有没有缓存问题（穿透&#x2F;雪崩&#x2F;击穿）？</li>
+</ul>
+<h3 id="Redis-是什么"><a href="#Redis-是什么" class="headerlink" title="Redis 是什么"></a>Redis 是什么</h3><p>数据存储系统 数据缓存 消息队列<br>NoSQL<br>访问量越来越大 受限于IO 磁盘读写速度<br>Redis 基于内存<br>支持多种数据结构<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327122717164.png?imageSlim"></p>
 <p>五种基本数据类型<br>三种CLI API GUI<br>性能极高<br>数据类型丰富<br>简单易用<br>支持数据持久化、主从复制、哨兵模式等高可用特性</p>
 <p>Redis 安装方式<br>Wsl 安装 linux 系统 然后在 linux 系统中安装 redis<br>用 docker 安装<br>Exe 安装 推荐用前两种方式安装<br>启动 <code>redis-cli</code></p>
 <p>RedisInsight</p>
@@ -346,17 +370,113 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get k3</span><br><span class="line">&quot;4&quot;</span><br><span class="line">127.0.0.1:6379&gt; get k4</span><br><span class="line">&quot;v4&quot;</span><br><span class="line">127.0.0.1:6379&gt; get k5</span><br><span class="line">&quot;6&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h3><p>Redis 是基于内存的数据库，所以如果没有持久化，那么服务器一旦重启或者断电，之前的所有数据都会丢失<br>主要有两种方式</p>
 <ol>
-<li><p>RDB(Redis Database)：在一定时间间隔内，将内存中的数据快照写入磁盘，它是某个时间点上数据的完整副本，可以通过配置文件中的 save 参数来配置<br>可以根据服务器的负载情况来调整配置<br>可以通过 <code>save</code> 命令保存快照<br><code>ls -ltr</code> 列出当前目录下的文件的详细信息</p>
-<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327195816222.png?imageSlim"><br>通过 homebrew 安装的 redis 保存的快照文件在 <code>/opt/homebrew/var/db/redis/</code> 目录下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shiro@MacBook-Pro etc % ls -lh /opt/homebrew/var/db/redis/</span><br><span class="line">total 8</span><br><span class="line">-rw-r--r--@ 1 shiro  admin   643B Mar 27 20:00 dump.rdb</span><br></pre></td></tr></table></figure>
-<p>使用 <code>xxd dump.rdb</code> 可以查看 2 进制或者 16 进制文件内容的 Linux 命令，就可以看到 rdb 文件中的内容<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327200610022.png?imageSlim"><br>快照有一个缺点，那就是如果服务器在快照之后宕机了，那么最后一次快照之后的所有修改内容都会丢失，所以 RDB 更适合用来做备份<br>还有我们为 Redis 开辟的内存区域一般都比较大，那么内存中的数据同步到硬盘这个过程就会持续比较长的时间，这段时间 Redis 都是处于阻塞状态，无法接受任何命令<br>为了处理这种情况，Redis 提供了 <code>bgsave</code> 命令，这样主进程就可以继续处理请求了，但是这个过程中还会有一定的性能损耗，因为 fork 一个子进程也是需要时间的，而在 fork 的过程中 Redis 依然无法处理请求，为了处理这种情况，Redis 又提供了另一种叫做 AOF 的持久化方式</p>
-</li>
-<li><p>AOF(Append Only File)，意思就是只追加文件，在执行写命令的时候，不仅会将命令写入到内存中，还会将命令写到一个追加的文件中，这个文件就是 AOF 文件，会以日志的形式来记录每一个写操作，当 Redis 重启时就会通过重新执行 AOF 文件中的命令来在内存中重建整个数据库的内容，开启 AOF 只需要在配置文件中将 <code>appendonly</code> 这个参数的值改为 yes 就可以了<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327201314609.png?imageSlim"></p>
-</li>
+<li>RDB(Redis Database)：在一定时间间隔内，将内存中的数据快照写入磁盘，它是某个时间点上数据的完整副本，可以通过配置文件中的 save 参数来配置<br>可以根据服务器的负载情况来调整配置<br>可以通过 <code>save</code> 命令保存快照<br><code>ls -ltr</code> 列出当前目录下的文件的详细信息<br>通过 homebrew 安装的 Redis 的配置文件默认在 <code>/opt/homebrew/etc/</code><br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327195816222.png?imageSlim"><br>通过 homebrew 安装的 redis 保存的快照文件在 <code>/opt/homebrew/var/db/redis/</code> 目录下<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shiro@MacBook-Pro etc % ls -lh /opt/homebrew/var/db/redis/</span><br><span class="line">total 8</span><br><span class="line">-rw-r--r--@ 1 shiro  admin   643B Mar 27 20:00 dump.rdb</span><br></pre></td></tr></table></figure>
+使用 <code>xxd dump.rdb</code> 可以查看 2 进制或者 16 进制文件内容的 Linux 命令，就可以看到 rdb 文件中的内容<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327200610022.png?imageSlim"><br>快照有一个缺点，那就是如果服务器在快照之后宕机了，那么最后一次快照之后的所有修改内容都会丢失，所以 RDB 更适合用来做备份<br>还有我们为 Redis 开辟的内存区域一般都比较大，那么内存中的数据同步到硬盘这个过程就会持续比较长的时间，这段时间 Redis 都是处于阻塞状态，无法接受任何命令<br>为了处理这种情况，Redis 提供了 <code>bgsave</code> 命令，这样主进程就可以继续处理请求了，但是这个过程中还会有一定的性能损耗，因为 fork 一个子进程也是需要时间的，而在 fork 的过程中 Redis 依然无法处理请求，为了处理这种情况，Redis 又提供了另一种叫做 AOF 的持久化方式</li>
+<li>AOF(Append Only File)，意思就是只追加文件，在执行写命令的时候，不仅会将命令写入到内存中，还会将命令写到一个追加的文件中，这个文件就是 AOF 文件，会以日志的形式来记录每一个写操作，当 Redis 重启时就会通过重新执行 AOF 文件中的命令来在内存中重建整个数据库的内容，开启 AOF 只需要在配置文件中将 <code>appendonly</code> 这个参数的值改为 yes 就可以了<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327201314609.png?imageSlim"></li>
 </ol>
 <p>在 Vim 模式下，可以通过 <code>/your_keyword </code> 的方式快速搜索关键词</p>
-<h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><p>主从复制是指将一个 Redis 服务器上的数据复制到其他 Redis 服务器上，也叫主节点和从节点，一个主节点可以有多个从节点，一个从节点只能有一个主节点<br>一般主节点负责写操作，从节点负责读操作<br>主节点会将自己的数据异步传输到从节点，从节点接收到主节点的数据之后更新自己的数据，这样就达到数据一致的目的<br>主节点不需要做任何配置<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327201533061.png?imageSlim"><br>透过 <code>code xxx</code> 命令可以用 vscode 打开文件</p>
-<h3 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h3>
+<h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><p>一主两从的 Redis 集群，可以实现一定程度上的高可用<br>主从复制是指将一个 Redis 服务器上的数据复制到其他 Redis 服务器上，也叫主节点和从节点，一个主节点可以有多个从节点，一个从节点只能有一个主节点<br>一般主节点负责写操作，从节点负责读操作<br>主节点会将自己的数据异步传输到从节点，从节点接收到主节点的数据之后更新自己的数据，这样就达到数据一致的目的<br>主节点不需要做任何配置<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327201533061.png?imageSlim"><br>复制一份 redis 配置文件，如 <code>cp redis.conf redis-6380.conf</code><br>透过 <code>code xxx</code> 命令可以用 vscode 打开文件<br>然后打开配置文件修改 port 为 6380<br>主进程为了区分开吧 pidfile 加上端口号后缀<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327203525714.png?imageSlim"><br>把从节点这个配置项也改为 6380<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327203446579.png?imageSlim"><br>因为要启动多个 Redis 服务，所以要把两个 Redis 的 pid 文件区分开</p>
+<p>把 dbfilename 也添加上端口号后缀<br><code>dbfilename dump-6379.rdb</code><br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327203739243.png?imageSlim"><br><code>dbfilename dump-6380.rdb</code><br>当我们执行 save 或者 bgsave 命令后就会把内存中的数据保存到这个文件里面<br><code>replicaof 127.0.0.1 6379</code> 表示配置的这个节点是 6379 的从节点<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327203952740.png?imageSlim"><br>通过 <code>redis.conf</code> 文件开启 redis<br><code>redis-server redis-6380.conf</code><br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327204327400.png?imageSlim"><br><code>redis-cli -p 6380</code> 指定端口号为 6380<br>可以通过 <code>info replication</code> 命令查看信息，可以看到这个从节点的角色是 slave，对应的主节点端口号是 6379<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327204436586.png?imageSlim"><br>可以看到从节点数据和主节点是一样的<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327204546835.png?imageSlim"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set k8 v8 </span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>可以看到主节点的数据会同步到从节点上<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327204729230.png?imageSlim"><br>在 vim 模式下将文件内容中的 6380 一键替换为 6381<br><code>:1,$s/6380/6381/g</code><br>在主节点查看信息，可以显示当前连接的从节点数为 2，和从节点的相关信息<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327205059052.png?imageSlim"></p>
+<h3 id="哨兵模式-Sentinel"><a href="#哨兵模式-Sentinel" class="headerlink" title="哨兵模式 Sentinel"></a>哨兵模式 Sentinel</h3><p>一个哨兵节点同意就可以进行故障转移<br>输入 <code>entinel monitor master 127.0.0.1 6379 1</code> 后保存退出<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327202448105.png?imageSlim"><br>输入 <code>redis-sentinel sentinel.conf</code> 启动哨兵节点</p>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327210833907.png?imageSlim"><br>模拟运行在 6379 端口的 Redis 服务宕机，哨兵模式执行了自动故障转移<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327212322183.png?imageSlim"><br>哨兵自己也是一个进程，在实际运行中自己也会有单节点故障的情况，在实际生产环境会使用三个哨兵节点来保持<strong>高可用性</strong><br>这三个哨兵节点会选出一个领导者，领导者控制其他节点，如果领导者宕机，那么其他哨兵节点会重新选举出一个领导者</p>
+<h3 id="Redis-事务"><a href="#Redis-事务" class="headerlink" title="Redis 事务"></a>Redis 事务</h3><h4 id="Redis-性能优化"><a href="#Redis-性能优化" class="headerlink" title="Redis 性能优化"></a>Redis 性能优化</h4><h4 id="大量-key-集中过期问题"><a href="#大量-key-集中过期问题" class="headerlink" title="大量 key 集中过期问题"></a>大量 key 集中过期问题</h4><p>对于过期 key，Redis 采用<strong>定期删除+惰性&#x2F;懒汉式删除</strong>策略<br>如果突然遇到大量过期 key 的话，客户端请求必须等待定期清理过期 key 任务线程执行完成，响应速度会比较慢<br>常见解决方案：</p>
+<ol>
+<li>给 key 设置随机过期时间</li>
+<li>开启 lazy-free（惰性删除&#x2F;延迟释放），从 Redis 4.0 开始引入，让 Redis 采用异步方式延迟释放 key 使用的内存，将该操作交给单独的子线程处理，避免阻塞主线程<br>不管是否开启 lazy-free，都尽量给 key 设置随机过期时间</li>
+</ol>
+<h3 id="Redis-hotkey"><a href="#Redis-hotkey" class="headerlink" title="Redis hotkey"></a>Redis hotkey</h3><p>如果一个 key 的访问次数比较多且明显多于其他 key 的话，那这个 key 就可以看作是 hotkey。Hotkey 的出现原因主要是某个热点数据访问量暴增，如重大的热搜事件、参与秒杀的商品</p>
+<h4 id="Hotkey-有什么危害"><a href="#Hotkey-有什么危害" class="headerlink" title="Hotkey 有什么危害"></a>Hotkey 有什么危害</h4><p>处理 hotkey 会占用大量 CPU 和贷款，会影响</p>
+<h3 id="Redis-生产问题（⭐）"><a href="#Redis-生产问题（⭐）" class="headerlink" title="Redis 生产问题（⭐）"></a>Redis 生产问题（⭐）</h3><h4 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h4><p>缓存穿透说简单点就是大量请求的 key 是不合理的，<strong>根本不存在于缓存中，也不存在于数据库中</strong>。这就导致这些请求直接到了数据库上，根本没有经过缓存这一层，对数据库造成了巨大的压力，可能就直接被这么多请求弄宕机了<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328121253916.png?imageSlim"><br>解决方法<br>最基本的就是首先做好参数校验，一些不合法的参数请求直接抛出异常信息返回给客户端。比如查询的数据库 id 不能小于 0、传入的邮箱格式部队的时候直接返回错误消息给客户端等等</p>
+<ol>
+<li>缓存无效 key<ol>
+<li>写一个到 Redis 中去并设置过期时间，具体命令如下：<code>SET key value EX 10086</code>。这种方式可以解决请求的 key 变化不频繁的情况，如果黑客恶意攻击，每次构建不同的请求 key，会导致 Redis 中缓存大量无效的 key。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public Object getObjectInclNullById(Integer id) &#123;</span><br><span class="line">    // 从缓存中获取数据</span><br><span class="line">    Object cacheValue = cache.get(id);</span><br><span class="line">    // 缓存为空</span><br><span class="line">    if (cacheValue == null) &#123;</span><br><span class="line">        // 从数据库中获取</span><br><span class="line">        Object storageValue = storage.get(key);</span><br><span class="line">        // 缓存空对象</span><br><span class="line">        cache.set(key, storageValue);</span><br><span class="line">        // 如果存储数据为空，需要设置一个过期时间(300秒)</span><br><span class="line">        if (storageValue == null) &#123;</span><br><span class="line">            // 必须设置过期时间，否则有被攻击的风险</span><br><span class="line">            cache.expire(key, 60 * 5);</span><br><span class="line">        &#125;</span><br><span class="line">        return storageValue;</span><br><span class="line">    &#125;</span><br><span class="line">    return cacheValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>布隆过滤器<ol>
+<li>通过它我们可以非常</li>
+</ol>
+</li>
+<li>接口限流<ol>
+<li>根据用户或者 IP 对接口进行限流，对于异常频繁的访问行为，还可以采取黑名单机制，例如将异常 IP 列入黑名单</li>
+<li>后面提到的缓存击穿和雪崩都可以配合接口限流来解决，毕竟这些问题的关键都是有很多请求落到了数据库上造成数据库压力过大</li>
+</ol>
+</li>
+</ol>
+<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><h5 id="什么是缓存击穿"><a href="#什么是缓存击穿" class="headerlink" title="什么是缓存击穿"></a>什么是缓存击穿</h5><p>缓存击穿中，请求的 key 对应的是<strong>热点数据</strong>，该数据存在于数据库中，但不存在于缓存中（通常是因为缓存中的那份数据已经过期）。这就导致瞬时大量的请求直接打到了数据库上，对数据库造成了巨大的压力，可能直接就被这么多请求弄宕机了<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328145011760.png?imageSlim"></p>
+<h5 id="有哪些解决方法？"><a href="#有哪些解决方法？" class="headerlink" title="有哪些解决方法？"></a>有哪些解决方法？</h5><ol>
+<li>永不过期（不推荐）：设置热点数据永不过期或者过期时间比较长</li>
+<li>提前预热（推荐）：针对热点数据提前预热，将其存入缓存中并设置合理的过期时间比如秒杀场景下的数据在秒杀结束之前不过期</li>
+<li>加锁（看情况）：在缓存失效后，通过设置互斥锁确保只有一个请求去查询数据库并更新缓存</li>
+</ol>
+<h5 id="缓存穿透和缓存击穿有什么区别"><a href="#缓存穿透和缓存击穿有什么区别" class="headerlink" title="缓存穿透和缓存击穿有什么区别"></a>缓存穿透和缓存击穿有什么区别</h5><p>缓存穿透中，请求的 key 既不存在于缓存中，也不存在于数据库中<br>缓存击穿中，请求的 key 对应的是<strong>热点数据</strong>，该数据<strong>存在于数据库中，但不存在于缓存中（通常是因为缓存中的那份数据已经过期）</strong></p>
+<h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><h5 id="什么是缓存雪崩"><a href="#什么是缓存雪崩" class="headerlink" title="什么是缓存雪崩"></a>什么是缓存雪崩</h5><p><strong>缓存在同一时间大面积的失效，导致大量的请求都直接落到了数据库上，对数据库造成了巨大的压力</strong><br>缓存服务宕机也会导致缓存雪崩现象，导致所有的请求都落到了数据库上<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328145728638.png?imageSlim"></p>
+<h5 id="有哪些解决方法？-1"><a href="#有哪些解决方法？-1" class="headerlink" title="有哪些解决方法？"></a>有哪些解决方法？</h5><p>针对 Redis 服务不可用的情况：</p>
+<ol>
+<li>Redis 集群：采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。Redis Cluster 和 Redis Sentinel 是两种最常用的 Redis 集群实现方案</li>
+<li>多级缓存：设置多级缓存，例如本地缓存+Redis 缓存的二级缓存组合，当 Redis 缓存出现问题时，还可以从本地缓存中获取到部分数据</li>
+</ol>
+<p>针对大量缓存同时失效的情况：</p>
+<ol>
+<li>设置随机失效时间（可选）：为缓存设置随机的失效时间，例如在固定过期时间的基础上加上一个随机值，这样可以避免大量缓存同时到期，从而减少缓存雪崩的风险</li>
+<li>提前预热（推荐）：针对热点数据提前预热，将其存入缓存中并设置合理的过期时间，比如秒杀场景下的数据在秒杀结束之前不过期</li>
+<li>持久缓存策略（看情况）：虽然一般不推荐设置缓存永不过期，但对于某些关键性和变化不频繁的数据，可以考虑这种策略</li>
+</ol>
+<h5 id="缓存预热如何实现？"><a href="#缓存预热如何实现？" class="headerlink" title="缓存预热如何实现？"></a>缓存预热如何实现？</h5><h2 id="Caffeine"><a href="#Caffeine" class="headerlink" title="Caffeine"></a>Caffeine</h2><p>为了不让请求的压力直接来到 MySQL，会使用缓存来处理高并发下的请求<br>本地缓存的缺点：集群中的每个应用里的缓存数据无法同步<br>本地缓存的优点：性能实在太强了</p>
+<h3 id="生成计算"><a href="#生成计算" class="headerlink" title="生成计算"></a>生成计算</h3><p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328110631089.png?imageSlim"></p>
+<h3 id="读（100-）"><a href="#读（100-）" class="headerlink" title="读（100%）"></a>读（100%）</h3><p>![[Pasted image 20260328110726.png]]</p>
+<h3 id="读（75-）-写（25-）"><a href="#读（75-）-写（25-）" class="headerlink" title="读（75%）&#x2F;写（25%）"></a>读（75%）&#x2F;写（25%）</h3><p>![[Pasted image 20260328110730.png]]</p>
+<h3 id="写（100-）"><a href="#写（100-）" class="headerlink" title="写（100%）"></a>写（100%）</h3><p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328110733364.png?imageSlim"><br>使用时只需在原来从数据库中查询的方法上增加一个 Cacheable 注解<br>如果有一个数据查询接口是读多写少的接口，并且并发读十分高，就可以使用本地缓存来增强效率</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>Docker 是一个用于构建、运行、传送应用程序的平台<br>把操作系统、运行时环境、第三方软件库和依赖包、应用程序、环境变量、配置文件、启动命令打包在一起，以便在任何环境中都可以正常运行</p>
+<h3 id="为什么要用-Docker？"><a href="#为什么要用-Docker？" class="headerlink" title="为什么要用 Docker？"></a>为什么要用 Docker？</h3><p>Nginx 负载均衡<br>Docker 将配置环境、第三方依赖、环境变量启动脚本的操作简化<br>如果要布置到测试环境上 还要重新部署一遍<br>虚拟机 VS Docker<br>每台虚拟机都需要占用大量资源 比如 CPU 内存 磁盘等 而且启动时间长<br>Docker 将不需要的资源<br>镜像和容器就是食谱和菜的关系<br>可以根据一个镜像创建出多个容器<br>可以通过一个食谱做出多个菜</p>
+<p>Docker 仓库<br>用来存放 Docker 镜像的地方，最流行的 Docker 仓库是 DockerHub</p>
+<h3 id="容器化和-Dockerfile"><a href="#容器化和-Dockerfile" class="headerlink" title="容器化和 Dockerfile"></a>容器化和 Dockerfile</h3><ol>
+<li>创建一个容器</li>
+<li>使用 Dockerfile 构建镜像</li>
+<li>使用镜像创建和运行容器<br>Docker 容器中的数据不会持久化，容器停止后数据会丢失<br>逻辑卷可以将容器中的目录或者指定路径映射到宿主机的某个位置上，这样就可以将数据保存到宿主机的磁盘上<br>只需要执行 Docker compose up 就可以一键安装依赖和环境</li>
+</ol>
+<h3 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h3><p>用于定义和运行多容器 Docker 应用程序的工具<br>使用 YAML 文件来配置应用程序的服务<br>一条命令即可创建并启动所有服务</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><code>ls</code> 显示目录内容<ul>
+<li><code>-l</code> 参数用来显示更详细的信息</li>
+<li><code>-a</code> 可以显示隐藏内容</li>
+<li><code>-h</code> 以人类可读方式显示文件大小</li>
+<li><code>-t</code> 可以按照修改时间排序</li>
+<li><code>-r</code> 逆序显示</li>
+</ul>
+</li>
+<li><code>ln</code> 创建软链接<br>  <img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328104238425.png?imageSlim"><br>  图中的箭头表示 link.txt 软链接 hello.txt<img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328104339545.png?imageSlim"></li>
+<li>&#96;ln -s hello.txt link.txt</li>
+<li>硬链接<ul>
+<li><code>echo &quot;Hello Linux&quot; &gt; file2.txt</code></li>
+<li><code>ln file2.txt hardlink.txt</code><br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328104548108.png?imageSlim"><br>可以看到 hardlink.txt 和 file 2.txt 的 i 节点是一样的<br>当修改其中一个文件时，另一个文件的内容也会发生变化<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328104645384.png?imageSlim"><br>删除一个文件时，另一个文件还是可以正常访问的<br>当把软链接的目标文件删除时，软链接就会失效</li>
+</ul>
+</li>
+</ul>
+<p>软链接可以指向文件或者目录，硬链接只能指向文件</p>
+<ul>
+<li><code>chmod</code> 修改文件权限<ul>
+<li><code>chmod +x hello1.txt</code> 给文件添加可执行权限</li>
+</ul>
+</li>
+<li><code>touch</code> 新增文件</li>
+<li><code>pwd</code> 查看当前文件夹路径</li>
+<li><code>cd</code> 切换目录<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328105618688.png?imageSlim"></li>
+<li><code>mv</code> 移动文件&#x2F;目录</li>
+<li><code>rm</code> 删除文件</li>
+<li><code>mkdir</code> 创建文件夹<ul>
+<li><code>mkdir</code> 创建多级目录</li>
+</ul>
+</li>
+<li><code>cp -r folder1 folder_copy</code> 把 folder1 目录和其中的所有内容都复制到 folder_copy 文件夹下</li>
+<li><code>du</code> 查看文件大小<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">shiro@MacBook-Pro etc % du -h</span><br><span class="line">  0B    ./bash_completion.d</span><br><span class="line"> 12K    ./rabbitmq</span><br><span class="line"> 48K    ./openssl@3/misc</span><br><span class="line">  0B    ./openssl@3/certs</span><br><span class="line">  0B    ./openssl@3/private</span><br><span class="line"> 88K    ./openssl@3</span><br><span class="line">288K    ./ca-certificates</span><br><span class="line">4.0K    ./pkcs11/modules</span><br><span class="line">4.0K    ./pkcs11</span><br><span class="line">112K    ./unbound</span><br><span class="line">128K    ./fonts/conf.d</span><br><span class="line">132K    ./fonts</span><br><span class="line">  0B    ./gnutls</span><br><span class="line">1.1M    .</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>rmdir</code> 删除目录</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
     <!-- 标签 -->
@@ -392,7 +512,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E4%BB%8B%E7%BB%8D%E6%95%B4%E4%B8%AA%E4%BA%91%E5%9B%BE%E5%BA%93%E9%A1%B9%E7%9B%AE%E5%90%8E%E7%AB%AF%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A8%A1%E5%9D%97%E4%BB%A5%E5%8F%8A%E5%90%84%E6%A8%A1%E5%9D%97%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.</span> <span class="toc-text">请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E4%BD%9C%E6%A8%A1%E5%9D%97-%E5%9F%BA%E4%BA%8E-WebSocket-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BA%BA%E5%AE%9E%E7%8E%B0%E7%BC%96%E8%BE%91%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%A9%E7%94%A8%E2%80%9C%E7%BC%96%E8%BE%91%E9%94%81%E2%80%9D%E5%8F%8A%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E9%99%8D%E4%BD%8E%E5%B9%B6%E5%8F%91%E5%86%B2%E7%AA%81%E9%A3%8E%E9%99%A9%EF%BC%8C%E5%B9%B6%E9%87%87%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">协作模块  - 基于 WebSocket 实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-number">1.3.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.1.</span> <span class="toc-text">Redis 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-String"><span class="toc-number">1.3.2.</span> <span class="toc-text">字符串 String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88-Set"><span class="toc-number">1.3.3.</span> <span class="toc-text">集合 Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C-Hash"><span class="toc-number">1.3.4.</span> <span class="toc-text">哈希 Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-Stream"><span class="toc-number">1.3.5.</span> <span class="toc-text">消息队列 Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E7%A9%BA%E9%97%B4-Geospatial"><span class="toc-number">1.3.6.</span> <span class="toc-text">地理空间 Geospatial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HyperLogLog"><span class="toc-number">1.3.7.</span> <span class="toc-text">HyperLogLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE-Bitmap"><span class="toc-number">1.3.8.</span> <span class="toc-text">位图 Bitmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9F%9F-Bitfield"><span class="toc-number">1.3.9.</span> <span class="toc-text">位域 Bitfield</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.3.10.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.3.11.</span> <span class="toc-text">持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">1.3.12.</span> <span class="toc-text">主从复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.13.</span> <span class="toc-text">哨兵模式</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E4%BB%8B%E7%BB%8D%E6%95%B4%E4%B8%AA%E4%BA%91%E5%9B%BE%E5%BA%93%E9%A1%B9%E7%9B%AE%E5%90%8E%E7%AB%AF%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A8%A1%E5%9D%97%E4%BB%A5%E5%8F%8A%E5%90%84%E6%A8%A1%E5%9D%97%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.</span> <span class="toc-text">请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E4%BD%9C%E6%A8%A1%E5%9D%97-%E5%9F%BA%E4%BA%8E-WebSocket-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BA%BA%E5%AE%9E%E7%8E%B0%E7%BC%96%E8%BE%91%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%A9%E7%94%A8%E2%80%9C%E7%BC%96%E8%BE%91%E9%94%81%E2%80%9D%E5%8F%8A%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E9%99%8D%E4%BD%8E%E5%B9%B6%E5%8F%91%E5%86%B2%E7%AA%81%E9%A3%8E%E9%99%A9%EF%BC%8C%E5%B9%B6%E9%87%87%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">协作模块  - 基于 WebSocket 实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">面试问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%8A%80%E6%9C%AF%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%AF%B9%E5%85%B6%E4%BB%96%E7%9A%84%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E5%8A%BF-%E6%8A%8A%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E9%83%BD%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%EF%BC%88%E5%85%B1%E5%90%8C%E7%82%B9%EF%BC%8C%E5%B7%AE%E5%BC%82%E7%82%B9%EF%BC%89%EF%BC%8C%E7%84%B6%E5%90%8E%E5%9B%B4%E7%BB%95%E5%B7%AE%E5%BC%82%E7%82%B9-%E9%A1%B9%E7%9B%AE%E6%9D%A5%E8%B0%88"><span class="toc-number">3.</span> <span class="toc-text">为什么使用这个技术，这个技术相对其他的有什么优势  - 把两个对象都介绍一下（共同点，差异点），然后围绕差异点+项目来谈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-number">4.</span> <span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-number">5.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.1.</span> <span class="toc-text">Redis 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-String"><span class="toc-number">5.2.</span> <span class="toc-text">字符串 String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88-Set"><span class="toc-number">5.3.</span> <span class="toc-text">集合 Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C-Hash"><span class="toc-number">5.4.</span> <span class="toc-text">哈希 Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-Stream"><span class="toc-number">5.5.</span> <span class="toc-text">消息队列 Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E7%A9%BA%E9%97%B4-Geospatial"><span class="toc-number">5.6.</span> <span class="toc-text">地理空间 Geospatial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HyperLogLog"><span class="toc-number">5.7.</span> <span class="toc-text">HyperLogLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE-Bitmap"><span class="toc-number">5.8.</span> <span class="toc-text">位图 Bitmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9F%9F-Bitfield"><span class="toc-number">5.9.</span> <span class="toc-text">位域 Bitfield</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">5.10.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">5.11.</span> <span class="toc-text">持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">5.12.</span> <span class="toc-text">主从复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F-Sentinel"><span class="toc-number">5.13.</span> <span class="toc-text">哨兵模式 Sentinel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E4%BA%8B%E5%8A%A1"><span class="toc-number">5.14.</span> <span class="toc-text">Redis 事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-hotkey"><span class="toc-number">5.15.</span> <span class="toc-text">Redis hotkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%EF%BC%88%E2%AD%90%EF%BC%89"><span class="toc-number">5.16.</span> <span class="toc-text">Redis 生产问题（⭐）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caffeine"><span class="toc-number">6.</span> <span class="toc-text">Caffeine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%AE%A1%E7%AE%97"><span class="toc-number">6.1.</span> <span class="toc-text">生成计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%EF%BC%88100-%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">读（100%）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%EF%BC%8875-%EF%BC%89-%E5%86%99%EF%BC%8825-%EF%BC%89"><span class="toc-number">6.3.</span> <span class="toc-text">读（75%）&#x2F;写（25%）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%EF%BC%88100-%EF%BC%89"><span class="toc-number">6.4.</span> <span class="toc-text">写（100%）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker"><span class="toc-number">7.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8-Docker%EF%BC%9F"><span class="toc-number">7.1.</span> <span class="toc-text">为什么要用 Docker？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%8C%96%E5%92%8C-Dockerfile"><span class="toc-number">7.2.</span> <span class="toc-text">容器化和 Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">7.3.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">8.</span> <span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">8.1.</span> <span class="toc-text">常用命令</span></a></li></ol></li></ol>
         </div>
       </div>
     </aside>
