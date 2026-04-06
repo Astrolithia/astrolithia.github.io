@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      1.4k 字
+      1.8k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 5 分钟
+      约 7 分钟
     </span>
   
 
@@ -242,7 +242,7 @@
 
     <!-- 文章内容 -->
     <div class="post-content markdown-body">
-      <p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/9FDB40ED-04D2-4ACF-8172-B7362B7831ED_1_201_a.heic?imageSlim"><br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/F721545D-58BC-4B50-9DF4-3EE031950049_1_105_c.jpeg?imageSlim"><br>![[F721545D-58BC-4B50-9DF4-3EE031950049_1_105_c 2.jpeg]]</p>
+      <p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/9FDB40ED-04D2-4ACF-8172-B7362B7831ED_1_201_a.heic?imageSlim"><br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/F721545D-58BC-4B50-9DF4-3EE031950049_1_105_c.jpeg?imageSlim"><br>![[F721545D-58BC-4B50-9DF4-3EE031950049_1_105_c 2.jpeg]]<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/47B05805-24F0-48FC-9D75-DE4C0AAF3855_1_105_c.jpeg?imageSlim"></p>
 <p>项目是做什么的 你负责什么部分？你用什么 完成了什么成果</p>
 <p>微服务 分为哪些模块 简单介绍一下<br>Spring Cloud</p>
 <ul>
@@ -270,7 +270,17 @@
 <li><strong>Vibe Coding（氛围编程）</strong> 依赖的是“直觉”和“模仿”。开发者给 AI 一个模糊的意图，靠模型刷概率生成代码。这种方式在写小 Demo 或独立工具时很快，但在复杂业务场景下，极易产生“幻觉”，且代码不可预测、难以审计。</li>
 <li><strong>Spec Coding（规范驱动编程）</strong> 则是将规范视为 AI 编程的“宪法”。它要求我们在写代码前，先定义好精确、无歧义的 <strong>Spec（技术契约）</strong>。</li>
 </ul>
-<p>AI编程工具极大提升了CRUD的编写效率 以我自己的经验 常规业务接口的开发效率可提升 50~70%</p>
+<p>AI编程工具极大提升了CRUD的编写效率 以我自己的经验 常规业务接口的开发效率可提升 50~70%<br>Spec虽然前期需要投入时间写规范 但后期维护成本极低<br>Vibe Coding适合快速验证想法 Spec Coding才是构建企业级 高可维护性软件的正确姿势</p>
+<p>短期内不会淘汰初级程序员<br>AI协助者<br>MCP<br><code>/init</code> 生成 <code>Claude.md</code> 文件 希望 Claude 每次都读取的内容 放到 <code>Claude.md</code> 文件中</p>
+<p><code>/clear</code> 清除上下文</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">❯ 1. Project memory           Saved <span class="keyword">in</span> ./CLAUDE.md</span><br><span class="line">  2. User memory              Saved <span class="keyword">in</span> ~/.claude/CLAUDE.md</span><br><span class="line">  3. Open auto-memory folder</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260406160521959.png?imageSlim"></p>
+<h3 id="自动格式化"><a href="#自动格式化" class="headerlink" title="自动格式化"></a>自动格式化</h3><p><code>/hooks</code></p>
+<p><code>SubAgent</code> 和 <code>Agent Skill</code></p>
+<p><code>Agent Skill</code> 会完全继承并且共享你当前主对话的上下文 你的每个思考日志 都会记入到你的当前上下文</p>
+<p>SubAgent 适合对上下文依赖不强的情况</p>
+<p><code>plugin</code> 可以视为安装包</p>
 
     </div>
 
@@ -307,7 +317,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">自动格式化</span></a></li></ol>
         </div>
       </div>
     </aside>
