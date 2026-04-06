@@ -200,8 +200,8 @@
         <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
         <path d="M21 3v5h-5"></path>
       </svg>
-      <time datetime="2026-03-28">
-        更新于 2026-03-28
+      <time datetime="2026-03-30">
+        更新于 2026-03-30
       </time>
     </span>
   
@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      14.9k 字
+      35.8k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 50 分钟
+      约 120 分钟
     </span>
   
 
@@ -282,17 +282,651 @@
 <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
 <li>你这个 40% 是怎么优化出来的？</li>
 <li>为什么要用联合索引？</li>
-<li>索引是怎么设计的？</li>
+<li>索引是怎么设计的？<br>为什么用 MySQL 而不是其他数据库？<br>MySQL 是关系型数据库，建立在关系模型的基础上的数据库。关系模型表明了数据库中所存储的</li>
 </ul>
+<h3 id="Mysql-有什么优点？"><a href="#Mysql-有什么优点？" class="headerlink" title="Mysql 有什么优点？"></a>Mysql 有什么优点？</h3><ol>
+<li>从生态和成本角度看，它的护城河非常深<ol>
+<li>开源免费：任何公司和个人都可以使用，降低了技术门槛和初期成本</li>
+<li>社区庞大，生态完善：MySQL 拥有极其活跃的社区和丰富的生态系统</li>
+</ol>
+</li>
+<li>从核心技术功能上看，它非常强大且均衡<ol>
+<li>强大的事务支持</li>
+<li>优秀的性能和可扩展性：单机性能非常出色</li>
+</ol>
+</li>
+<li>从运维和使用角度看，它非常亲民<ol>
+<li>开箱即用，上手简单：安装配置和日常使用都非常简单直观</li>
+<li>维护成本低：由于其简单和庞大的社区，找到相关的运维人才和解决方案都相对容易，整体的维护成本也更低</li>
+</ol>
+</li>
+</ol>
+<p>PostgreSQL 和 MySQL 对比<br>PostgreSQL 的优势：强大的可扩展性，可以安装各种功能强大的插件</p>
+<ol>
+<li>AI 向量检索：有官方推荐的 pgvector 扩展，性能强大，生态成熟</li>
+<li>全文搜索</li>
+<li>时序数据</li>
+<li>地理信息<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328210141420.png?imageSlim"><br>对于简单的 CRUD 类型应用来说，PostgreSQL 的高级特性可能并无用武之地，反而会带来不必要的学习曲线和维护负担<br>MySQL 依然是中小型应用的可靠基石，而 PostgreSQL 则以卓越的扩展性和对新兴场景的友好支持，为面向未来的复杂应用提供了更广阔的想象空间</li>
+</ol>
+<h3 id="MySQL-字段类型"><a href="#MySQL-字段类型" class="headerlink" title="MySQL 字段类型"></a>MySQL 字段类型</h3><p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328210330880.png?imageSlim"></p>
+<h3 id="MySQL-索引"><a href="#MySQL-索引" class="headerlink" title="MySQL 索引"></a>MySQL 索引</h3><p>索引是什么？用于快速查找和检索数据的数据结构，其本质可以看成是一种排序好的数据结构<br>索引的作用就相当于书的目录，查字典的时候如果没有目录只能一页一页翻，如果有目录直接去目录里查找字的位置，然后翻到那一页就可以了<br>索引的优点：</p>
+<ol>
+<li>查询速度起飞（主要目的）：通过索引，数据库可以大幅减少需要扫描的数据量，直接定位到符合条件的记录，从而显著加快数据检索速度，减少磁盘 I&#x2F;O 次数</li>
+<li>保证数据唯一性，通过创建唯一索引，可以确保表中的某一列的值是独一无二的，比如用户 ID、邮箱等。主键本身就是一种唯一索引</li>
+<li>加速排序和分组：如果查询中的 ORDER BY 或 GROUP BY 子句涉及的列键有索引，数据库往往可以直接利用索引已经排好序的特性，避免额外的排序操作，从而提升性能</li>
+</ol>
+<p>索引的缺点：</p>
+<ol>
+<li>创建和维护耗时：创建索引本身需要时间，特别是对大表操作时，更重要的是，当对表中的数据进行增、删、改时，不仅要操作数据本身</li>
+</ol>
+<h3 id="说说-MySQL-的架构？"><a href="#说说-MySQL-的架构？" class="headerlink" title="说说 MySQL 的架构？"></a>说说 MySQL 的架构？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：面试官一般不会直接问你 MySQL 基础架构，通常会由“一个 SQL 语句在 MySQL 中的执行流程”类似的问题引出。  </p>
+<p>你需要搞懂下图每一个组件所提供的主要功能。  </p>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260329214322022.png?imageSlim">  </p>
+<p>MySQL 架构从上到下分三层<br>第一层是连接层 客户端连接 MySQL<br>第二层是服务层 查询缓存 解析器 预处理器 查询优化器 执行器<br>第三层是存储引擎层 </p>
+<p>一条 SQL 语句在 MySQL 中的执行过程  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：结合 MySQL 的基础架构来回答这个问题。  </p>
+<p>1连接器<br>客户端和 MySQL 建立连接，连接器验证用户名密码，查询该用户的权限并缓存起来，后续这条连接的所有操作都基于这份权限。</p>
+<p>2 查询缓存<br>MySQL 8.0 之前会先查缓存，key 是完整的 SQL 语句，命中直接返回。 但这个功能鸡肋，只要表有任何更新缓存就全部失效，实际命中率很低，<strong>MySQL 8.0 直接把它删掉了</strong>。</p>
+<p>3 解析器<br>对 SQL 做语法分析和词法分析</p>
+<p>4 预处理器<br>检查 bill 表是否存在<br>检查 bill_no 字段是否存在<br>校验用户是否有查询这张表的权限</p>
+<p>5 查询优化器<br>优化器生成执行计划 决定使用哪个索引 多表 JOIN 时的连接顺序 是否需要全表搜索</p>
+<p>比如我在财务平台优化时，优化器选择走 <code>idx_billno_time_type</code> 联合索引，而不是全表扫描，这个决策就是优化器做的。</p>
+<p>6 执行器<br>根据优化器给出的执行计划，调用存储引擎接口执行</p>
+<p>MySQL 存储引擎架构了解吗？  </p>
+<p>👉 重要程度： ⭐⭐⭐  </p>
+<p>💡 提示：MySQL 存储引擎采用的是插件式架构，支持多种存储引擎，我们甚至可以为不同的数据库表设置不同的存储引擎以适应不同场景的需要。存储引擎是基于表的，而不是数据库。  </p>
+<p>MySQL 采用插件式架构<br>InnoDB MyISAM Memory</p>
+<p>MyISAM 和 InnoDB 的区别  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：从是否支持行级锁、事务、外键、数据库异常崩溃后的安全恢复、MVCC 等方面回答。  </p>
+<p>MyISAM 不支持事务<br>InnoDB 支持事务 涉及财务流水的写入必须保证原子性 所以必须用 InnoDB</p>
+<p>MyISAM 每次写操作锁整张表，并发写性能差</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>MyISAM</th>
+<th>InnoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事务</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>行锁</td>
+<td>❌（表锁）</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>外键</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>崩溃恢复</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>MVCC（多版本并发控制）</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>索引类型</td>
+<td>非聚簇</td>
+<td>聚簇</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>读多写少</td>
+<td>绝大多数场景</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>一句话总结：<strong>现代 MySQL 开发几乎都用 InnoDB</strong>，MyISAM 了解即可，InnoDB 在事务、并发、崩溃恢复上全面碾压 MyISAM。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>需要事务、并发写</td>
+<td>InnoDB ✅</td>
+</tr>
+<tr>
+<td>读多写少、不需要事务</td>
+<td>MyISAM（现在基本也用InnoDB）</td>
+</tr>
+<tr>
+<td>日常业务开发</td>
+<td>无脑选 InnoDB</td>
+</tr>
+</tbody></table>
+<h3 id="MySQL-事务"><a href="#MySQL-事务" class="headerlink" title="MySQL 事务"></a>MySQL 事务</h3><h3 id="何谓事务？"><a href="#何谓事务？" class="headerlink" title="何谓事务？"></a>何谓事务？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：转账的案例。  </p>
+<p>  <img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260329214336021.png?imageSlim"><br>  <strong>事务就是为了解决这个问题</strong>：把这两个操作绑定成一个不可分割的整体，要么都成功，要么都不执行。</p>
+<h3 id="何谓数据库事务-？"><a href="#何谓数据库事务-？" class="headerlink" title="何谓数据库事务 ？"></a>何谓数据库事务 ？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：数据库事务可以保证多个对数据库的操作（也就是 SQL 语句）构成一个逻辑上的整体。构成这个逻辑上的整体的这些数据库操作遵循：要么全部执行成功,要么全部不执行 。关系型数据库（例如： MySQL 、 SQL Server 、 Oracle 等）事务都有 ACID 特性。  </p>
+<h3 id="ACID-特性指的是什么？"><a href="#ACID-特性指的是什么？" class="headerlink" title="ACID 特性指的是什么？"></a>ACID 特性指的是什么？</h3><p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：ACID 特性大家都知道，但是，这里有一个绝大部分人可能会理解错误的地方：只有保证了事务的持久性、原子性、隔离性之后，一致性才能得到保障。也就是说 A、I、D 是手段，C 是目的！  </p>
+<p>  <img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260329214349080.png?imageSlim"></p>
+<p>面试官可能还会顺便问你：“持久性是如何保证的？”、“原子性是如何保证的？”巴拉巴拉。这个时候你就需要结合 MySQL 日志、MySQL 锁以及 MVCC 来回答。  </p>
+<h3 id="并发事务带来了哪些问题"><a href="#并发事务带来了哪些问题" class="headerlink" title="并发事务带来了哪些问题 ?"></a>并发事务带来了哪些问题 ?</h3><p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：脏读（Dirty read）、丢失修改（Lost to modify）、不可重复读（Unrepeatable read）、幻读（Phantom read）。<br><strong>脏读</strong>：<br>事务 B：UPDATE bill SET amount &#x3D; 500 WHERE id &#x3D; 1;（未提交）<br>事务 A：SELECT amount FROM bill WHERE id &#x3D; 1; → 读到 500<br>事务 B：ROLLBACK; → 回滚了<br>事务 A 读到的 500 是根本不存在的脏数据</p>
+<p><strong>丢失修改</strong>：<br>事务 A：读到 amount &#x3D; 100<br>事务 B：读到 amount &#x3D; 100<br>事务 A：修改为 200，提交<br>事务 B：修改为 150，提交 → 覆盖了 A 的修改<br>事务 A 的修改丢失了</p>
+<p>不可重复读和幻读区别  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：  </p>
+<p>● 不可重复读的重点是内容修改或者记录减少比如多次读取一条记录发现其中某些记录的值被修改；<br>● 幻读的重点在于记录新增比如多次执行同一条查询语句（DQL）时，发现查到的记录增加了。  </p>
+<p><strong>不可重复读</strong>：<br>同一事务内，两次读同一条记录，结果不一样（记录被其他事务<strong>修改或删除</strong>了）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">事务 A：SELECT amount WHERE id=1 → 100 </span><br><span class="line">事务 B：UPDATE amount = 200 WHERE id=1; COMMIT; </span><br><span class="line">事务 A：SELECT amount WHERE id=1 → 200 ← 和第一次不一样！</span><br></pre></td></tr></table></figure>
+
+<p><strong>幻读</strong>：<br>同一事务内，两次执行同一查询，结果集的<strong>行数</strong>不一样（其他事务<strong>插入了新记录</strong>）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">事务A：SELECT * FROM bill WHERE month=&#x27;2025-03&#x27; → 10条 </span><br><span class="line">事务B：INSERT INTO bill(month) VALUES(&#x27;2025-03&#x27;); COMMIT; </span><br><span class="line">事务A：SELECT * FROM bill WHERE month=&#x27;2025-03&#x27; → 11条 ← 多了一条！</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>问题本质</td>
+<td>已有记录被<strong>修改&#x2F;删除</strong></td>
+<td><strong>新增</strong>了记录</td>
+</tr>
+<tr>
+<td>针对操作</td>
+<td>UPDATE &#x2F; DELETE</td>
+<td>INSERT</td>
+</tr>
+<tr>
+<td>解决方案</td>
+<td>对记录加<strong>行锁</strong></td>
+<td>需要加<strong>间隙锁（Gap Lock）</strong></td>
+</tr>
+</tbody></table>
+<p>幻读其实可以看作是不可重复读的一种特殊情况，单独把区分幻读的原因主要是解决幻读和不可重复读的方案不一样。  </p>
+<ul>
+<li>不可重复读：对已有记录加<strong>Record Lock（记录锁）</strong> 就能防止被修改</li>
+<li>幻读：Record Lock 只能锁住已存在的记录，锁不住还不存在的”间隙”，需要用 <strong>Gap Lock（间隙锁）</strong> 锁住范围，防止新数据插入</li>
+</ul>
+<p>举个例子：执行 delete 和 update 操作的时候，可以直接对记录加锁，保证事务安全。而执行 insert 操作的时候，由于记录锁（Record Lock）只能锁住已经存在的记录，为了避免插入新记录，需要依赖间隙锁（Gap Lock）。也就是说执行 insert 操作的时候需要依赖 Next-Key Lock（Record Lock+Gap Lock） 进行加锁来保证不出现幻读。  </p>
+<p>SQL 标准定义了哪些事务隔离级别?  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：READ-UNCOMMITTED(读取未提交)、READ-COMMITTED(读取已提交)、REPEATABLE-READ(可重复读)、SERIALIZABLE(可串行化)。  </p>
+<p>MySQL 的默认隔离级别是什么?能解决幻读问题么？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：默认隔离级别是 REPEATABLE-READ（可重读）， 可以解决幻读问题 （两种情况，快照读和当前读）。<br>快照读：<code>SELECT * FROM bill WHERE month = &#39;2025-03&#39;;</code><br>通过 <strong>MVCC 读取历史版本快照</strong>，不管其他事务插入了多少新数据，我读的都是事务开始时的那个版本，天然避免幻读。</p>
+<p>当前读：<code>SELECT * FROM bill WHERE month = &#39;2025-03&#39; FOR UPDATE;</code><br>读的是最新数据，此时通过 <strong>Next-Key Lock</strong> 锁住查询范围，其他事务无法在这个范围内插入新记录，避免幻读。</p>
+<h3 id="什么是-MVCC？有什么用？原理了解么？"><a href="#什么是-MVCC？有什么用？原理了解么？" class="headerlink" title="什么是 MVCC？有什么用？原理了解么？"></a>什么是 MVCC？有什么用？原理了解么？</h3><p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：RC（Read Committed，读提交）和 RR（Repeatable Read，可重复读）这两个隔离级别的实现都离不开 MVCC。  </p>
+<p>多版本并发控制：通过保存数据的多个历史版本，让读写操作不互相阻塞，读不加锁，提升并发性能。RC 和 RR 两个隔离级别都依赖 MVCC 实现。</p>
+<h3 id="表级锁和行级锁了解吗-？有什么区别？"><a href="#表级锁和行级锁了解吗-？有什么区别？" class="headerlink" title="表级锁和行级锁了解吗 ？有什么区别？"></a>表级锁和行级锁了解吗 ？有什么区别？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：表级锁(table-level locking)一锁就锁整张表。行级锁的粒度更小，仅对相关的记录上锁即可（对一行或者多行记录加锁）  </p>
+<p>行级锁的使用有什么注意事项？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：InnoDB 的行锁是针对索引字段加的锁，表级锁是针对非索引字段加的锁。当我们执行 UPDATE 、 DELETE 语句时，如果 WHERE 条件中字段没有命中索引或者索引失效的话，就会导致扫描全表对表中的所有记录进行加锁。  </p>
+<p>共享锁和排他锁呢？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：不论是表级锁还是行级锁，都存在共享锁（Share Lock，S 锁）和排他锁（Exclusive Lock，X 锁）这两类  </p>
+<p>意向锁有什么作用？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：快速判断是否可以对某个表使用表锁。意向锁是表级锁，共有两种。并且，意向锁之间是互相兼容的。  </p>
+<p>InnoDB 有哪几类行锁？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：记录锁（Record Lock）、间隙锁（Gap Lock）、临键锁（Next-key Lock）。  </p>
+<p>MySQL 索引  </p>
+<h3 id="何为索引-？有什么作用？"><a href="#何为索引-？有什么作用？" class="headerlink" title="何为索引 ？有什么作用？"></a>何为索引 ？有什么作用？</h3><p>👉 重要程度： ⭐⭐⭐  </p>
+<p>💡 提示：索引的作用就相当于书的目录。  没有目录，要找某个知识点，只能从第一页翻到最后一页；有了目录，直接定位到页码，秒找到<br>数据库也一样，没有索引，查数据需要全表扫描，逐行比对；有了索引，可以快速定位到目标数据，大幅减少扫描的数据量<br>在我的<strong>财务平台</strong>里，账单表有几十万条数据，没加索引前查询要扫全表，加了索引后直接走 B+ 树定位，查询耗时降低 40%，这就是索引最直观的作用。</p>
+<p>索引失效</p>
+<h3 id="索引的优缺点"><a href="#索引的优缺点" class="headerlink" title="索引的优缺点"></a>索引的优缺点</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：索引并不都是好的，创建索引和维护索引也需要耗费资源和时间。<br>优点：</p>
+<ul>
+<li>查询速度快：大幅减少查询数据量，提升 SELECT 性能</li>
+<li>排序更高效：ORDER BY 字段有索引可以避免 filesort</li>
+<li>保证唯一性：唯一索引可以保证数据不重复<br>缺点：</li>
+<li>占用磁盘空间：索引本身需要额外存储空间</li>
+<li>降低写入性能：每次 INSERT&#x2F;UPDATE&#x2F;DELETE，都需要同步维护索引结构，有额外开销</li>
+<li>索引失效风险：写法不对索引可能失效，反而不如全表扫描</li>
+</ul>
+<h3 id="索引的底层数据结构"><a href="#索引的底层数据结构" class="headerlink" title="索引的底层数据结构"></a>索引的底层数据结构</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：在 MySQL 中，MyISAM 引擎和 InnoDB 引擎都是使用 B+Tree 作为索引结构，但是，两者的实现方式不太一样。  </p>
+<h3 id="MySQL-的索引结构为什么使用-B-树？"><a href="#MySQL-的索引结构为什么使用-B-树？" class="headerlink" title="MySQL 的索引结构为什么使用 B+树？"></a>MySQL 的索引结构为什么使用 B+树？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：结合二叉查找树、平衡二叉树、红黑树、B 树存在的缺陷来回答这个问题。  </p>
+<h3 id="主键索引和二级索引"><a href="#主键索引和二级索引" class="headerlink" title="主键索引和二级索引"></a>主键索引和二级索引</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：数据表的主键列使用的就是主键索引。二级索引又称为辅助索引，是因为二级索引的叶子节点存储的数据是主键。也就是说，通过二级索引，可以定位主键的位置。唯一索引，普通索引，前缀索引等索引属于二级索引。<br><strong>主键索引（Primary Key Index）</strong></p>
+<ul>
+<li>数据表主键列自动创建</li>
+<li><strong>叶子节点存储完整的行数据</strong></li>
+<li>一张表只能有一个主键索引</li>
+<li>属于<strong>聚簇索引</strong></li>
+</ul>
+<h3 id="聚集索引与非聚集索引"><a href="#聚集索引与非聚集索引" class="headerlink" title="聚集索引与非聚集索引"></a>聚集索引与非聚集索引</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：聚集索引即索引结构和数据一起存放的索引。主键索引属于聚集索引。非聚集索引即索引结构和数据分开存放的索引。  </p>
+<h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：覆盖索引即需要查询的字段正好是索引的字段，那么直接根据该索引，就可以查到数据了，而无需回表查询。  </p>
+<h3 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：MySQL 中的索引可以以一定顺序引用多列。  </p>
+<h3 id="最左前缀匹配原则"><a href="#最左前缀匹配原则" class="headerlink" title="最左前缀匹配原则"></a>最左前缀匹配原则</h3><p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：在 MySQL 建立联合索引时会遵守最左前缀匹配原则，即最左优先，在检索数据时从联合索引的最左边开始匹配。  </p>
+<h3 id="创建索引的注意事项有哪些-？"><a href="#创建索引的注意事项有哪些-？" class="headerlink" title="创建索引的注意事项有哪些 ？"></a>创建索引的注意事项有哪些 ？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：选择合适的字段创建索引、尽可能的考虑建立联合索引而不是单列索引……。  </p>
+<p>MySQL 日志  </p>
+<p>MySQL 中常见的日志有哪些？  </p>
+<p>👉 重要程度： ⭐⭐⭐  </p>
+<p>💡 提示：错误日志（error log）、二进制日志（binary log）、一般查询日志（general query log）、慢查询日志（slow query log） 、事务日志(redo log 和 undo log)……。  </p>
+<p>慢查询日志有什么用？  </p>
+<p>👉 重要程度： ⭐⭐⭐  </p>
+<p>💡 提示：慢查询日志记录了执行时间超过 long_query_time （默认是 10 s）的所有查询，在我们解决 SQL 慢查询（SQL 执行时间过长）问题的时候经常会用到。  </p>
+<p>binlog 主要记录了什么？有什么用？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：MySQL binlog(binary log 即二进制日志文件) 主要记录了 MySQL 数据库中数据的所有变化(数据库执行的所有 DDL 和 DML 语句)。  </p>
+<p>redo log 如何保证事务的持久性？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：redo log 主要做的事情就是记录页的修改，比如某个页面某个偏移量处修改了几个字节的值以及具体被修改的内容是什么。在事务提交时，我们会将 redo log 按照刷盘策略刷到磁盘上去，这样即使 MySQL 宕机了，重启之后也能恢复未能写入磁盘的数据，从而保证事务的持久性。  </p>
+<p>页修改之后为什么不直接刷盘呢？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：性能非常差！InnoDB 页的大小一般为 16 KB，而页又是磁盘和内存交互的基本单位。这就导致即使我们只修改了页中的几个字节数据，一次刷盘操作也需要将 16 KB 大小的页整个都刷新到磁盘中。而且，这些修改的页可能并不相邻，也就是说这还是随机 IO。  </p>
+<p>binlog 和 redolog 有什么区别？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：可以从用途、写入方式、是否是 InnoDB 引擎特有的这几个方面来回答。  </p>
+<p>undo log 如何保证事务的原子性？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：每一个事务对数据的修改都会被记录到 undo log ，当执行事务过程中出现错误或者需要执行回滚操作的话，MySQL 可以利用 undo log 将数据恢复到事务开始之前的状态。  </p>
+<p>性能优化  </p>
+<p>SQL 优化  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：SQL 优化涵盖的内容非常多，像正确使用索引、数据结构、数据库函数等等都属于 SQL 优化的范畴。另外，问到 SQL 优化的时候一定离不开 Explain 命令的使用！你可以参考下面这两篇文章来准备这个问题：  </p>
+<p>● <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1899907">聊聊 SQL 优化的 15 个小技巧 -苏三聊技术</a><br>● <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247488618&idx=1&sn=e70a31865b5eadcb151f439004a4dd72&chksm=cea25ba1f9d5d2b795222ba90e0326618d649e858ec23e9c7360f90fbfc23a7786c33bff9556&token=1647609083&lang=zh_CN#rd">SQL 高性能优化指南！35+条优化建议立马 GET! - 码海</a>  </p>
+<p>尽量要结合自己的项目来聊，具体说明自己是如何进行 SQL 优化的，具体带来了什么效果。  </p>
+<p>慢查询问题排查  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：记几个导致慢查询的常见原因，知道遇到慢查询问题了如何排查。具体做法可以参考这篇<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/sPO-6ULwIfUexLY3V4acBg">那些年我们一起优化的 SQL</a> 这篇文章。  </p>
+<p>这个也要尽量结合自己的项目来聊，具体说明自己如何解决慢查询问题的。  </p>
 <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
 <li>为什么用 Redis？</li>
 <li>缓存更新怎么保证一致性？</li>
 <li>有没有缓存问题（穿透&#x2F;雪崩&#x2F;击穿）？</li>
 </ul>
-<h3 id="Redis-是什么"><a href="#Redis-是什么" class="headerlink" title="Redis 是什么"></a>Redis 是什么</h3><p>数据存储系统 数据缓存 消息队列<br>NoSQL<br>访问量越来越大 受限于IO 磁盘读写速度<br>Redis 基于内存<br>支持多种数据结构<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327122717164.png?imageSlim"></p>
+<h3 id="Redis-是什么"><a href="#Redis-是什么" class="headerlink" title="Redis 是什么"></a>Redis 是什么</h3><p>Redis 是一个<strong>基于内存的 Key-Value 数据库</strong>，支持多种数据结构，如 String、Hash、List、Set、Sorted Set 等，同时支持数据持久化。<br>数据存储系统 数据缓存 消息队列<br>NoSQL<br>访问量越来越大 受限于IO 磁盘读写速度<br>Redis 基于内存<br>支持多种数据结构<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327122717164.png?imageSlim"></p>
 <p>五种基本数据类型<br>三种CLI API GUI<br>性能极高<br>数据类型丰富<br>简单易用<br>支持数据持久化、主从复制、哨兵模式等高可用特性</p>
 <p>Redis 安装方式<br>Wsl 安装 linux 系统 然后在 linux 系统中安装 redis<br>用 docker 安装<br>Exe 安装 推荐用前两种方式安装<br>启动 <code>redis-cli</code></p>
 <p>RedisInsight</p>
+<h3 id="Redis-除了做缓存还能做什么？"><a href="#Redis-除了做缓存还能做什么？" class="headerlink" title="Redis 除了做缓存还能做什么？"></a>Redis 除了做缓存还能做什么？</h3><p>分布式锁、限流、消息队列<br>分布式锁<br>在我的<strong>云图库项目</strong>里就有用到这个场景。<br>图片秒传功能需要先查 MD 5 是否已存在，存在就直接复用，不存在才上传。在高并发下如果多个请求同时判断”不存在”然后都去上传，就会造成重复入库的问题。<br>这种场景就可以用 Redis 的 <code>SETNX</code>（Set if Not Exists）来实现分布式锁：</p>
+<ul>
+<li>抢到锁的请求执行业务逻辑</li>
+<li>抢不到的等待或直接返回</li>
+<li>操作完成后释放锁<br>&#x2F;todo 当然实际项目中一般用 <strong>Redisson</strong> 封装好的分布式锁，它帮我们处理了锁续期（看门狗机制）、锁释放等细节，比自己手写更安全。</li>
+</ul>
+<h3 id="使用-Redis-统计网站-UV-怎么做？"><a href="#使用-Redis-统计网站-UV-怎么做？" class="headerlink" title="使用 Redis 统计网站 UV 怎么做？"></a>使用 Redis 统计网站 UV 怎么做？</h3><p><strong>UV（Unique Visitor）独立访客数</strong> —— 同一个用户当天不管访问多少次，只算一次。</p>
+<p>核心难点就是：<strong>怎么去重</strong>。</p>
+<p>方案 1. 用 Set 存储用户 ID<br><strong>缺点很明显：</strong></p>
+<ul>
+<li>每个用户 ID 都要存进去，<strong>内存占用随用户量线性增长</strong></li>
+<li>比如 1000 万 UV，每个 ID 占 8 字节，光一天就要 <strong>80 MB</strong></li>
+<li>数据量大了完全撑不住</li>
+</ul>
+<hr>
+<h3 id="方案二：HyperLogLog-⭐-推荐"><a href="#方案二：HyperLogLog-⭐-推荐" class="headerlink" title="方案二：HyperLogLog ⭐ 推荐"></a>方案二：HyperLogLog ⭐ 推荐</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PFADD uv:20260329 user_1001</span><br><span class="line">PFADD uv:20260329 user_1002</span><br><span class="line">PFADD uv:20260329 user_1001  # 重复，自动忽略</span><br><span class="line">PFCOUNT uv:20260329           # 返回估算值 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>核心优势：</strong></p>
+<ul>
+<li>无论数据量多大，<strong>每个 key 固定只占约 12 KB 内存</strong></li>
+<li>1000 万 UV 和 100 UV 占用的空间是一样的</li>
+<li>误差率约 <strong>0.81%</strong>，对 UV 统计这种场景完全可以接受</li>
+</ul>
+<hr>
+<h3 id="使用-Redis-实现一个排行榜怎么做？"><a href="#使用-Redis-实现一个排行榜怎么做？" class="headerlink" title="使用 Redis 实现一个排行榜怎么做？"></a>使用 Redis 实现一个排行榜怎么做？</h3><p>核心数据结构：Sorted Set（Zset）</p>
+<p>Zset 每个元素包含两部分：</p>
+<ul>
+<li><strong>member</strong>：成员标识（比如用户 ID、图片 ID）</li>
+<li><strong>score</strong>：分值（比如点赞数、浏览量）</li>
+</ul>
+<p>Redis 内部会<strong>自动按 score 排序</strong>，天然适合排行榜场景。</p>
+<h3 id="Redis-单线程模型了解吗？"><a href="#Redis-单线程模型了解吗？" class="headerlink" title="Redis 单线程模型了解吗？"></a>Redis 单线程模型了解吗？</h3><p>Redis 单线程指的是处理客户端请求的命令执行是单线程的，<br>Redis 其他线程负责：</p>
+<ul>
+<li>持久化</li>
+<li>异步删除大 key</li>
+<li>集群数据同步<br>IO 多路复用 如果普通阻塞 IO，一个线程只能处理一个请求，那么 1000 个客户端就要开 1000 个线程，线程切换的开销极大<br>Redis 的做法：IO 多路复用，用一个线程监听所有客户端的 socket，哪个 socket 有数据来了或者可以写了，就把它放进事件队列，单线程依次从队列里取出来处理</li>
+</ul>
+<h3 id="单线程有没有缺点？"><a href="#单线程有没有缺点？" class="headerlink" title="单线程有没有缺点？"></a>单线程有没有缺点？</h3><ul>
+<li>慢命令会阻塞整个服务 比如 keys *遍历所有 key 如果数据量大就会导致 redis 卡住，其他命令全部等待</li>
+<li>实际的生产环境要禁用 keys * 用 SCAN 替代，分批遍历不会出现阻塞的问题</li>
+<li>无法充分利用多核 CPU 只能跑在一个核上 对多核服务器是一种浪费</li>
+<li>解决方案：在一台机器上<strong>部署多个 Redis 实例</strong></li>
+</ul>
+<h3 id="Redis-6-0-之后引入了多线程"><a href="#Redis-6-0-之后引入了多线程" class="headerlink" title="Redis 6.0 之后引入了多线程"></a>Redis 6.0 之后引入了多线程</h3><p>Redis 6.0 之后引入了<strong>多线程 IO</strong>，但只是用多线程来处理<strong>网络数据的读写和解析</strong>，命令的执行本身依然是单线程。</p>
+<h3 id="Redis-6-0-之前为什么不使用多线程？"><a href="#Redis-6-0-之前为什么不使用多线程？" class="headerlink" title="Redis 6.0 之前为什么不使用多线程？"></a>Redis 6.0 之前为什么不使用多线程？</h3><p>单线程编程容易并且更容易维护、Redis 的性能瓶颈不在 CPU 。  </p>
+<h3 id="Redis-给缓存数据设置过期时间有啥用？"><a href="#Redis-给缓存数据设置过期时间有啥用？" class="headerlink" title="Redis 给缓存数据设置过期时间有啥用？"></a>Redis 给缓存数据设置过期时间有啥用？</h3><ol>
+<li>内存是有限的 Redis 数据全在内存中，如果所有数据永久保存，内存迟早被撑爆，设置过期时间让数据自动清理，控制内存占用</li>
+<li>保证缓存数据的时效性 业务数据会变化，缓存不能永久有效，比如我在财务平台里缓存的报表统计数据，如果财务流水出现了更新但缓存没过期，用户看到的就是旧数据，就会出现问题<blockquote>
+<p>设置合理的过期时间，是缓存一致性的最简单兜底方案。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="Redis-是如何判断数据是否过期的呢？"><a href="#Redis-是如何判断数据是否过期的呢？" class="headerlink" title="Redis 是如何判断数据是否过期的呢？"></a>Redis 是如何判断数据是否过期的呢？</h3><p>Redis 内部维护了一个过期字典，是一个 Hash 表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">过期字典结构：</span><br><span class="line">&#123;</span><br><span class="line">  &quot;report:2025:03&quot;  -&gt; 1743000000000  (过期时间戳)</span><br><span class="line">  &quot;pic:rank:20260329&quot; -&gt; 1743086400000</span><br><span class="line">  &quot;user:session:1001&quot; -&gt; 1743090000000</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>key 是缓存的键名</li>
+<li>value 是这个 key 的<strong>过期时间戳（毫秒）</strong><br>每次访问一个 key 时，Redis 会去过期字典里查它的过期时间戳，和当前时间对比，判断是否已过期。</li>
+</ul>
+<h3 id="过期的数据的删除策略了解么？"><a href="#过期的数据的删除策略了解么？" class="headerlink" title="过期的数据的删除策略了解么？"></a>过期的数据的删除策略了解么？</h3><p>策略一：惰性删除</p>
+<blockquote>
+<p>不主动删，等你来访问的时候再检查。</p>
+</blockquote>
+<ul>
+<li>客户端访问某个 key</li>
+<li>Redis 先去过期字典查是否过期</li>
+<li>过期了就删掉，返回 nil</li>
+<li>没过期正常返回<br><strong>优点：</strong> 对 CPU 友好，不浪费计算资源去扫描<br><strong>缺点：</strong> 如果某些 key 一直没人访问，就永远不会被删，<strong>内存泄漏</strong><br>策略二：定期删除<blockquote>
+<p>Redis 每隔一段时间，主动随机抽查一批 key，删掉过期的。</p>
+</blockquote>
+</li>
+</ul>
+<p>具体流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">每隔 100ms（默认）执行一次：</span><br><span class="line">  → 随机抽取一定数量的 key</span><br><span class="line">  → 检查是否过期</span><br><span class="line">  → 删除过期的 key</span><br><span class="line">  → 如果过期比例超过 25%，继续抽查</span><br><span class="line">  → 否则本轮结束，等下次</span><br></pre></td></tr></table></figure>
+<p><strong>优点：</strong> 弥补了惰性删除的内存泄漏问题<br><strong>缺点：</strong> 是随机抽查，不保证所有过期 key 都能及时清理</p>
+<h3 id="Redis-内存淘汰机制了解么？"><a href="#Redis-内存淘汰机制了解么？" class="headerlink" title="Redis 内存淘汰机制了解么？"></a>Redis 内存淘汰机制了解么？</h3><p>当 Redis 内存使用达到上限（<code>maxmemory</code>）时，再写入新数据就会触发淘汰策略。</p>
+<h3 id="不淘汰（默认）"><a href="#不淘汰（默认）" class="headerlink" title="不淘汰（默认）"></a>不淘汰（默认）</h3><table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>noeviction</code></td>
+<td>内存满了直接报错，不淘汰任何数据</td>
+</tr>
+</tbody></table>
+<h3 id="针对设置了过期时间的-key"><a href="#针对设置了过期时间的-key" class="headerlink" title="针对设置了过期时间的 key"></a>针对设置了过期时间的 key</h3><table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>volatile-lru</code></td>
+<td>淘汰最久未使用的 key</td>
+</tr>
+<tr>
+<td><code>volatile-lfu</code></td>
+<td>淘汰使用频率最低的 key</td>
+</tr>
+<tr>
+<td><code>volatile-random</code></td>
+<td>随机淘汰</td>
+</tr>
+<tr>
+<td><code>volatile-ttl</code></td>
+<td>淘汰剩余存活时间最短的 key</td>
+</tr>
+</tbody></table>
+<h3 id="针对所有-key"><a href="#针对所有-key" class="headerlink" title="针对所有 key"></a>针对所有 key</h3><table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>allkeys-lru</code></td>
+<td>淘汰所有 key 中最久未使用的 ⭐</td>
+</tr>
+<tr>
+<td><code>allkeys-lfu</code></td>
+<td>淘汰所有 key 中使用频率最低的 ⭐</td>
+</tr>
+<tr>
+<td><code>allkeys-random</code></td>
+<td>随机淘汰所有 key</td>
+</tr>
+</tbody></table>
+<h3 id="如何保证-Redis-存的都是热点数据？"><a href="#如何保证-Redis-存的都是热点数据？" class="headerlink" title="如何保证 Redis 存的都是热点数据？"></a>如何保证 Redis 存的都是热点数据？</h3><ol>
+<li>设置 maxmemory 限制内存上线</li>
+<li>选用 <code>allkeys-lfu</code> 或 <code>allkeys-lru</code> 淘汰策略<ol>
+<li><ul>
+<li>LRU：最近最少使用，冷数据自然会被淘汰</li>
+</ul>
+</li>
+<li><ul>
+<li>LFU：按访问频率淘汰，比 LRU 更精准，真正的冷数据会被优先踢掉</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="怎么保证-Redis-挂掉之后再重启数据可以进行恢复？"><a href="#怎么保证-Redis-挂掉之后再重启数据可以进行恢复？" class="headerlink" title="怎么保证 Redis 挂掉之后再重启数据可以进行恢复？"></a>怎么保证 Redis 挂掉之后再重启数据可以进行恢复？</h3><p>依赖持久化机制。Redis 数据全在内存里，一旦宕机或重启，数据全部丢失。而持久化就是把内存数据写到磁盘，重启后从磁盘恢复，保证数据不丢</p>
+<h3 id="什么是-RDB-持久化？"><a href="#什么是-RDB-持久化？" class="headerlink" title="什么是 RDB 持久化？"></a>什么是 RDB 持久化？</h3><ol>
+<li>RDB 持久化（快照）<ol>
+<li>RDB 是在某个时间点把内存里的所有数据生成一个二进制快照文件（dump.rdb），类似于给内存拍了一张照片</li>
+<li>是手动触发的方式，如果希望自动触发，可以通过在配置文件中设置规则，比如 save 900 1 就 900 秒内有 1 个 key 被修改就被触发</li>
+<li><code>save</code> 和 <code>bgsave</code> save 主线程执行，会阻塞所有的命令 bgsave 是从主线程 fork 了一个子进程，不阻塞主线程</li>
+<li>Fork 子进程 把内存数据写入临时 .rdb 文件 写完后替换旧的 主线程全程不阻塞，继续执行命令</li>
+<li>优点<ol>
+<li>文件紧凑体积小，恢复速度快</li>
+<li>对性能影响较小</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>两次快照之间的数据会丢失，数据丢失风险大</li>
+<li>Fork 子进程时如果数据量很大，可能有短暂停顿</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="什么是-AOF-持久化？"><a href="#什么是-AOF-持久化？" class="headerlink" title="什么是 AOF 持久化？"></a>什么是 AOF 持久化？</h3><p>AOF 追加日志 把每一条写命令都追加记录到日志文件里，重启时重放所有命令来恢复数据<br>客户端发送命令 redis 执行命令 命令写入 aof_buf（内存缓冲区） 根据 appendsync 配置决定如何刷盘</p>
+<h3 id="三种刷盘策略（appendfsync）"><a href="#三种刷盘策略（appendfsync）" class="headerlink" title="三种刷盘策略（appendfsync）"></a>三种刷盘策略（appendfsync）</h3><table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+<th>数据安全性</th>
+<th>性能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>always</code></td>
+<td>每条命令都刷盘</td>
+<td>最安全，最多丢1条</td>
+<td>最差</td>
+</tr>
+<tr>
+<td><code>everysec</code></td>
+<td>每秒刷一次 ⭐</td>
+<td>最多丢1秒数据</td>
+<td>均衡</td>
+</tr>
+<tr>
+<td><code>no</code></td>
+<td>由操作系统决定</td>
+<td>最不安全</td>
+<td>最好</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>生产环境一般选 <code>everysec</code>，性能和安全性的最佳平衡点。</p>
+</blockquote>
+<p>AOF 文件会越来越大，Redis 提供 AOF Rewrite 来压缩<br>比如对同一个 key 执行了 100 次 INCR<br>AOF 里记录了 100 条命令<br>    ↓<br>重写后只保留最终结果：SET key 100<br>文件体积大幅缩小</p>
+<p>触发重写：<code>BGREWRITEAOF</code> 命令，同样是 fork 子进程处理，不阻塞主线程。<br>优点</p>
+<ul>
+<li>数据丢失风险极低</li>
+<li>日志可读<br>缺点：</li>
+<li>文件比 RDB 大得多</li>
+<li>恢复速度比 RDB 慢</li>
+</ul>
+<h3 id="Redis-4-0-对于持久化机制做了什么优化？"><a href="#Redis-4-0-对于持久化机制做了什么优化？" class="headerlink" title="Redis 4.0 对于持久化机制做了什么优化？"></a>Redis 4.0 对于持久化机制做了什么优化？</h3><p>引入混合持久化机制<br>文件结构：[ RDB 全量数据（某时间点快照）] + [ AOF 增量命令（快照之后的写操作）]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">启动 Redis</span><br><span class="line">    ↓</span><br><span class="line">读取 AOF 文件头部的 RDB 数据，快速恢复全量数据</span><br><span class="line">    ↓</span><br><span class="line">重放后半部分 AOF 增量命令，补齐快照之后的数据</span><br><span class="line">    ↓</span><br><span class="line">恢复完成</span><br></pre></td></tr></table></figure>
+<p><strong>优点：</strong></p>
+<ul>
+<li>恢复速度接近 RDB（大部分数据走快照恢复）</li>
+<li>数据丢失接近 AOF（只丢增量部分）</li>
+<li>两者的优点结合，缺点互补</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">只追求恢复速度    → 用 RDB</span><br><span class="line">只追求数据安全    → 用 AOF（everysec）</span><br><span class="line">两者都想要        → 混合持久化（Redis 4.0+ 推荐）</span><br><span class="line">纯缓存场景        → 可以关闭持久化，反正能从DB重建</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何使用-Redis-事务？"><a href="#如何使用-Redis-事务？" class="headerlink" title="如何使用 Redis 事务？"></a>如何使用 Redis 事务？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：Redis 可以通过 MULTI ， EXEC ， DISCARD 和 WATCH 等命令来实现事务(transaction)功能。<br>涉及 4 个核心命令 MULTI EXEC DISCARD 和 WATCH</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MULTI          # 开启事务</span><br><span class="line">SET k1 v1      # 命令入队，不立即执行</span><br><span class="line">INCR count     # 命令入队</span><br><span class="line">SET k2 v2      # 命令入队</span><br><span class="line">EXEC           # 一次性提交执行所有命令</span><br></pre></td></tr></table></figure>
+<p>执行 <code>MULTI</code> 之后，所有命令都不会立即执行，而是放进一个<strong>命令队列</strong>，等 <code>EXEC</code> 时批量执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WATCH balance        # 监听 balance 这个 key</span><br><span class="line"></span><br><span class="line">MULTI</span><br><span class="line">DECRBY balance 100   # 扣款</span><br><span class="line">INCRBY account 100   # 到账</span><br><span class="line">EXEC</span><br><span class="line"># 如果 EXEC 之前 balance 被其他客户端修改过</span><br><span class="line"># 事务自动取消，返回 nil</span><br></pre></td></tr></table></figure>
+<p>WATCH 实现的是<strong>乐观锁</strong>思想：</p>
+<ul>
+<li>不加锁，只是监听</li>
+<li>提交时检查 key 有没有被改过</li>
+<li>改过了就放弃事务，由业务层决定是否重试</li>
+</ul>
+<h3 id="Redis-事务支持原子性吗？"><a href="#Redis-事务支持原子性吗？" class="headerlink" title="Redis 事务支持原子性吗？"></a>Redis 事务支持原子性吗？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：Redis 事务在运行错误的情况下，除了执行过程中出现错误的命令外，其他命令都能正常执行。并且，Redis 是不支持回滚（roll back）操作的。因此，Redis 事务其实是不满足原子性的（而且不满足持久性）。  </p>
+<p>Redis 事务有两种出错情况，表现完全不同：</p>
+<ol>
+<li>语法错误（入队时就报错）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MULTI</span><br><span class="line">SET k1 v1       # 正常入队</span><br><span class="line">HSET            # 命令语法错误，入队失败</span><br><span class="line">SET k2 v2       # 正常入队</span><br><span class="line">EXEC            # 整个事务取消，一条都不执行</span><br></pre></td></tr></table></figure></li>
+<li>运行时错误（执行时才出错）</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MULTI</span><br><span class="line">SET k1 &quot;hello&quot;    # 正常入队</span><br><span class="line">INCR k1           # 入队成功，但执行时会报错（字符串不能自增）</span><br><span class="line">SET k2 v2         # 正常入队</span><br><span class="line">EXEC</span><br><span class="line"># 结果：SET k1 成功，INCR k1 报错，SET k2 成功</span><br><span class="line"># 出错的命令跳过，其他命令照常执行！</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>这就是问题所在：Redis 不支持回滚！</strong><br>出错的命令跳过了，但其他命令照常执行，数据可能处于中间状态，<strong>不满足原子性</strong>。</p>
+</blockquote>
+<h3 id="Redis-事务还有什么缺陷？"><a href="#Redis-事务还有什么缺陷？" class="headerlink" title="Redis 事务还有什么缺陷？"></a>Redis 事务还有什么缺陷？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：除了不满足原子性之外，事务中的每条命令都会与 Redis 服务器进行网络交互，这是比较浪费资源的行为。明明一次批量执行多个命令就可以了，这种操作实在是看不懂。  5 条命令就要 5 次网络往返，如果命令多了网络开销非常大，完全没必要。</p>
+<h3 id="如何解决-Redis-事务的缺陷？"><a href="#如何解决-Redis-事务的缺陷？" class="headerlink" title="如何解决 Redis 事务的缺陷？"></a>如何解决 Redis 事务的缺陷？</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：Lua 脚本、 <a target="_blank" rel="noopener" href="https://redis.io/docs/manual/programmability/functions-intro/">Redis functions</a> 。  </p>
+<h4 id="Lua-脚本的优势"><a href="#Lua-脚本的优势" class="headerlink" title="Lua 脚本的优势"></a>Lua 脚本的优势</h4><p><strong>1. 原子性有保证</strong> Redis 执行 Lua 脚本是<strong>原子的</strong>，脚本执行期间不会被其他命令插入，要么全部执行，要么不执行。<br><strong>2. 一次网络请求搞定</strong> 整个脚本一次性发给 Redis，只有一次网络往返，彻底解决多次网络交互的问题。<br><strong>3. 支持复杂逻辑</strong> Lua 脚本里可以写条件判断、循环等逻辑，普通事务做不到。<br>整个判断+修改操作是<strong>原子的</strong>，不会出现并发问题。</p>
+<h4 id="Redis-Functions（了解即可）"><a href="#Redis-Functions（了解即可）" class="headerlink" title="Redis Functions（了解即可）"></a>Redis Functions（了解即可）</h4><ul>
+<li>脚本可以持久化存储在 Redis 里</li>
+<li>支持库的概念，复用性更好</li>
+<li>实际生产中目前还是 Lua 脚本用得更多</li>
+</ul>
+<h3 id="什么是原子性"><a href="#什么是原子性" class="headerlink" title="什么是原子性"></a>什么是原子性</h3><blockquote>
+<p><strong>原子性指的是一个操作或一组操作，要么全部执行成功，要么全部不执行，不存在中间状态。</strong></p>
+</blockquote>
+<p>类比生活中的例子：</p>
+<ul>
+<li>银行转账：A 扣款 100，B 收款 100</li>
+<li>这两步必须同时成功或同时失败</li>
+<li>不能出现”A 扣了钱，B 没收到”的中间状态</li>
+</ul>
+<h3 id="什么是-bigkey？有什么危害？"><a href="#什么是-bigkey？有什么危害？" class="headerlink" title="什么是 bigkey？有什么危害？"></a>什么是 bigkey？有什么危害？</h3><p>👉 重要程度： ⭐⭐⭐  </p>
+<p>💡 提示：一个 key 对应的 value 所占用的内存比较大。bigkey 会消耗更多的内存空间，也会影响到性能。<br>某个 key 对应的 value 占用内存过大<br>String value 超过 10 kb<br>List&#x2F;Set&#x2F;Hash&#x2F;Zset 元素数量超过 5000 个</p>
+<p>Bigkey 的危害</p>
+<ol>
+<li>内存占用大</li>
+<li>阻塞 Redis 主线程 ⚠️ 单线程执行 bigkey 的操作都需要处理大量数据 会长时间占用主线程</li>
+<li>网络传输慢</li>
+<li>集群数据不均衡</li>
+</ol>
+<h3 id="如何发现-bigkey？"><a href="#如何发现-bigkey？" class="headerlink" title="如何发现 bigkey？"></a>如何发现 bigkey？</h3><p>👉 重要程度： ⭐⭐⭐  </p>
+<p>💡 提示：使用 Redis 自带的 --bigkeys 参数来查找或者分析 RDB 文件。</p>
+<p>使用 Redis 自带的 --bigkeys 参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli --bigkeys</span><br></pre></td></tr></table></figure>
+<p>缺点：会扫描全库，对线上有一定压力，建议在业务低峰期执行</p>
+<p>用 <code>redis-rdb-tools</code> 或 <code>rdbtools</code> 离线分析 RDB 快照文件，不影响线上服务：<br>分析 RDB 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdb --<span class="built_in">command</span> memory dump.rdb | <span class="built_in">sort</span> -t<span class="string">&#x27;,&#x27;</span> -k4 -rn | <span class="built_in">head</span> -20</span><br></pre></td></tr></table></figure>
+
+<p>SCAN + 手动检查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line"># 用 SCAN 遍历 key（不阻塞）</span><br><span class="line"># 再用 MEMORY USAGE key 检查每个 key 的内存占用</span><br><span class="line">MEMORY USAGE pic:list:all</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="如何避免大量-key-集中过期？"><a href="#如何避免大量-key-集中过期？" class="headerlink" title="如何避免大量 key 集中过期？"></a>如何避免大量 key 集中过期？</h3><p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：给 key 设置随机过期时间 + 开启 lazy-free（惰性删除&#x2F;延迟释放）。<br>比如在我的<strong>财务平台</strong>里，每天 0 点批量生成当天的报表缓存，如果所有 key 都设置 24 小时过期，第二天 0 点就会同时过期。Redis 定期删除任务需要处理大量过期 key，导致主线程卡顿，同时大量请求打到数据库，可能引发<strong>缓存雪崩</strong>。</p>
+<p><strong>方案一：设置随机过期时间</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int randomOffset = new Random().nextInt(3600); // 随机0~1小时 redisTemplate.expire(key, 24 * 3600 + randomOffset, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+<p>把过期时间打散，避免同一时刻大量 key 同时失效。</p>
+<p><strong>方案二：开启 lazy-free（惰性删除）</strong> </p>
+<figure class="highlight plaintext"><figcaption><span>redis.conf 配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lazyfree-lazy-expire yes # 过期 key 异步删除 </span><br></pre></td></tr></table></figure>
+<p>开启后，过期 key 的内存释放交给<strong>后台线程</strong>异步处理，不阻塞主线程，即使集中过期也不会卡顿。</p>
+<h3 id="什么是-Redis-内存碎片-为什么会有-Redis-内存碎片"><a href="#什么是-Redis-内存碎片-为什么会有-Redis-内存碎片" class="headerlink" title="什么是 Redis 内存碎片?为什么会有 Redis 内存碎片?"></a>什么是 Redis 内存碎片?为什么会有 Redis 内存碎片?</h3><p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：内存碎片简单地理解为那些不可用的空闲内存。  </p>
+<p>内存碎片是指<strong>已分配但无法被有效利用的空闲内存</strong>。<br>类比：你有一张 10 格的停车场，停了 4 辆车，但因为车辆大小不一、位置零散，剩下的 6 个格子虽然空着，却放不下新来的大车——这些”空着但用不了”的格子就是碎片。<br><strong>原因一：内存分配器的机制</strong><br>Redis 使用 jemalloc 等内存分配器，分配内存时按固定大小的块来分（如 8、16、32、64 字节…），实际需要的大小和分配的大小之间有差距，多出来的部分就是碎片。<br><strong>原因二：数据频繁修改</strong><br>原来：key 存了一个 100 字节的 value，占了 128 字节的内存块<br>更新：value 改成 50 字节，内存块还是 128 字节，多余的 78 字节就是碎片<br><strong>原因三：大量 key 删除</strong><br>删除 key 后内存释放，但这些零散的空闲内存可能无法被新数据有效利用。<br><strong>如何查看内存碎片率？</strong><br><code>redis-cli info memory | grep mem_fragmentation_ratio</code></p>
+<ul>
+<li>碎片率 <strong>&gt; 1.5</strong>：碎片严重，需要处理 - </li>
+<li>碎片率 <strong>1~1.5</strong>：正常范围 - </li>
+<li>碎片率 <strong>&lt; 1</strong>：说明 Redis 使用了 swap，性能会很差</li>
+</ul>
+<h3 id="如何清理内存碎片？"><a href="#如何清理内存碎片？" class="headerlink" title="如何清理内存碎片？"></a>如何清理内存碎片？</h3><p><strong>Redis 4.0 之前：</strong> 只能重启 Redis，重启后会重新分配内存，碎片消失。<br><strong>Redis 4.0 之后：</strong> 支持<strong>自动内存碎片整理</strong>： </p>
+<figure class="highlight plaintext"><figcaption><span>redis.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">activedefrag yes # 开启自动碎片整理 </span><br><span class="line">active-defrag-ignore-bytes 100mb # 碎片超过100mb才整理 </span><br><span class="line">active-defrag-enabled yes</span><br></pre></td></tr></table></figure>
+<p>开启后 Redis 会在后台自动整理碎片，不需要重启，但整理过程会消耗 CPU，建议设置触发阈值避免影响性能。</p>
+<h3 id="什么是缓存穿透-？怎么解决？"><a href="#什么是缓存穿透-？怎么解决？" class="headerlink" title="什么是缓存穿透 ？怎么解决？"></a>什么是缓存穿透 ？怎么解决？</h3><p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：大量请求的 key 根本不存在于缓存中，导致请求直接到了数据库上。常见的解决办法如下：  </p>
+<p>● 缓存无效 key<br>● 布隆过滤器  </p>
+<blockquote>
+<p>大量请求的 key <strong>在缓存和数据库中都不存在</strong>，每次请求都直接打到数据库，数据库也查不到。</p>
+</blockquote>
+<p>黑客构造大量不存在的 ID（如负数 ID、随机字符串）疯狂请求接口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请求 id=-1 → 查缓存：没有 → 查DB：没有 → 返回null</span><br><span class="line">请求 id=-2 → 查缓存：没有 → 查DB：没有 → 返回null</span><br><span class="line">... 大量请求全部打穿到DB</span><br></pre></td></tr></table></figure>
+
+<p><strong>方案一：缓存空值</strong><br>查 DB 没有结果时，把空值也缓存起来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public Bill getBillById(Long id) &#123;</span><br><span class="line">    String key = &quot;bill:&quot; + id;</span><br><span class="line">    String cached = redisTemplate.opsForValue().get(key);</span><br><span class="line">    </span><br><span class="line">    if (cached != null) &#123;</span><br><span class="line">        // 命中空值缓存，直接返回null</span><br><span class="line">        if (&quot;NULL&quot;.equals(cached)) return null;</span><br><span class="line">        return JSON.parseObject(cached, Bill.class);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Bill bill = billMapper.selectById(id);</span><br><span class="line">    if (bill == null) &#123;</span><br><span class="line">        // 缓存空值，设置较短过期时间</span><br><span class="line">        redisTemplate.opsForValue().set(key, &quot;NULL&quot;, 5, TimeUnit.MINUTES);</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    redisTemplate.opsForValue().set(key, JSON.toJSONString(bill), </span><br><span class="line">        30, TimeUnit.MINUTES);</span><br><span class="line">    return bill;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缺点：攻击者每次都采用不同的 key，缓存大量的空值就会浪费内存</p>
+<p><strong>方案二：布隆过滤器 ⭐ 更推荐</strong><br>布隆过滤器是一个<strong>位数组 + 多个哈希函数</strong>组成的数据结构：<br>原理： 数据库所有合法ID → 经过多个哈希函数 → 映射到位数组上置1<br>请求进来时： 先问布隆过滤器：”这个ID存在吗？”<br>→ 不存在：直接拒绝，不查缓存也不查DB ✅<br>→ 可能存在：才去查缓存和DB<br>在我的<strong>云图库项目</strong>里，如果要防止恶意请求查询不存在的图片 ID，就可以在系统启动时把所有合法图片 ID 加载进布隆过滤器，请求进来先过滤一遍。</p>
+<h3 id="什么是缓存雪崩？怎么解决？"><a href="#什么是缓存雪崩？怎么解决？" class="headerlink" title="什么是缓存雪崩？怎么解决？"></a>什么是缓存雪崩？怎么解决？</h3><p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：缓存在同一时间大面积的失效，后面的请求都直接落到了数据库上，造成数据库短时间内承受大量请求。 如果是 Redis 服务不可用的情况的话，我们应该搭建 Redis 集群来避免单点风险。如果是缓存过期的话，参考“如何避免大量 key 集中过期？”这个问题。  </p>
+<blockquote>
+<p>缓存在<strong>同一时间大面积失效</strong>，或者 <strong>Redis 直接宕机</strong>，大量请求全部打到数据库，数据库瞬间崩溃。</p>
+</blockquote>
+<p>每个缓存 key 加随机过期时间：这在我的<strong>云图库多级缓存</strong>里就是这样做的，给每个缓存 key 加随机过期时间，防止集中失效。</p>
+<p>针对场景二：Redis 宕机** </p>
+<ul>
+<li><strong>搭建 Redis 集群</strong>（后面详细说） </li>
+<li><strong>服务降级</strong>：Redis 挂了，直接返回兜底数据或提示”服务繁忙”，不让请求打到 DB </li>
+<li><strong>限流熔断</strong>：用 Sentinel 对接口限流，DB 扛不住时直接熔断保护</li>
+</ul>
+<h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><blockquote>
+<p>某个<strong>热点 key</strong>突然过期，大量并发请求同时发现缓存没有，全部打到 DB 重建缓存。</p>
+</blockquote>
+<p>**解决方案：</p>
+<ul>
+<li><strong>互斥锁：</strong> 只让一个请求去查 DB 重建缓存，其他请求等待 </li>
+<li><strong>逻辑过期：</strong> 热点 key 不设物理过期时间，value 里存一个过期时间字段，异步线程负责更新</li>
+</ul>
+<h3 id="如何保证缓存和数据库数据的一致性-？"><a href="#如何保证缓存和数据库数据的一致性-？" class="headerlink" title="如何保证缓存和数据库数据的一致性 ？"></a>如何保证缓存和数据库数据的一致性 ？</h3><p>三种常见的缓存读写策略：<br>策略一：Cache Aside（旁路缓存）⭐ 最常用<br><strong>读：</strong> <code>查缓存 → 命中直接返回 → 未命中查DB → 写入缓存 → 返回</code><br><strong>写：</strong> <code> 先更新DB → 再删除缓存</code></p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：3 种常见的缓存读写策略。  </p>
+<p>Redis 集群  </p>
+<p>如何保证 Redis 服务高可用？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：Redis Sentinel 集群。  </p>
+<p>Sentinel（哨兵） 有什么作用？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：监控 Redis 节点的运行状态并自动实现故障转移。  </p>
+<p>Redis 缓存的数据量太大怎么办?  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐⭐  </p>
+<p>💡 提示：Redis Cluster。  </p>
+<p>Redis Cluster 虚拟槽分区有什么优点？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：解耦了数据和节点之间的关系，提升了集群的横向扩展性和容错性。  </p>
+<p>Redis Cluster 中的各个节点是如何实现数据一致性的？  </p>
+<p>👉 重要程度： ⭐⭐⭐⭐  </p>
+<p>💡 提示：Gossip 协议  </p>
+<h3 id="2-限流"><a href="#2-限流" class="headerlink" title="2. 限流"></a>2. 限流</h3><p>用 Redis 的原子操作可以很方便地实现<strong>接口限流</strong>，比如：</p>
+<ul>
+<li>用 <code>INCR</code> + 过期时间，实现固定窗口限流</li>
+<li>用 Sorted Set 实现滑动窗口限流，更精准<br>在我的云图库里，AI 绘图接口调用的是阿里云百炼大模型，是有<strong>调用成本</strong>的，如果不加限制用户可以无限请求。这种场景就非常适合用 Redis 做限流，比如限制每个用户每分钟最多调用 5 次。</li>
+</ul>
+<h3 id="3-消息队列（不推荐用于生产）"><a href="#3-消息队列（不推荐用于生产）" class="headerlink" title="3. 消息队列（不推荐用于生产）"></a>3. 消息队列（不推荐用于生产）</h3><p>Redis 的 List 结构可以模拟消息队列，<code>LPUSH</code> 生产、<code>BRPOP</code> 消费。</p>
+<p>但坦白说<strong>不太推荐在生产环境用 Redis 做消息队列</strong>，原因是：</p>
+<ul>
+<li>消息没有 ACK 确认机制，消费失败消息会丢失</li>
+<li>不支持消息回溯</li>
+<li>缺少死信队列等高级特性</li>
+</ul>
+<p>真正需要消息队列的场景还是应该用 <strong>RabbitMQ、Kafka</strong> 这类专业的 MQ。</p>
+<h3 id="为什么要使用缓存-Redis？"><a href="#为什么要使用缓存-Redis？" class="headerlink" title="为什么要使用缓存&#x2F;Redis？"></a>为什么要使用缓存&#x2F;Redis？</h3><p>内存的读写速度远远快于磁盘<br>我们有财务报表统计这个场景。报表数据往往需要聚合大量流水记录，SQL 查询比较复杂，原本接口响应在 800 mx 左右，用户体验很差<br>我利用 Redis 对报表统计数据做缓存预热与及时更新<br>系统启动或数据变更时，提前把计算好的报表数据写入 Redis<br>用户请求进来会直接读取到缓存，缓解数据库的压力<br>云图库中的主页热门图片是典型读多写少，访问频率高，我采用了 Redis+Caffeine 多级缓存的方式<br>提升接口响应速度<br>MySQL 查询可能需要几十毫秒甚至更长，而 Redis 的读取通常在一毫秒以内<br>应对高并发 QPS10w+</p>
+<p>请求进来<br>缓存雪崩 给不同的缓存 key 设置随机过期时间，避免大量缓存同时失效，瞬间把流量全部打到数据库<br>Knife  Postman 中发请求，观察响应<br>后端日志打印耗时 <code>System.currentTimeMillis()</code> 或者 Spring 的 <code>StopWatch</code> 记录时间差<br>打印到日志里对比优化前后的数据</p>
 <h3 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串 String"></a>字符串 String</h3><p><code>set k2 v2</code><br><code>get k2</code><br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327123521769.png?imageSlim"></p>
 <p>区分大小写<br><code>del key</code> 删除键<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327123707213.png?imageSlim"></p>
 <p><code>exists key</code> 是否存在<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327123804387.png?imageSlim"><br><code>keys </code> 查找<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260327123832612.png?imageSlim"></p>
@@ -404,7 +1038,7 @@
 </ol>
 </li>
 </ol>
-<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><h5 id="什么是缓存击穿"><a href="#什么是缓存击穿" class="headerlink" title="什么是缓存击穿"></a>什么是缓存击穿</h5><p>缓存击穿中，请求的 key 对应的是<strong>热点数据</strong>，该数据存在于数据库中，但不存在于缓存中（通常是因为缓存中的那份数据已经过期）。这就导致瞬时大量的请求直接打到了数据库上，对数据库造成了巨大的压力，可能直接就被这么多请求弄宕机了<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328145011760.png?imageSlim"></p>
+<h4 id="缓存击穿-1"><a href="#缓存击穿-1" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><h5 id="什么是缓存击穿"><a href="#什么是缓存击穿" class="headerlink" title="什么是缓存击穿"></a>什么是缓存击穿</h5><p>缓存击穿中，请求的 key 对应的是<strong>热点数据</strong>，该数据存在于数据库中，但不存在于缓存中（通常是因为缓存中的那份数据已经过期）。这就导致瞬时大量的请求直接打到了数据库上，对数据库造成了巨大的压力，可能直接就被这么多请求弄宕机了<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328145011760.png?imageSlim"></p>
 <h5 id="有哪些解决方法？"><a href="#有哪些解决方法？" class="headerlink" title="有哪些解决方法？"></a>有哪些解决方法？</h5><ol>
 <li>永不过期（不推荐）：设置热点数据永不过期或者过期时间比较长</li>
 <li>提前预热（推荐）：针对热点数据提前预热，将其存入缓存中并设置合理的过期时间比如秒杀场景下的数据在秒杀结束之前不过期</li>
@@ -423,7 +1057,60 @@
 <li>提前预热（推荐）：针对热点数据提前预热，将其存入缓存中并设置合理的过期时间，比如秒杀场景下的数据在秒杀结束之前不过期</li>
 <li>持久缓存策略（看情况）：虽然一般不推荐设置缓存永不过期，但对于某些关键性和变化不频繁的数据，可以考虑这种策略</li>
 </ol>
-<h5 id="缓存预热如何实现？"><a href="#缓存预热如何实现？" class="headerlink" title="缓存预热如何实现？"></a>缓存预热如何实现？</h5><h2 id="Caffeine"><a href="#Caffeine" class="headerlink" title="Caffeine"></a>Caffeine</h2><p>为了不让请求的压力直接来到 MySQL，会使用缓存来处理高并发下的请求<br>本地缓存的缺点：集群中的每个应用里的缓存数据无法同步<br>本地缓存的优点：性能实在太强了</p>
+<h5 id="缓存预热如何实现？"><a href="#缓存预热如何实现？" class="headerlink" title="缓存预热如何实现？"></a>缓存预热如何实现？</h5><ol>
+<li>使用定时任务</li>
+<li>使用消息队列，比如 Kafka，来异步的进行缓存预热，将数据库中的热点数据的主键或者 ID 发送到消息队列中，然后由缓存服务消费消息队列中的数据，根据主键或者 ID 查询数据库并更新缓存</li>
+</ol>
+<h3 id="如何保证缓存和数据库数据的一致性"><a href="#如何保证缓存和数据库数据的一致性" class="headerlink" title="如何保证缓存和数据库数据的一致性"></a>如何保证缓存和数据库数据的一致性</h3><p>引入缓存主要是为了提升性能、减轻数据库压力，但却是会带来数据不一致的风险。<br>绝对的一致性往往意味着更高的系统复杂性和性能开销，所以实践中会根据业务场景选择合适的策略，在性能和一致性之间找到一个平衡点 <br>常用的一种缓存读写策略：旁路缓存模式（CAP）的读写</p>
+<ol>
+<li>读操作：<ol>
+<li>先尝试从缓存读取数据</li>
+<li>如果缓存命中，直接返回数据</li>
+<li>如果缓存未命中，从数据库查询数据，将查到的数据放入缓存并返回数据</li>
+</ol>
+</li>
+<li>写操作：<ol>
+<li>先更新数据库</li>
+<li>再直接删除缓存中对应的数据<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328153100299.png?imageSlim"></li>
+</ol>
+</li>
+</ol>
+<p>更新数据库成功，而删除缓存这一步失败的情况的解决方案：</p>
+<ol>
+<li>缓存失效时间（TTL）变短（不推荐：让缓存数据的）：让缓存数据的过期时间变短，这样的话缓存就会从数据库中加载数据</li>
+<li>增加缓存更新重试机制（常用）：如果缓存服务当前不可用导致缓存删除失败的话，就隔一段时间进行重试，重试次数可以自己定。将删除缓存重试的消息投递到消息队列，然后由专门的消费者来重试，直到成功</li>
+</ol>
+<h2 id="Caffeine"><a href="#Caffeine" class="headerlink" title="Caffeine"></a>Caffeine</h2><h3 id="本地缓存的方案有哪些？"><a href="#本地缓存的方案有哪些？" class="headerlink" title="本地缓存的方案有哪些？"></a>本地缓存的方案有哪些？</h3><ol>
+<li>JDK 自带的 HashMap 和 ConcurrentHashMap<br>ConcurrentHashMap 可以看作是线程安全版本的 HashMap ，两者都是存放 key&#x2F;value 形式的键值对。但是，大部分场景不会将这两者当作缓存，因为只提供了缓存的功能，并没有提供其他诸如过期时间之类的功能</li>
+<li><code>Ehcache</code>、<code>Guava Cache</code>、<code>Spring Cache</code> 这三者是使用的比较多的本地缓存框架<ol>
+<li><code>Ehcach</code></li>
+<li>通过 <code>Spring Cache</code> 的注解实现缓存的话，代码看着会很干净和优雅，但是容易出现问题比如缓存穿透、内存溢出</li>
+</ol>
+</li>
+<li>后起之秀 Caffeine<ol>
+<li>相比于 <code>Guava</code> 来说 <code>Caffeine</code> 在各个方面性能都要更加优秀，而且 <code>Guava</code> 和 <code>Caffeine</code> 的使用方式很像，减少学习成本</li>
+</ol>
+</li>
+</ol>
+<h3 id="本地缓存有什么痛点？"><a href="#本地缓存有什么痛点？" class="headerlink" title="本地缓存有什么痛点？"></a>本地缓存有什么痛点？</h3><p>本地缓存的优势：<strong>低依赖、轻量、简单、成本低</strong><br>本地缓存的缺陷：</p>
+<ul>
+<li>本地缓存应用耦合，对分布式架构支持不友好，比如同一个相同的服务部署在多台机器上的时候，各个服务之前的缓存是无法共享的，因为本地缓存只在当前机器上有</li>
+<li>本地缓存容量受服务部署所在的机器限制明显：如果当前系统服务所耗费的内存多，那么本地缓存可用的容量就很少</li>
+</ul>
+<h3 id="分布式缓存常见的技术选型方案有哪些"><a href="#分布式缓存常见的技术选型方案有哪些" class="headerlink" title="分布式缓存常见的技术选型方案有哪些"></a>分布式缓存常见的技术选型方案有哪些</h3><p>比较老牌同时也是使用的比较多的还是 Memcached 和 Redis。不过，现在基本没有看过还有项目使用 Memcached 来做缓存，都是直接用 Redis。<br>最开始 Memcached 比较常用，后面由于 Redis 的发展都转向更加强大的 Redis。<br>有一些大厂开源了类似于 Redis 的分布式高性能 KV 存储数据库，例如腾讯开源的 Tendis，但是现在没有被维护更新了<br>还有 Dragonfly 完全兼容 Redis 和 Memcached 的 API，号称全世界最快的内存数据库<br>KeyDB：Redis 的一个高性能分支，专注于多线程、内存效率和高吞吐量</p>
+<h3 id="多级缓存"><a href="#多级缓存" class="headerlink" title="多级缓存"></a>多级缓存</h3><h4 id="什么是多级缓存？为什么要用？"><a href="#什么是多级缓存？为什么要用？" class="headerlink" title="什么是多级缓存？为什么要用？"></a>什么是多级缓存？为什么要用？</h4><p>最常用的多级缓存实现方式：<strong>本地缓存+分布式缓存</strong><br>本地缓存和分布式缓存虽然都属于缓存，但本地缓存的访问速度要远大于分布式缓存，这是因为访问本地缓存不存在额外的网络开销<br>一般情况下，不建议使用多级缓存，会增加维护负担（需要保证一级缓存和二级缓存的数据一致性）。而且，其实际带来的提升效果对于绝大部分业务场景来说其实并不是很大<br>适合多级缓存的两种业务场景：</p>
+<ul>
+<li>缓存的数据不会频繁修改，比较稳定</li>
+<li>数据访问量特别大比如秒杀场景<br>多级缓存方案中，第一级缓存（L1）使用本地内存，第二级缓存（L 2）使用分布式缓存<br>读取缓存数据的时候，先从 L1 中读取，读取不到的时候再去 L2 读取，这样可以降低 L2 的压力，减少 L2 的读次数，如果 L2 中也没有，再去数据库查询，数据查询成功后再将数据写入到 L1 和 L2 中</li>
+</ul>
+<h4 id="多级缓存一致性如何保证？"><a href="#多级缓存一致性如何保证？" class="headerlink" title="多级缓存一致性如何保证？"></a>多级缓存一致性如何保证？</h4><p>在多级缓存系统中，保证强一致性成本太高，业界的几个提供多级缓存功能的缓存框架基本都是最终一致性保证。例如可以使用 Redis 的发布&#x2F;订阅机制、Redis Stream 或者消息队列来确保当一个实例的本地缓存发生变化时，其他实例能够及时更新其本地缓存，以保证缓存一致性<br>Canal+广播消息</p>
+<ol>
+<li>首先在数据库中进行数据修改</li>
+<li>使用 Canal 监听数据库的变更操作，当检测到数据变化时，出发缓存更新</li>
+<li>对于 Redis 缓存，因为集群中只共享一份数据，所以直接同步缓存即可</li>
+<li>由于本地缓存分别在不同的 JVM 实例中，需要借助广播消息队列（MQ）机制，将更新通知广播到各个业务实例，从而同步本地缓存</li>
+</ol>
+<p>为了不让请求的压力直接来到 MySQL，会使用缓存来处理高并发下的请求<br>本地缓存的缺点：集群中的每个应用里的缓存数据无法同步<br>本地缓存的优点：性能实在太强了</p>
 <h3 id="生成计算"><a href="#生成计算" class="headerlink" title="生成计算"></a>生成计算</h3><p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260328110631089.png?imageSlim"></p>
 <h3 id="读（100-）"><a href="#读（100-）" class="headerlink" title="读（100%）"></a>读（100%）</h3><p>![[Pasted image 20260328110726.png]]</p>
 <h3 id="读（75-）-写（25-）"><a href="#读（75-）-写（25-）" class="headerlink" title="读（75%）&#x2F;写（25%）"></a>读（75%）&#x2F;写（25%）</h3><p>![[Pasted image 20260328110730.png]]</p>
@@ -476,6 +1163,7 @@
 </ul>
 </li>
 </ul>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>Nginx 来做负载均衡，部署两个相同的应用到服务器，两个服务使用同一个数据库，并且使用的是本地缓存</p>
 
     </div>
 
@@ -494,7 +1182,10 @@
     <!-- 上一篇 / 下一篇 -->
     <nav class="post-nav">
       
-        <div class="post-nav-item prev disabled"></div>
+        <a href="/2026/03/28/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-03-28/" class="post-nav-item prev">
+          <span class="post-nav-label">上一篇</span>
+          <span class="post-nav-title"> 2026-03-28</span>
+        </a>
       
       
       
@@ -512,7 +1203,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E4%BB%8B%E7%BB%8D%E6%95%B4%E4%B8%AA%E4%BA%91%E5%9B%BE%E5%BA%93%E9%A1%B9%E7%9B%AE%E5%90%8E%E7%AB%AF%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A8%A1%E5%9D%97%E4%BB%A5%E5%8F%8A%E5%90%84%E6%A8%A1%E5%9D%97%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.</span> <span class="toc-text">请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E4%BD%9C%E6%A8%A1%E5%9D%97-%E5%9F%BA%E4%BA%8E-WebSocket-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BA%BA%E5%AE%9E%E7%8E%B0%E7%BC%96%E8%BE%91%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%A9%E7%94%A8%E2%80%9C%E7%BC%96%E8%BE%91%E9%94%81%E2%80%9D%E5%8F%8A%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E9%99%8D%E4%BD%8E%E5%B9%B6%E5%8F%91%E5%86%B2%E7%AA%81%E9%A3%8E%E9%99%A9%EF%BC%8C%E5%B9%B6%E9%87%87%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">协作模块  - 基于 WebSocket 实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">面试问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%8A%80%E6%9C%AF%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%AF%B9%E5%85%B6%E4%BB%96%E7%9A%84%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E5%8A%BF-%E6%8A%8A%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E9%83%BD%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%EF%BC%88%E5%85%B1%E5%90%8C%E7%82%B9%EF%BC%8C%E5%B7%AE%E5%BC%82%E7%82%B9%EF%BC%89%EF%BC%8C%E7%84%B6%E5%90%8E%E5%9B%B4%E7%BB%95%E5%B7%AE%E5%BC%82%E7%82%B9-%E9%A1%B9%E7%9B%AE%E6%9D%A5%E8%B0%88"><span class="toc-number">3.</span> <span class="toc-text">为什么使用这个技术，这个技术相对其他的有什么优势  - 把两个对象都介绍一下（共同点，差异点），然后围绕差异点+项目来谈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-number">4.</span> <span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-number">5.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.1.</span> <span class="toc-text">Redis 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-String"><span class="toc-number">5.2.</span> <span class="toc-text">字符串 String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88-Set"><span class="toc-number">5.3.</span> <span class="toc-text">集合 Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C-Hash"><span class="toc-number">5.4.</span> <span class="toc-text">哈希 Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-Stream"><span class="toc-number">5.5.</span> <span class="toc-text">消息队列 Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E7%A9%BA%E9%97%B4-Geospatial"><span class="toc-number">5.6.</span> <span class="toc-text">地理空间 Geospatial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HyperLogLog"><span class="toc-number">5.7.</span> <span class="toc-text">HyperLogLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE-Bitmap"><span class="toc-number">5.8.</span> <span class="toc-text">位图 Bitmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9F%9F-Bitfield"><span class="toc-number">5.9.</span> <span class="toc-text">位域 Bitfield</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">5.10.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">5.11.</span> <span class="toc-text">持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">5.12.</span> <span class="toc-text">主从复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F-Sentinel"><span class="toc-number">5.13.</span> <span class="toc-text">哨兵模式 Sentinel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E4%BA%8B%E5%8A%A1"><span class="toc-number">5.14.</span> <span class="toc-text">Redis 事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-hotkey"><span class="toc-number">5.15.</span> <span class="toc-text">Redis hotkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%EF%BC%88%E2%AD%90%EF%BC%89"><span class="toc-number">5.16.</span> <span class="toc-text">Redis 生产问题（⭐）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caffeine"><span class="toc-number">6.</span> <span class="toc-text">Caffeine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%AE%A1%E7%AE%97"><span class="toc-number">6.1.</span> <span class="toc-text">生成计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%EF%BC%88100-%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">读（100%）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%EF%BC%8875-%EF%BC%89-%E5%86%99%EF%BC%8825-%EF%BC%89"><span class="toc-number">6.3.</span> <span class="toc-text">读（75%）&#x2F;写（25%）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%EF%BC%88100-%EF%BC%89"><span class="toc-number">6.4.</span> <span class="toc-text">写（100%）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker"><span class="toc-number">7.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8-Docker%EF%BC%9F"><span class="toc-number">7.1.</span> <span class="toc-text">为什么要用 Docker？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%8C%96%E5%92%8C-Dockerfile"><span class="toc-number">7.2.</span> <span class="toc-text">容器化和 Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">7.3.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">8.</span> <span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">8.1.</span> <span class="toc-text">常用命令</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E4%BB%8B%E7%BB%8D%E6%95%B4%E4%B8%AA%E4%BA%91%E5%9B%BE%E5%BA%93%E9%A1%B9%E7%9B%AE%E5%90%8E%E7%AB%AF%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A8%A1%E5%9D%97%E4%BB%A5%E5%8F%8A%E5%90%84%E6%A8%A1%E5%9D%97%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.</span> <span class="toc-text">请介绍整个云图库项目后端的架构设计，有哪些模块以及各模块之间的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E4%BD%9C%E6%A8%A1%E5%9D%97-%E5%9F%BA%E4%BA%8E-WebSocket-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BA%BA%E5%AE%9E%E7%8E%B0%E7%BC%96%E8%BE%91%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%A9%E7%94%A8%E2%80%9C%E7%BC%96%E8%BE%91%E9%94%81%E2%80%9D%E5%8F%8A%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E9%99%8D%E4%BD%8E%E5%B9%B6%E5%8F%91%E5%86%B2%E7%AA%81%E9%A3%8E%E9%99%A9%EF%BC%8C%E5%B9%B6%E9%87%87%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">协作模块  - 基于 WebSocket 实现多人实现编辑图片，利用“编辑锁”及事件驱动设计降低并发冲突风险，并采用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">面试问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%8A%80%E6%9C%AF%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%AF%B9%E5%85%B6%E4%BB%96%E7%9A%84%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E5%8A%BF-%E6%8A%8A%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E9%83%BD%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%EF%BC%88%E5%85%B1%E5%90%8C%E7%82%B9%EF%BC%8C%E5%B7%AE%E5%BC%82%E7%82%B9%EF%BC%89%EF%BC%8C%E7%84%B6%E5%90%8E%E5%9B%B4%E7%BB%95%E5%B7%AE%E5%BC%82%E7%82%B9-%E9%A1%B9%E7%9B%AE%E6%9D%A5%E8%B0%88"><span class="toc-number">3.</span> <span class="toc-text">为什么使用这个技术，这个技术相对其他的有什么优势  - 把两个对象都介绍一下（共同点，差异点），然后围绕差异点+项目来谈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-number">4.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mysql-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">Mysql 有什么优点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.2.</span> <span class="toc-text">MySQL 字段类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E7%B4%A2%E5%BC%95"><span class="toc-number">4.3.</span> <span class="toc-text">MySQL 索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4-MySQL-%E7%9A%84%E6%9E%B6%E6%9E%84%EF%BC%9F"><span class="toc-number">4.4.</span> <span class="toc-text">说说 MySQL 的架构？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E4%BA%8B%E5%8A%A1"><span class="toc-number">4.5.</span> <span class="toc-text">MySQL 事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E8%B0%93%E4%BA%8B%E5%8A%A1%EF%BC%9F"><span class="toc-number">4.6.</span> <span class="toc-text">何谓事务？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E8%B0%93%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1-%EF%BC%9F"><span class="toc-number">4.7.</span> <span class="toc-text">何谓数据库事务 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID-%E7%89%B9%E6%80%A7%E6%8C%87%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">4.8.</span> <span class="toc-text">ACID 特性指的是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%B8%A6%E6%9D%A5%E4%BA%86%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">4.9.</span> <span class="toc-text">并发事务带来了哪些问题 ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-MVCC%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F%E5%8E%9F%E7%90%86%E4%BA%86%E8%A7%A3%E4%B9%88%EF%BC%9F"><span class="toc-number">4.10.</span> <span class="toc-text">什么是 MVCC？有什么用？原理了解么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%BA%A7%E9%94%81%E5%92%8C%E8%A1%8C%E7%BA%A7%E9%94%81%E4%BA%86%E8%A7%A3%E5%90%97-%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">4.11.</span> <span class="toc-text">表级锁和行级锁了解吗 ？有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E7%B4%A2%E5%BC%95-%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-number">4.12.</span> <span class="toc-text">何为索引 ？有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.13.</span> <span class="toc-text">索引的优缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">4.14.</span> <span class="toc-text">索引的底层数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E7%9A%84%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-B-%E6%A0%91%EF%BC%9F"><span class="toc-number">4.15.</span> <span class="toc-text">MySQL 的索引结构为什么使用 B+树？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%E5%92%8C%E4%BA%8C%E7%BA%A7%E7%B4%A2%E5%BC%95"><span class="toc-number">4.16.</span> <span class="toc-text">主键索引和二级索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E4%B8%8E%E9%9D%9E%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95"><span class="toc-number">4.17.</span> <span class="toc-text">聚集索引与非聚集索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="toc-number">4.18.</span> <span class="toc-text">覆盖索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95"><span class="toc-number">4.19.</span> <span class="toc-text">联合索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99"><span class="toc-number">4.20.</span> <span class="toc-text">最左前缀匹配原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E6%9C%89%E5%93%AA%E4%BA%9B-%EF%BC%9F"><span class="toc-number">4.21.</span> <span class="toc-text">创建索引的注意事项有哪些 ？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-number">5.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.1.</span> <span class="toc-text">Redis 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">5.2.</span> <span class="toc-text">Redis 除了做缓存还能做什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Redis-%E7%BB%9F%E8%AE%A1%E7%BD%91%E7%AB%99-UV-%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F"><span class="toc-number">5.3.</span> <span class="toc-text">使用 Redis 统计网站 UV 怎么做？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9AHyperLogLog-%E2%AD%90-%E6%8E%A8%E8%8D%90"><span class="toc-number">5.4.</span> <span class="toc-text">方案二：HyperLogLog ⭐ 推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Redis-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%8E%92%E8%A1%8C%E6%A6%9C%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F"><span class="toc-number">5.5.</span> <span class="toc-text">使用 Redis 实现一个排行榜怎么做？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="toc-number">5.6.</span> <span class="toc-text">Redis 单线程模型了解吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%9C%89%E6%B2%A1%E6%9C%89%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-number">5.7.</span> <span class="toc-text">单线程有没有缺点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-6-0-%E4%B9%8B%E5%90%8E%E5%BC%95%E5%85%A5%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">5.8.</span> <span class="toc-text">Redis 6.0 之后引入了多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-6-0-%E4%B9%8B%E5%89%8D%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="toc-number">5.9.</span> <span class="toc-text">Redis 6.0 之前为什么不使用多线程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E7%BB%99%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%E6%9C%89%E5%95%A5%E7%94%A8%EF%BC%9F"><span class="toc-number">5.10.</span> <span class="toc-text">Redis 给缓存数据设置过期时间有啥用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E6%98%AF%E5%90%A6%E8%BF%87%E6%9C%9F%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="toc-number">5.11.</span> <span class="toc-text">Redis 是如何判断数据是否过期的呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%9C%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5%E4%BA%86%E8%A7%A3%E4%B9%88%EF%BC%9F"><span class="toc-number">5.12.</span> <span class="toc-text">过期的数据的删除策略了解么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6%E4%BA%86%E8%A7%A3%E4%B9%88%EF%BC%9F"><span class="toc-number">5.13.</span> <span class="toc-text">Redis 内存淘汰机制了解么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%B7%98%E6%B1%B0%EF%BC%88%E9%BB%98%E8%AE%A4%EF%BC%89"><span class="toc-number">5.14.</span> <span class="toc-text">不淘汰（默认）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E8%AE%BE%E7%BD%AE%E4%BA%86%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%E7%9A%84-key"><span class="toc-number">5.15.</span> <span class="toc-text">针对设置了过期时间的 key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%89%80%E6%9C%89-key"><span class="toc-number">5.16.</span> <span class="toc-text">针对所有 key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81-Redis-%E5%AD%98%E7%9A%84%E9%83%BD%E6%98%AF%E7%83%AD%E7%82%B9%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="toc-number">5.17.</span> <span class="toc-text">如何保证 Redis 存的都是热点数据？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81-Redis-%E6%8C%82%E6%8E%89%E4%B9%8B%E5%90%8E%E5%86%8D%E9%87%8D%E5%90%AF%E6%95%B0%E6%8D%AE%E5%8F%AF%E4%BB%A5%E8%BF%9B%E8%A1%8C%E6%81%A2%E5%A4%8D%EF%BC%9F"><span class="toc-number">5.18.</span> <span class="toc-text">怎么保证 Redis 挂掉之后再重启数据可以进行恢复？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-RDB-%E6%8C%81%E4%B9%85%E5%8C%96%EF%BC%9F"><span class="toc-number">5.19.</span> <span class="toc-text">什么是 RDB 持久化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-AOF-%E6%8C%81%E4%B9%85%E5%8C%96%EF%BC%9F"><span class="toc-number">5.20.</span> <span class="toc-text">什么是 AOF 持久化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E5%88%B7%E7%9B%98%E7%AD%96%E7%95%A5%EF%BC%88appendfsync%EF%BC%89"><span class="toc-number">5.21.</span> <span class="toc-text">三种刷盘策略（appendfsync）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-4-0-%E5%AF%B9%E4%BA%8E%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-number">5.22.</span> <span class="toc-text">Redis 4.0 对于持久化机制做了什么优化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Redis-%E4%BA%8B%E5%8A%A1%EF%BC%9F"><span class="toc-number">5.23.</span> <span class="toc-text">如何使用 Redis 事务？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E4%BA%8B%E5%8A%A1%E6%94%AF%E6%8C%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97%EF%BC%9F"><span class="toc-number">5.24.</span> <span class="toc-text">Redis 事务支持原子性吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E4%BA%8B%E5%8A%A1%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E9%99%B7%EF%BC%9F"><span class="toc-number">5.25.</span> <span class="toc-text">Redis 事务还有什么缺陷？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3-Redis-%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%BC%BA%E9%99%B7%EF%BC%9F"><span class="toc-number">5.26.</span> <span class="toc-text">如何解决 Redis 事务的缺陷？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">5.27.</span> <span class="toc-text">什么是原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-bigkey%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8D%B1%E5%AE%B3%EF%BC%9F"><span class="toc-number">5.28.</span> <span class="toc-text">什么是 bigkey？有什么危害？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%8F%91%E7%8E%B0-bigkey%EF%BC%9F"><span class="toc-number">5.29.</span> <span class="toc-text">如何发现 bigkey？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%A4%A7%E9%87%8F-key-%E9%9B%86%E4%B8%AD%E8%BF%87%E6%9C%9F%EF%BC%9F"><span class="toc-number">5.30.</span> <span class="toc-text">如何避免大量 key 集中过期？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Redis-%E5%86%85%E5%AD%98%E7%A2%8E%E7%89%87-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89-Redis-%E5%86%85%E5%AD%98%E7%A2%8E%E7%89%87"><span class="toc-number">5.31.</span> <span class="toc-text">什么是 Redis 内存碎片?为什么会有 Redis 内存碎片?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%B8%85%E7%90%86%E5%86%85%E5%AD%98%E7%A2%8E%E7%89%87%EF%BC%9F"><span class="toc-number">5.32.</span> <span class="toc-text">如何清理内存碎片？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="toc-number">5.33.</span> <span class="toc-text">什么是缓存穿透 ？怎么解决？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="toc-number">5.34.</span> <span class="toc-text">什么是缓存雪崩？怎么解决？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="toc-number">5.35.</span> <span class="toc-text">缓存击穿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7-%EF%BC%9F"><span class="toc-number">5.36.</span> <span class="toc-text">如何保证缓存和数据库数据的一致性 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%99%90%E6%B5%81"><span class="toc-number">5.37.</span> <span class="toc-text">2. 限流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E7%94%A8%E4%BA%8E%E7%94%9F%E4%BA%A7%EF%BC%89"><span class="toc-number">5.38.</span> <span class="toc-text">3. 消息队列（不推荐用于生产）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98-Redis%EF%BC%9F"><span class="toc-number">5.39.</span> <span class="toc-text">为什么要使用缓存&#x2F;Redis？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-String"><span class="toc-number">5.40.</span> <span class="toc-text">字符串 String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88-Set"><span class="toc-number">5.41.</span> <span class="toc-text">集合 Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C-Hash"><span class="toc-number">5.42.</span> <span class="toc-text">哈希 Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-Stream"><span class="toc-number">5.43.</span> <span class="toc-text">消息队列 Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E7%A9%BA%E9%97%B4-Geospatial"><span class="toc-number">5.44.</span> <span class="toc-text">地理空间 Geospatial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HyperLogLog"><span class="toc-number">5.45.</span> <span class="toc-text">HyperLogLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE-Bitmap"><span class="toc-number">5.46.</span> <span class="toc-text">位图 Bitmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9F%9F-Bitfield"><span class="toc-number">5.47.</span> <span class="toc-text">位域 Bitfield</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">5.48.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">5.49.</span> <span class="toc-text">持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">5.50.</span> <span class="toc-text">主从复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F-Sentinel"><span class="toc-number">5.51.</span> <span class="toc-text">哨兵模式 Sentinel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E4%BA%8B%E5%8A%A1"><span class="toc-number">5.52.</span> <span class="toc-text">Redis 事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-hotkey"><span class="toc-number">5.53.</span> <span class="toc-text">Redis hotkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%EF%BC%88%E2%AD%90%EF%BC%89"><span class="toc-number">5.54.</span> <span class="toc-text">Redis 生产问题（⭐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">5.55.</span> <span class="toc-text">如何保证缓存和数据库数据的一致性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caffeine"><span class="toc-number">6.</span> <span class="toc-text">Caffeine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E7%9A%84%E6%96%B9%E6%A1%88%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">6.1.</span> <span class="toc-text">本地缓存的方案有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E7%97%9B%E7%82%B9%EF%BC%9F"><span class="toc-number">6.2.</span> <span class="toc-text">本地缓存有什么痛点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E6%96%B9%E6%A1%88%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">6.3.</span> <span class="toc-text">分布式缓存常见的技术选型方案有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">6.4.</span> <span class="toc-text">多级缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%AE%A1%E7%AE%97"><span class="toc-number">6.5.</span> <span class="toc-text">生成计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%EF%BC%88100-%EF%BC%89"><span class="toc-number">6.6.</span> <span class="toc-text">读（100%）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%EF%BC%8875-%EF%BC%89-%E5%86%99%EF%BC%8825-%EF%BC%89"><span class="toc-number">6.7.</span> <span class="toc-text">读（75%）&#x2F;写（25%）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%EF%BC%88100-%EF%BC%89"><span class="toc-number">6.8.</span> <span class="toc-text">写（100%）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker"><span class="toc-number">7.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8-Docker%EF%BC%9F"><span class="toc-number">7.1.</span> <span class="toc-text">为什么要用 Docker？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%8C%96%E5%92%8C-Dockerfile"><span class="toc-number">7.2.</span> <span class="toc-text">容器化和 Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">7.3.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">8.</span> <span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">8.1.</span> <span class="toc-text">常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx"><span class="toc-number">9.</span> <span class="toc-text">Nginx</span></a></li></ol>
         </div>
       </div>
     </aside>
