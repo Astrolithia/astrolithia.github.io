@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- 标题 -->
-<title>Astrolithia</title>
+<title> {{title}} | Astrolithia</title>
 
 <!-- 网站描述 -->
 <meta name="description" content="喜欢二次元、游戏，会发计算机和有时自己拍的照片，欢迎关注！">
@@ -15,9 +15,9 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Astrolithia">
+<meta property="og:title" content=" {{title}}">
 <meta property="og:description" content="喜欢二次元、游戏，会发计算机和有时自己拍的照片，欢迎关注！">
-<meta property="og:url" content="http://example.com/2025/06/04/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2025-6-4%20bash%20scripting/index.html">
+<meta property="og:url" content="http://example.com/2026/04/08/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/LexiRead/index.html">
 <meta property="og:site_name" content="Astrolithia">
 
 
@@ -43,7 +43,7 @@
 
 
 <!-- 规范链接 -->
-<link rel="canonical" href="http://example.com/2025/06/04/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2025-6-4%20bash%20scripting/index.html">
+<link rel="canonical" href="http://example.com/2026/04/08/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/LexiRead/index.html">
 
 <!-- 主题色 -->
 <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
@@ -176,7 +176,7 @@
   <article class="post-article">
     <!-- 文章头部 -->
     <header class="post-header">
-      <h1 class="post-title"></h1>
+      <h1 class="post-title"> {{title}}</h1>
       
       <!-- 元信息 -->
       <div class="post-meta">
@@ -188,12 +188,22 @@
       <line x1="8" x2="8" y1="2" y2="6"></line>
       <line x1="3" x2="21" y1="10" y2="10"></line>
     </svg>
-    <time datetime="2025-06-04">
-      2025-06-04
+    <time datetime="2026-04-08">
+      2026-04-08
     </time>
   </span>
 
   <!-- 更新日期 -->
+  
+    <span class="meta-item meta-updated">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+        <path d="M21 3v5h-5"></path>
+      </svg>
+      <time datetime="2026-04-08">
+        更新于 2026-04-08
+      </time>
+    </span>
   
 
   <!-- 字数统计 -->
@@ -205,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      1.6k 字
+      380 字
     </span>
   
 
@@ -217,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 6 分钟
+      约 2 分钟
     </span>
   
 
@@ -232,41 +242,18 @@
 
     <!-- 文章内容 -->
     <div class="post-content markdown-body">
-      <h2 id="今天学习高等代数"><a href="#今天学习高等代数" class="headerlink" title="今天学习高等代数+"></a>今天学习高等代数+</h2><p><code>echo </code></p>
-<p>vim i插入 esc退出当前模式<br>:wq 保存并退出<br>:q! 强制退出不做任何更改<br>cat xx 获取内容<br>ls 当前文件夹下所有文件<br>pwd 当前所在文件夹绝对路径<br>![[CleanShot 2025-06-04 at <a href="mailto:&#x31;&#50;&#x2e;&#x30;&#53;&#x2e;&#x30;&#x36;&#64;&#x32;&#120;&#46;&#112;&#x6e;&#103;">12.05.06@2x.png</a>]]<br>chmod 修改权限<br>![[CleanShot 2025-06-04 at <a href="mailto:&#49;&#50;&#46;&#49;&#49;&#x2e;&#x33;&#x31;&#64;&#x32;&#120;&#x2e;&#112;&#110;&#x67;">12.11.31@2x.png</a>]]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bash shelltest3.sh</span><br><span class="line">What is your first name?</span><br><span class="line">Rin</span><br><span class="line">What is your last name?</span><br><span class="line">Li</span><br><span class="line">Hello Rin Li</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat shelltest3.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo What is your first name?</span><br><span class="line">read FIRST_NAME</span><br><span class="line">echo What is your last name?</span><br><span class="line">read LAST_NAME</span><br><span class="line"></span><br><span class="line">echo Hello $FIRST_NAME $LAST_NAME</span><br></pre></td></tr></table></figure>
-
-<p><code> &gt;&gt; 新增</code><br><code>&gt; 覆盖</code><br><code>wc world count</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wc -w hello.sh</span><br><span class="line">       2 hello.sh</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wc -w &lt; hello.sh</span><br><span class="line">	2</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt; EOF</span><br><span class="line">heredoc&gt; I will</span><br><span class="line">heredoc&gt; write some</span><br><span class="line">heredoc&gt; text here</span><br><span class="line">heredoc&gt; EOF</span><br><span class="line">I will</span><br><span class="line">write some</span><br><span class="line">text here</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wc -w &lt;&lt;&lt; &quot;Hello there wordcount&quot;</span><br><span class="line">       3</span><br></pre></td></tr></table></figure>
-
-<p>![[CleanShot 2025-06-04 at 13.07.55@2x 1.png]]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/zsh</span><br><span class="line">if [ $&#123;(L)1&#125; = herbert ]; then</span><br><span class="line">	echo &quot;Oh, you&#x27;re the boss here. Welcome!&quot;</span><br><span class="line">elif [ $&#123;(L)1&#125; = help ]; then</span><br><span class="line">	echo &quot;Just enter your username, duh!&quot;</span><br><span class="line">else</span><br><span class="line">	echo &quot;I don&#x27;t know who you are. But you&#x27;re not the boss of me!&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-
-<p>touch .&#x2F;hello.sh</p>
-<p>ls -l<br>查看权限详细<br>等号周围不能有空格<br>变量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">!/bin/bash</span><br><span class="line"></span><br><span class="line">name=&quot;YouTube&quot;</span><br><span class="line">echo &quot;Hello, YouTube&quot;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">name=&quot;YouTube&quot;</span><br><span class="line">echo &quot;Hello, $name!&quot;</span><br></pre></td></tr></table></figure>
-
-<p>单引号不做填充</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">name=&quot;YouTube&quot;</span><br><span class="line">echo &quot;Hello, $&#123;name!&#125;&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">name=&quot;YouTube&quot;</span><br><span class="line">echo &quot;Hello, $&#123;#name!&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 7 值的长度</span><br></pre></td></tr></table></figure>
-
-<p>name</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">name=&quot;&quot;</span><br><span class="line">echo &quot;Hello, $&#123;name:-&quot;Anonymous&quot;&#125;!&quot;</span><br><span class="line"></span><br><span class="line"># Hello, Anonymous!</span><br></pre></td></tr></table></figure>
-
+      <p>利用 Vercel 部署了 Vibe Coding 生成的项目 LexiRead 访问地址：<a target="_blank" rel="noopener" href="https://lexiread-theta.vercel.app/">https://lexiread-theta.vercel.app</a><br>目前已完成的功能：<br>功能概要：</p>
+<ul>
+<li>文章模块：3 篇文章</li>
+<li>划词模块：选中单词弹出气泡，调用 Free Dictionary API 显示音标+释义，可加入生词本</li>
+<li>生词本：列出收藏词，支持删除，入口开始复习</li>
+<li>复习模块：翻转卡片，正面英文背面释义，标记认识&#x2F;不认识，不认识的词轮末重复出现，完成后显示统计<br>技术要点：</li>
+<li>React Router 4 个路由 </li>
+<li>VocabularyContext + localStorage 持久化 </li>
+<li>护眼米白背景，Georgia 衬线阅读字体，宽松行距，阴影圆角气泡 </li>
+<li>响应式适配移动端</li>
+</ul>
+<p>支持导入四级<br>内置四六级考研托福雅思（先做前几个）定位<br>请好友先试用（比如老妈）</p>
 
     </div>
 
@@ -277,7 +264,7 @@
     
       <div class="post-copyright">
         <p><strong>本文作者：</strong>Zwickyc</p>
-        <p><strong>本文链接：</strong><a href="http://example.com/2025/06/04/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2025-6-4%20bash%20scripting/">http://example.com/2025/06/04/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2025-6-4%20bash%20scripting/</a></p>
+        <p><strong>本文链接：</strong><a href="http://example.com/2026/04/08/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/LexiRead/">http://example.com/2026/04/08/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/LexiRead/</a></p>
         <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</p>
       </div>
     
@@ -285,16 +272,13 @@
     <!-- 上一篇 / 下一篇 -->
     <nav class="post-nav">
       
-        <a href="/2025/06/10/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2025-06-10/" class="post-nav-item prev">
-          <span class="post-nav-label">上一篇</span>
-          <span class="post-nav-title"></span>
-        </a>
+        <div class="post-nav-item prev disabled"></div>
       
       
       
-        <a href="/2025/06/03/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2025-5-31%20ffmpeg/" class="post-nav-item next">
+        <a href="/2026/04/08/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-nav-item next">
           <span class="post-nav-label">下一篇</span>
-          <span class="post-nav-title"></span>
+          <span class="post-nav-title"> {{title}}</span>
         </a>
       
     </nav>
@@ -306,7 +290,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8A%E5%A4%A9%E5%AD%A6%E4%B9%A0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">今天学习高等代数+</span></a></li></ol>
+          
         </div>
       </div>
     </aside>
