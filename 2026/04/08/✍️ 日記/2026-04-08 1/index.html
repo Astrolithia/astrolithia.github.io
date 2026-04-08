@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      2.7k 字
+      6.5k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 9 分钟
+      约 22 分钟
     </span>
   
 
@@ -321,6 +321,137 @@
 </ol>
 <p>配置完成后，就可以让 AI 帮你一键部署项目。该服务支持静态网站和全站项目，还提供自动配置 HTTPS、CDN 加速等服务，非常适合个人项目和小型应用。<br>这里可以看到自动调用了 Context 7 MCP 查询 React 最新版本的新特性<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408170112678.png?imageSlim"></p>
 <p>项目完成后直接在终端中输入 vercel 然后访问对应地址就可以了<br>Vibe Coding 的图片压缩工具<br><a target="_blank" rel="noopener" href="https://compress-photos-orpin.vercel.app/">https://compress-photos-orpin.vercel.app</a></p>
+<p>GitHub MCP 是 GitHub 官方开发的 MCP 服务器，让 AI 能够直接操作 GitHub 代码仓库。</p>
+<p>在日常开发中，我们经常需要处理以下操作：</p>
+<ol>
+<li>搜索 GitHub 代码仓库</li>
+<li>提交 Issue 进行问题反馈</li>
+<li>提交 PR（代码合并请求）</li>
+<li>查看并分析代码变更及提交历史</li>
+</ol>
+<p>以前这些操作都必须在 GitHub 网站上手动完成，现在可以直接让 AI 帮我做。比如可以去问 AI：</p>
+<ul>
+<li>我最近在 GitHub 上开源了哪些项目？Star 数如何？（它可以快速为我的项目生成一份数据报告）</li>
+<li>帮我查看最近一周的代码变更（它能分析 Git 提交记录，告诉我具体改了些什么）</li>
+</ul>
+<p>还有一个 COS（即对象存储）MCP。COS 对象存储是云端的文件存储服务，可以简单理解为云盘。</p>
+<p>在团队协作开发中，常需要让 AI 参考一些项目规范文档或引用图片。以前的做法是将这些文件保存在本地，然后手动上传给 AI，这既不方便也不利于团队维护。</p>
+<p>有了 COS MCP 后，只需一句话就能把这些需要共享的文件存到云盘，直接让 AI 去读取。</p>
+<p>@todo-app.html 帮我把这个文件上传到 COS 共享存储中</p>
+<p>还有一个是 GitLens（Git 可视化工具），它可以更直观地查看 Git 代码的修改历史。</p>
+<p>通过编辑器的扩展商店安装 GitLens 后，你可以：</p>
+<ol>
+<li><p>自动显示信息：把鼠标放到任意代码行上，GitLens 就会自动显示该行代码的作者、相关的 PR（合并请求）等。</p>
+</li>
+<li><p>管理面板：进入 Git 管理面板后，整个项目的提交记录一目了然。</p>
+</li>
+<li><p>AI 功能支持：<br>(a) 自动生成提交信息<br>(b) 解释代码变更<br>(c) 生成变更日志<br>(d) 用 AI 解释某个改动的目的</p>
+</li>
+<li><p>Office Viewer 插件：<br>(a) 核心功能：可以直接在编辑器里浏览和编辑各种文档，无需来回切换窗口<br>(b) 安装方式：在扩展商店搜索“Office Viewer”并安装<br>(c) 使用体验：安装后即可在编辑器中使用所见即所得的 Markdown 编辑器，查看和编写文档非常方便<br>(d) 格式支持：支持 Excel 表格、Word 文档、PDF 文档、SVG、字体文件以及压缩包等多种格式</p>
+</li>
+</ol>
+<p>这款插件堪称编辑器的“万能档案查看器“</p>
+<ol start="3">
+<li><p>ESLint 代码质量检查<br>ESLint 是前端 JS&#x2F;TypeScript 项目必备的代码检查工具。虽然编辑器本身也能检查一些基本的语法错误，但对于代码规范、潜在的逻辑漏洞等问题，就需要专门的代码检查工具来把关了。</p>
+<p>很多 AI 生成的项目都会自带 ESLint 配置文件，用于定义好团队统一的代码检查规则。</p>
+</li>
+<li><p>Prettier 代码格式化<br>Prettier 是一个代码格式化工具，能够自动统一代码风格。在团队协作时，每个人的编码习惯不同：<br>(a) 有的代码缩进 4 个空格，有的缩进 2 个<br>(b) 有的用单引号，有的用双引号</p>
+<p>大家的代码风格五花八门，看着就很乱，而且在代码审查（Code Review）时也容易出现分歧。这时候就需要统一的格式化规范了。</p>
+<p>现在很多 AI 生成的代码项目都会自带 Prettier 配置文件，用来定义好统一的格式化规则。</p>
+</li>
+</ol>
+<p>打开 Format On Save<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408173220501.png?imageSlim"></p>
+<p>还有一个是 Error Lens，它是错误实时显示。安装之后，你就不需要将鼠标移动到报错的代码行上才能查看报错，它会直接、很直观地向你展示到底是什么错误。<br><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408173306551.png?imageSlim"></p>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408173404103.png?imageSlim"></p>
+<p>视频下载器<br>在公司项目的基础上</p>
+<p>免费视频下载网站 注意封号风险</p>
+<p>离开公司后</p>
+<p>需要后端<br>怎么下载这么多视频？面对这么多平台，怎么样合理地下载视频？</p>
+<p>答案是站在巨人的肩膀上，直接去 GitHub 使用开源工具，不要自己去承担风险。</p>
+<p>以学习为主 不要侵权</p>
+<p>Skills-Click：Vercel 官方出品的命令行工具</p>
+<p>一行命令就可以安装任何 Skills，简单好用。用法如下：<code>npx skills add owner/report</code> 比如：<code>npx skills add vercel-labs/agent-skills</code> 就能装上 Vercel 官方的所有 Skills</p>
+<p>Find-Skills<br>Vercel 出品的 Skills 发现工具，帮你快速找到和安装需要的 Skills。支持交互式搜索和关键词搜索，用 npx skills find 命令即可启动。</p>
+<p>Skill-Creator<br> anthropic 官方的 skill 创建工具，教你怎么自定义 Skill。它会引导你按照最佳实践编写 skill.md 文件，包括：</p>
+<ol>
+<li>技能描述</li>
+<li>触发条件</li>
+<li>执行步骤等<br>通过 npx skills add anthropic gun skills 安装。</li>
+</ol>
+<p>Skill-Seeker 这个工具牛了，能自动抓取文档、网页、网站、GitHub 仓库和 PDF 文件，然后直接转成 Agent Skills。</p>
+<p>它省去了手写技能说明文档的麻烦，具有以下特点：</p>
+<ol>
+<li>支持多元抓取</li>
+<li>代码深度分析</li>
+<li>一键打包</li>
+</ol>
+<p>特别适合给自己常用的库或框架快速生成 Skills。</p>
+<p>Everything Cloud Code (Anthropic) 黑客松冠军的完整配置集合，包括：</p>
+<ol>
+<li>Agent</li>
+<li>Skills</li>
+<li>Hooks</li>
+<li>Commands</li>
+<li>Rules</li>
+<li>MCPs</li>
+</ol>
+<p>这些都是实战验证过的配置，直接就能用。想一次性配置好 Cloud Code 的化，这个就够用了。</p>
+<p>Skills 资源平台：Vercel 官方出品的 Skills 排行榜。在这里能看到每个 Skill 的安装量和使用趋势，还支持一键安装。想知道哪些 Skills 最火，来这里看就对了。</p>
+<p>MCP Market 的日常 Skills 榜单能看到每天最热门的 Skills 排名，让你发现热门的趋势。<br><a target="_blank" rel="noopener" href="https://mcpmarket.com/daily/skills">https://mcpmarket.com/daily/skills</a></p>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408192245339.png?imageSlim"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/obra/superpowers">https://github.com/obra/superpowers</a><br>这是一套完整的 AI 编程技能框架和软件开发方法论。它包含十几个可组合的编程技能，比如：</p>
+<ol>
+<li>头脑风暴</li>
+<li>编写计划</li>
+<li>执行计划</li>
+<li>TDD（测试驱动开发）</li>
+<li>系统性调试</li>
+<li>代码审核</li>
+</ol>
+<p>在应用这套框架后，AI 不会直接开始写代码，而是会先问清楚需求，出设计方案让你确认，并制定详细的执行计划，最后才分步骤实现。</p>
+<p>这套方法非常适合开发大型项目以及需要高质量代码的场景。感谢观看。</p>
+<p>Planning with Files<br><a target="_blank" rel="noopener" href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a><br>被 X 上的开发者评为最强的 Skill。它借鉴了被 Meta 以 25 亿美元收购的 Menless AI 的核心工作模式，用 Markdown 文件作为 AI 的外部记忆，解决 AI 上下文丢失的问题。</p>
+<p>该模式适合以下场景：</p>
+<ol>
+<li>多步骤任务</li>
+<li>研究任务</li>
+<li>跨多次对话的项目开发</li>
+</ol>
+<p>这让 AI 在复杂项目中也能保持清醒，不跑偏。</p>
+<p>UI UX Pro Max：专业前端设计 Skills<br><a target="_blank" rel="noopener" href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill">https://github.com/nextlevelbuilder/ui-ux-pro-max-skill</a><br>让 AI Agent 具备专业设计师的能力，生成的界面不再是千篇一律的 AI 风格，支持各种主流 AI 编程工具，强烈推荐。</p>
+<p>Vue.skills 最佳实践 Skills</p>
+<p>尤雨溪团队成员维护，让 AI 按照 Vue 生态的最佳实践来写代码。包括：</p>
+<ol>
+<li>Vue 3 组合式 API</li>
+<li>Vite 构建配置</li>
+<li>Vitest 单元测试</li>
+<li>Pinia 状态管理</li>
+<li>UnoCSS 样式方案</li>
+</ol>
+<p>做 Vue 项目必装</p>
+<p>安装了 Obsidian Skills，然后利用 Obsidian Skills 创建了一个文档。它是基于 Obsidian Flavor Markdown 新建的一篇日记，包含 Frontmatter、Callout 和 Wiki Link</p>
+<p>Superbase Postgres Best Practice<br><a target="_blank" rel="noopener" href="https://github.com/supabase/agent-skills">https://github.com/supabase/agent-skills</a><br>Superbase 出品的 Postgres 数据库最佳实践，教 AI Agent 怎么写出高质量的数据库代码，包括：</p>
+<ol>
+<li>查询优化</li>
+<li>索引设计等</li>
+</ol>
+<h3 id="浏览器自动化Skills"><a href="#浏览器自动化Skills" class="headerlink" title="浏览器自动化Skills"></a>浏览器自动化Skills</h3><p>包括 Browser Use，让 AI Agent 能访问和操作网站的工具。它不仅是 skill，也可以独立使用，功能强大，可以用来做自动化测试、数据抓取、网页操作等。</p>
+<p>另一个是 Agent Browser（Vercel 出品），也是浏览器自动化 skill。它让 AI Agent 能操作浏览器，自动填写表单、点击按钮、截图以及抓取动态渲染的内容。这些工具非常适合以下场景：</p>
+<ol>
+<li>端到端测试</li>
+<li>自动化爬虫</li>
+<li>网站监控</li>
+</ol>
+<h3 id="内容创作-Skills"><a href="#内容创作-Skills" class="headerlink" title="内容创作 Skills"></a>内容创作 Skills</h3><p>Remotion-dev&#x2F;skills<br><a target="_blank" rel="noopener" href="https://github.com/remotion-dev/skills">https://github.com/remotion-dev/skills</a><br>Remotion 官方出品的视频动画制作 skills，能用 code 一句话生成可编辑的动画视频，几分钟就能做出专业效果。最近特别火。</p>
+<p>Baoyu-skills：宝玉老师自用的 skills 集合，包括：</p>
+<ol>
+<li>公众号文章写作</li>
+<li>PPT 制作</li>
+<li>分辨图生成</li>
+<li>小红书配图</li>
+<li>漫画生成等</li>
+</ol>
+<p>这些对内容创作者非常有帮助，可以直接把大佬的创作工作流复制过来用。</p>
 
     </div>
 
@@ -357,7 +488,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96Skills"><span class="toc-number">1.</span> <span class="toc-text">浏览器自动化Skills</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C-Skills"><span class="toc-number">2.</span> <span class="toc-text">内容创作 Skills</span></a></li></ol>
         </div>
       </div>
     </aside>
