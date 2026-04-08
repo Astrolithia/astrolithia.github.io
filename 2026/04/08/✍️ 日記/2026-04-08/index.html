@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      2.2k 字
+      5.1k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 8 分钟
+      约 17 分钟
     </span>
   
 
@@ -253,11 +253,17 @@
 </ul>
 </li>
 <li>学习 Claude Code 创始人高级技巧（详见下方”学到了什么”）</li>
-<li>学习 MCP 协议：开放标准，让 AI 连接外部工具和数据源（文件系统、GitHub、数据库、浏览器）</li>
-<li>体验 MCP 实例：调用 MCP 获取时间、Firecrawl MCP 抓取网站内容</li>
-<li>了解 SDD（规范驱动开发）工具：SpecMind、OpenSpec、Agent Skills、Superpowers</li>
+<li>学习 MCP 协议及各类 MCP 服务（详见下方”学到了什么”）</li>
+<li>了解 SDD（规范驱动开发）工具及 Skills 生态（详见下方”学到了什么”）</li>
 <li>学习部署相关知识：部署平台、域名、环境变量、数据库（Supabase）、图床（PicList + 阿里云 COS）</li>
 <li>学习 Git 基础操作和回退方法</li>
+<li>试用 Typeless 语音转文字输入工具</li>
+<li>了解 AI 多媒体创作工具：Nano、即梦 AI、Veo 3、Eleven Labs</li>
+<li>了解国内 AI 大模型：智谱 GLM、通义千问、DeepSeek、Gemini、百度文心助手</li>
+<li>了解 VS Code 扩展：GitLens、Office Viewer、ESLint、Prettier、Error Lens</li>
+<li>了解 Skills 生态：Skills-Click、Find-Skills、Skill-Creator、Skill-Seeker、Superpowers、Planning with Files 等</li>
+<li>学习 Spec-kit 和 OpenSpec 规范驱动开发框架（详细流程）</li>
+<li>了解 AI Chat 终端助手</li>
 </ul>
 <h3 id="实践-产出"><a href="#实践-产出" class="headerlink" title="实践 &amp; 产出"></a>实践 &amp; 产出</h3><ul>
 <li>用 bolt.new 制作个人主页：<a target="_blank" rel="noopener" href="https://digital-business-car-t2so.bolt.host/">https://digital-business-car-t2so.bolt.host/</a></li>
@@ -272,6 +278,8 @@
 </li>
 <li>在 <code>.zshrc</code> 中设置 CLI 别名：<code>cc=claude</code> , <code>gc=gemini</code> , <code>oc=opencode</code> , <code>hd</code></li>
 <li>将图床从 GitHub 迁移到阿里云 COS（隐私性更好、性价比高）</li>
+<li>用 Vibe Coding 制作了图片压缩工具并部署到 Vercel：<a target="_blank" rel="noopener" href="https://compress-photos-orpin.vercel.app/">https://compress-photos-orpin.vercel.app</a></li>
+<li>安装并体验 Obsidian Skills，创建了基于 Obsidian Flavor Markdown 的日记文档</li>
 </ul>
 <h2 id="🧠-学到了什么（知识-成长）"><a href="#🧠-学到了什么（知识-成长）" class="headerlink" title="🧠 学到了什么（知识&#x2F;成长）"></a>🧠 学到了什么（知识&#x2F;成长）</h2><h3 id="AI-编程对话技巧"><a href="#AI-编程对话技巧" class="headerlink" title="AI 编程对话技巧"></a>AI 编程对话技巧</h3><ul>
 <li>需求要具体，一次改 1~5 个点</li>
@@ -279,11 +287,30 @@
 <li>不懂的代码可以要求 AI 解释</li>
 </ul>
 <h3 id="各-AI-模型适用场景"><a href="#各-AI-模型适用场景" class="headerlink" title="各 AI 模型适用场景"></a>各 AI 模型适用场景</h3><ul>
-<li>复杂问题 → Claude Opus</li>
-<li>快速原型 &#x2F; 验证想法 → Gemini</li>
-<li>追求速度 → GLM</li>
+<li>大项目&#x2F;高代码质量 → Claude + Claude 4.7 Opus</li>
+<li>快速原型 &#x2F; 验证想法 → Claude + Gemini（速度快、成本低）</li>
+<li>VS Code 阅读&#x2F;开发 → Claude + DeepSeek</li>
+<li>追求速度 → GLM（编程强、中文理解好、API 便宜）</li>
 <li>大量测试 → DeepSeek &#x2F; 通义千问</li>
 <li>快速验证想法（零代码）→ bolt.new 等平台</li>
+<li>生成图片 → Nano（中文支持好）或 Midjourney</li>
+<li>生成视频 → Kimi AI 或 Veo 3（高质量但贵）</li>
+<li>日常问答 → 豆包或元宝</li>
+<li>图片处理&#x2F;去水印 → 百度文心助手</li>
+<li>分析大型项目&#x2F;长上下文 → Gemini</li>
+<li>调研国外技术 → Gemini 网页版（联网搜索+深度分析）</li>
+</ul>
+<h3 id="AI-多媒体创作工具"><a href="#AI-多媒体创作工具" class="headerlink" title="AI 多媒体创作工具"></a>AI 多媒体创作工具</h3><ul>
+<li><strong>Nano</strong>：中文支持好，图片风格统一，适合教程配图</li>
+<li><strong>即梦 AI</strong>（字节跳动）：文字生图、图生视频，适合生成视频空镜画面</li>
+<li><strong>Veo 3</strong>（谷歌）：最先进的 AI 视频生成，物理光影真实，但价格昂贵</li>
+<li><strong>Eleven Labs</strong>：AI 语音合成，模仿声音逼真，支持多语言多风格</li>
+</ul>
+<h3 id="国内-AI-大模型对比"><a href="#国内-AI-大模型对比" class="headerlink" title="国内 AI 大模型对比"></a>国内 AI 大模型对比</h3><ul>
+<li><strong>智谱 GLM</strong>：编程+中文理解双强，适合搭配 Claude 做非商业全栈项目，API 便宜</li>
+<li><strong>通义千问</strong>：生成速度快，API 对接方便，提供免费额度，适合意图识别</li>
+<li><strong>DeepSeek</strong>：完全免费，编程出色，适合技术知识校验</li>
+<li><strong>Gemini</strong>：推理+多模态+超长上下文，适合分析大型项目和联网调研</li>
 </ul>
 <h3 id="Claude-Code-高级技巧"><a href="#Claude-Code-高级技巧" class="headerlink" title="Claude Code 高级技巧"></a>Claude Code 高级技巧</h3><ul>
 <li>并行多开：同时运行多个实例，用通知区分需要人工输入的标签页</li>
@@ -296,6 +323,19 @@
 <li>使用子代理（”use subagents”）保持主上下文干净</li>
 <li>语音输入描述需求，比打字快三倍且更详细</li>
 </ul>
+<h3 id="MCP-服务详解"><a href="#MCP-服务详解" class="headerlink" title="MCP 服务详解"></a>MCP 服务详解</h3><ul>
+<li><strong>Time MCP</strong>：时间相关功能</li>
+<li><strong>Filecrawl MCP</strong>：抓取网页文章内容并深度分析</li>
+<li><strong>Context7 MCP</strong>：获取最新技术文档，解决 AI 训练数据截止问题，免费注册</li>
+</ul>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408170112678.png?imageSlim"></p>
+<ul>
+<li><strong>Web to MCP</strong>：Chrome 扩展，把网页 UI 发送给 AI 生成代码</li>
+<li><strong>Chrome DevTools MCP</strong>：让 AI 直接控制 Chrome 调试（分析性能、自动填表、测试功能）</li>
+<li><strong>EdgeOne Pages MCP</strong>：腾讯云一键部署，自动打包+上传+部署+CDN 加速，免费</li>
+<li><strong>GitHub MCP</strong>：让 AI 操作 GitHub 仓库（搜索、Issue、PR、分析提交记录）</li>
+<li><strong>COS MCP</strong>：对象存储 MCP，团队协作中共享文件，让 AI 直接读取云端文件</li>
+</ul>
 <h3 id="部署-上线知识"><a href="#部署-上线知识" class="headerlink" title="部署 &amp; 上线知识"></a>部署 &amp; 上线知识</h3><ul>
 <li><strong>部署平台</strong>：Vercel（最流行）、Netlify（免费额度大、A&#x2F;B 测试）、EdgeOne Pages（腾讯云）、GitHub Pages（免费无限流量）</li>
 <li><strong>CDN</strong>：Cloudflare 免费 CDN，但 Vercel&#x2F;Netlify 自带 CDN 无需额外配置</li>
@@ -304,23 +344,82 @@
 <li><strong>数据库</strong>：推荐 Supabase（PostgreSQL + 认证 + 存储 + 实时同步，免费额度）</li>
 <li><strong>Git 回退</strong>：<code>git log</code> 找版本号 → <code>git reset --hard 版本号</code>；建议每完成一个功能就提交一次</li>
 </ul>
+<h3 id="VS-Code-扩展推荐"><a href="#VS-Code-扩展推荐" class="headerlink" title="VS Code 扩展推荐"></a>VS Code 扩展推荐</h3><ul>
+<li><strong>GitLens</strong>：代码行级历史查看 + AI 生成提交信息&#x2F;解释变更&#x2F;生成 Changelog</li>
+<li><strong>Office Viewer</strong>：编辑器内直接浏览 Excel&#x2F;Word&#x2F;PDF&#x2F;SVG 等，万能档案查看器</li>
+<li><strong>ESLint</strong>：前端代码质量检查，AI 项目自带配置</li>
+<li><strong>Prettier</strong>：代码格式化，统一风格，建议开启 Format On Save</li>
+</ul>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408173220501.png?imageSlim"></p>
+<ul>
+<li><strong>Error Lens</strong>：错误实时内联显示，无需悬停查看</li>
+</ul>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408173306551.png?imageSlim"></p>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408173404103.png?imageSlim"></p>
+<h3 id="Skills-生态"><a href="#Skills-生态" class="headerlink" title="Skills 生态"></a>Skills 生态</h3><ul>
+<li><strong>Skills-Click</strong>（Vercel）：一行命令安装 Skills，<code>npx skills add owner/repo</code></li>
+<li><strong>Find-Skills</strong>（Vercel）：交互式搜索 Skills，<code>npx skills find</code></li>
+<li><strong>Skill-Creator</strong>（Anthropic）：引导创建自定义 Skill</li>
+<li><strong>Skill-Seeker</strong>：自动抓取文档&#x2F;网页&#x2F;GitHub 转成 Skills</li>
+<li><strong>Superpowers</strong>：完整 AI 编程技能框架（头脑风暴→计划→执行→TDD→调试→代码审核），适合大型项目</li>
+<li><strong>Planning with Files</strong>：用 Markdown 文件作 AI 外部记忆，解决上下文丢失，适合多步骤&#x2F;跨对话任务</li>
+<li><strong>UI UX Pro Max</strong>：专业前端设计 Skill，告别千篇一律 AI 风格</li>
+<li><strong>Vue Skills</strong>：尤雨溪团队维护，Vue 3 + Vite + Vitest + Pinia + UnoCSS 最佳实践</li>
+<li><strong>Supabase Postgres Best Practices</strong>：数据库查询优化、索引设计</li>
+<li><strong>浏览器自动化</strong>：Browser Use、Agent Browser（Vercel）— 自动化测试&#x2F;爬虫&#x2F;监控</li>
+<li><strong>内容创作</strong>：Remotion（代码生成动画视频）、Baoyu-skills（公众号&#x2F;PPT&#x2F;小红书配图）、Humanizer（去除 AI 痕迹）</li>
+<li><strong>Skills 资源平台</strong>：Vercel Skills 排行榜 + MCP Market 日报</li>
+</ul>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408192245339.png?imageSlim"></p>
+<h3 id="Spec-kit-规范驱动开发（SDD）流程"><a href="#Spec-kit-规范驱动开发（SDD）流程" class="headerlink" title="Spec-kit 规范驱动开发（SDD）流程"></a>Spec-kit 规范驱动开发（SDD）流程</h3><p>核心理念：先写规范文档作为”唯一真理来源”，AI 严格遵守规范生成代码</p>
+<ol>
+<li><code>specify init</code> — 初始化项目</li>
+<li><code>/speckit.constitution</code> — 定义项目”宪法”（基本准则、代码规范）</li>
+<li><code>/speckit.specify</code> — 描述功能需求</li>
+<li><code>/speckit.clarify</code> — 澄清不明确的需求</li>
+<li><code>/speckit.plan</code> — 制定技术方案（生成 Cloud.md、Quickstart.md、Plan.md、Data-model.md 等）</li>
+<li><code>speckit.tasks</code> — 拆解可执行任务列表</li>
+<li><code>/speckit.analyze</code> — 检查规范完整性</li>
+<li><code>speckit.implement</code> — 按任务列表生成代码</li>
+</ol>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260408195159855.png?imageSlim"></p>
+<h3 id="OpenSpec-轻量-SDD-框架"><a href="#OpenSpec-轻量-SDD-框架" class="headerlink" title="OpenSpec 轻量 SDD 框架"></a>OpenSpec 轻量 SDD 框架</h3><p>比 Spec-kit 更简单，核心流程：变更提案 → 确认后实现 → 归档到规范文档</p>
+<p>初始化后生成：</p>
+<ul>
+<li><code>OpenSpec-Specs/</code>：主规范文档</li>
+<li><code>OpenSpec-Changes/</code>：变更提案</li>
+<li><code>OpenSpec-Agents.md</code>：AI 使用指南</li>
+<li><code>OpenSpec-Project.md</code>：项目上下文</li>
+</ul>
+<h3 id="Typeless-语音输入"><a href="#Typeless-语音输入" class="headerlink" title="Typeless 语音输入"></a>Typeless 语音输入</h3><ul>
+<li>识别准确、速度快</li>
+<li>支持多种格式（如列表）</li>
+<li>实时翻译</li>
+<li>可通过描述自动搜索</li>
+</ul>
 <h3 id="Vibe-Coding-注意事项"><a href="#Vibe-Coding-注意事项" class="headerlink" title="Vibe Coding 注意事项"></a>Vibe Coding 注意事项</h3><ul>
 <li>AI 更适合生成小项目，大体量代码库中 AI Bug 可能导致调试死局</li>
 <li>让 AI 生成简单清晰的代码，每次生成后测试</li>
 <li>遇到问题及时回滚，不要一条路走到黑</li>
 <li>保持手写代码能力，把 AI 当助手而非替代品</li>
 </ul>
+<h3 id="视频下载注意事项"><a href="#视频下载注意事项" class="headerlink" title="视频下载注意事项"></a>视频下载注意事项</h3><ul>
+<li>站在巨人肩膀上，用 GitHub 开源工具，不自己承担风险</li>
+<li>以学习为主，不要侵权</li>
+</ul>
 <h2 id="💭-思考-情绪"><a href="#💭-思考-情绪" class="headerlink" title="💭 思考 &amp; 情绪"></a>💭 思考 &amp; 情绪</h2><ul>
 <li>看模拟面试后产生紧迫感，意识到个人项目必须上线才有说服力</li>
 <li>对 AI 辅助开发很兴奋，但也清醒认识到 AI 的局限性（同质化、调试困难）</li>
 <li>产生了新灵感：想自己做一个 AI 生成 PPT 的项目</li>
-<li>整体状态是积极输入的一天，吸收了大量工具和方法论</li>
+<li>今日信息量极大，从工具链到方法论到 Skills 生态全面扫盲，但尚未消化成自己的工作流</li>
+<li>Typeless 语音输入体验不错，以后可以多用语音描述需求</li>
 </ul>
 <h2 id="⚠️-问题-阻碍"><a href="#⚠️-问题-阻碍" class="headerlink" title="⚠️ 问题 &amp; 阻碍"></a>⚠️ 问题 &amp; 阻碍</h2><ul>
-<li>今日以学习输入为主，实操项目不够，待办事项应用只是小练习</li>
+<li>今日以学习输入为主，实操项目不够，待办事项应用和图片压缩工具只是小练习</li>
 <li>AI 工具链信息量很大，尚未形成自己的稳定工作流</li>
 <li>个人项目还没开始润色，简历内容待充实</li>
 <li>bolt.new 做的待办应用出现了布局 Bug，说明 AI 生成代码仍需人工审查</li>
+<li>Skills 和 MCP 生态庞杂，需要挑选适合自己场景的组合，而不是全装</li>
 </ul>
 <h2 id="🎯-明日计划（具体可执行）"><a href="#🎯-明日计划（具体可执行）" class="headerlink" title="🎯 明日计划（具体可执行）"></a>🎯 明日计划（具体可执行）</h2><ol>
 <li>润色一个已有个人项目，扩展功能，确保可上线</li>
@@ -345,10 +444,7 @@
     <!-- 上一篇 / 下一篇 -->
     <nav class="post-nav">
       
-        <a href="/2026/04/08/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-08%201/" class="post-nav-item prev">
-          <span class="post-nav-label">上一篇</span>
-          <span class="post-nav-title">2026-04-08</span>
-        </a>
+        <div class="post-nav-item prev disabled"></div>
       
       
       
@@ -366,7 +462,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%85-%E4%BB%8A%E6%97%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📅 今日记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%BE-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">🧾 做了什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0-%E8%BE%93%E5%85%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text">学习 &amp; 输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5-%E4%BA%A7%E5%87%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">实践 &amp; 产出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%88%E7%9F%A5%E8%AF%86-%E6%88%90%E9%95%BF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">🧠 学到了什么（知识&#x2F;成长）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AI-%E7%BC%96%E7%A8%8B%E5%AF%B9%E8%AF%9D%E6%8A%80%E5%B7%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text">AI 编程对话技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84-AI-%E6%A8%A1%E5%9E%8B%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.2.2.</span> <span class="toc-text">各 AI 模型适用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Claude-Code-%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text">Claude Code 高级技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-%E4%B8%8A%E7%BA%BF%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.4.</span> <span class="toc-text">部署 &amp; 上线知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vibe-Coding-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.5.</span> <span class="toc-text">Vibe Coding 注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%AD-%E6%80%9D%E8%80%83-%E6%83%85%E7%BB%AA"><span class="toc-number">1.3.</span> <span class="toc-text">💭 思考 &amp; 情绪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E9%97%AE%E9%A2%98-%E9%98%BB%E7%A2%8D"><span class="toc-number">1.4.</span> <span class="toc-text">⚠️ 问题 &amp; 阻碍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%98%8E%E6%97%A5%E8%AE%A1%E5%88%92%EF%BC%88%E5%85%B7%E4%BD%93%E5%8F%AF%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">🎯 明日计划（具体可执行）</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%85-%E4%BB%8A%E6%97%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📅 今日记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%BE-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">🧾 做了什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0-%E8%BE%93%E5%85%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text">学习 &amp; 输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5-%E4%BA%A7%E5%87%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">实践 &amp; 产出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%88%E7%9F%A5%E8%AF%86-%E6%88%90%E9%95%BF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">🧠 学到了什么（知识&#x2F;成长）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AI-%E7%BC%96%E7%A8%8B%E5%AF%B9%E8%AF%9D%E6%8A%80%E5%B7%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text">AI 编程对话技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84-AI-%E6%A8%A1%E5%9E%8B%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.2.2.</span> <span class="toc-text">各 AI 模型适用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI-%E5%A4%9A%E5%AA%92%E4%BD%93%E5%88%9B%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.3.</span> <span class="toc-text">AI 多媒体创作工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E5%86%85-AI-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.4.</span> <span class="toc-text">国内 AI 大模型对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Claude-Code-%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">1.2.5.</span> <span class="toc-text">Claude Code 高级技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCP-%E6%9C%8D%E5%8A%A1%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.2.6.</span> <span class="toc-text">MCP 服务详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-%E4%B8%8A%E7%BA%BF%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.7.</span> <span class="toc-text">部署 &amp; 上线知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS-Code-%E6%89%A9%E5%B1%95%E6%8E%A8%E8%8D%90"><span class="toc-number">1.2.8.</span> <span class="toc-text">VS Code 扩展推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Skills-%E7%94%9F%E6%80%81"><span class="toc-number">1.2.9.</span> <span class="toc-text">Skills 生态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spec-kit-%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88SDD%EF%BC%89%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.10.</span> <span class="toc-text">Spec-kit 规范驱动开发（SDD）流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenSpec-%E8%BD%BB%E9%87%8F-SDD-%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.11.</span> <span class="toc-text">OpenSpec 轻量 SDD 框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Typeless-%E8%AF%AD%E9%9F%B3%E8%BE%93%E5%85%A5"><span class="toc-number">1.2.12.</span> <span class="toc-text">Typeless 语音输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vibe-Coding-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.13.</span> <span class="toc-text">Vibe Coding 注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.14.</span> <span class="toc-text">视频下载注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%AD-%E6%80%9D%E8%80%83-%E6%83%85%E7%BB%AA"><span class="toc-number">1.3.</span> <span class="toc-text">💭 思考 &amp; 情绪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E9%97%AE%E9%A2%98-%E9%98%BB%E7%A2%8D"><span class="toc-number">1.4.</span> <span class="toc-text">⚠️ 问题 &amp; 阻碍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%98%8E%E6%97%A5%E8%AE%A1%E5%88%92%EF%BC%88%E5%85%B7%E4%BD%93%E5%8F%AF%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">🎯 明日计划（具体可执行）</span></a></li></ol></li></ol>
         </div>
       </div>
     </aside>
