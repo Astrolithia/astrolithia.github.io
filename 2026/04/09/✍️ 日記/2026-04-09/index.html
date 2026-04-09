@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- 标题 -->
-<title>Astrolithia</title>
+<title>2026-04-09 | Astrolithia</title>
 
 <!-- 网站描述 -->
 <meta name="description" content="喜欢二次元、游戏，会发计算机和有时自己拍的照片，欢迎关注！">
@@ -15,9 +15,9 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Astrolithia">
+<meta property="og:title" content="2026-04-09">
 <meta property="og:description" content="喜欢二次元、游戏，会发计算机和有时自己拍的照片，欢迎关注！">
-<meta property="og:url" content="http://example.com/2026/03/30/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E6%9C%AA%E5%91%BD%E5%90%8D%201/index.html">
+<meta property="og:url" content="http://example.com/2026/04/09/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-09/index.html">
 <meta property="og:site_name" content="Astrolithia">
 
 
@@ -43,7 +43,7 @@
 
 
 <!-- 规范链接 -->
-<link rel="canonical" href="http://example.com/2026/03/30/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E6%9C%AA%E5%91%BD%E5%90%8D%201/index.html">
+<link rel="canonical" href="http://example.com/2026/04/09/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-09/index.html">
 
 <!-- 主题色 -->
 <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
@@ -176,7 +176,7 @@
   <article class="post-article">
     <!-- 文章头部 -->
     <header class="post-header">
-      <h1 class="post-title"></h1>
+      <h1 class="post-title">2026-04-09</h1>
       
       <!-- 元信息 -->
       <div class="post-meta">
@@ -188,8 +188,8 @@
       <line x1="8" x2="8" y1="2" y2="6"></line>
       <line x1="3" x2="21" y1="10" y2="10"></line>
     </svg>
-    <time datetime="2026-03-30">
-      2026-03-30
+    <time datetime="2026-04-09">
+      2026-04-09
     </time>
   </span>
 
@@ -205,7 +205,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      0 字
+      1.9k 字
     </span>
   
 
@@ -217,7 +217,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 0 分钟
+      约 7 分钟
     </span>
   
 
@@ -232,7 +232,86 @@
 
     <!-- 文章内容 -->
     <div class="post-content markdown-body">
-      
+      <h1 id="📅-今日记录"><a href="#📅-今日记录" class="headerlink" title="📅 今日记录"></a>📅 今日记录</h1><h2 id="🧾-做了什么（客观记录）"><a href="#🧾-做了什么（客观记录）" class="headerlink" title="🧾 做了什么（客观记录）"></a>🧾 做了什么（客观记录）</h2><h3 id="开发实践：万能视频下载器"><a href="#开发实践：万能视频下载器" class="headerlink" title="开发实践：万能视频下载器"></a>开发实践：万能视频下载器</h3><ul>
+<li>使用 Cursor + AI 开发万能视频下载网站，技术栈 Python（FastAPI + uvicorn）</li>
+<li>核心依赖 <a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> 开源项目实现视频下载</li>
+<li>用 <code>gh</code> CLI 一行命令创建 GitHub 仓库：<code>gh repo create free-video-downloader --public --source=. --remote=origin</code></li>
+<li>启动方式：<code>source .venv/bin/activate &amp;&amp; uvicorn app.main:app --reload --host 0.0.0.0 --port 8000</code></li>
+</ul>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260409122432624.png?imageSlim"></p>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260409122601976.png?imageSlim"></p>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260409122939833.png?imageSlim"></p>
+<ul>
+<li>修复视频无声音 Bug：B 站&#x2F;YouTube 等平台将高清视频和音频分为独立流，需改用 <code>format_id+ba</code> 让 yt-dlp 自动下载音频流并通过 ffmpeg 合并</li>
+<li>新增字幕提取功能，测试通过</li>
+</ul>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260409182545469.png?imageSlim"></p>
+<ul>
+<li>进行竞品调研：BibiGPT、NoteGPT（B站总结器）</li>
+<li>整理 Cookie&#x2F;登录安全问题：用户登录 cookie 不应直接暴露给平台，本地使用更安全</li>
+</ul>
+<h3 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h3><ul>
+<li>制定面试准备第一阶段计划：项目与简历深挖（约 1 周）<ul>
+<li>每天梳理 1 个项目 + 对应必会题</li>
+<li>准备项目卡片（业务背景、技术栈、负责模块、难点、量化成果）</li>
+<li>准备话术稿：1<del>2 分钟版 + 3</del>5 分钟版</li>
+<li>周末脱稿自测（录音&#x2F;对镜子）</li>
+</ul>
+</li>
+<li>梳理农产品加工系统项目（麻竹笋业务）：<ul>
+<li>业务流程：收笋 → 加工分级（笋尖&#x2F;笋中&#x2F;笋尾） → 批发</li>
+<li>负责模块：采购流水模块、加工分级模块</li>
+</ul>
+</li>
+<li>SQL 练习：分组聚合查询（GROUP BY + HAVING + ORDER BY）</li>
+</ul>
+<p><img src="https://zwyc-1397540134.cos.ap-guangzhou.myqcloud.com/Blog/20260409210007729.png?imageSlim"></p>
+<h3 id="阅读-思考"><a href="#阅读-思考" class="headerlink" title="阅读 &amp; 思考"></a>阅读 &amp; 思考</h3><ul>
+<li>读历史故事：关于”善念”与”善果”的区别<ul>
+<li>连氏：善念配上远见，每步有后手 → “善战者，求之于势”</li>
+<li>胡则之妻：发了善念却撒手不管，好心办坏事 → 灭门之祸</li>
+</ul>
+</li>
+<li>读《鬼谷子》”量能授官，度才处事”：对心生死志之人，要么彻底收服，要么彻底隔开</li>
+<li>读陆绍珩《醉古堂剑扫》”智者不与命斗，不与法斗，不与理斗，不与势斗”</li>
+</ul>
+<h2 id="🧠-学到了什么（知识-成长）"><a href="#🧠-学到了什么（知识-成长）" class="headerlink" title="🧠 学到了什么（知识&#x2F;成长）"></a>🧠 学到了什么（知识&#x2F;成长）</h2><h3 id="开发经验"><a href="#开发经验" class="headerlink" title="开发经验"></a>开发经验</h3><ul>
+<li>B 站&#x2F;YouTube 等平台的视频音频分离机制：高清视频和音频是两个独立流，下载时必须用 ffmpeg 合并</li>
+<li><code>gh repo create</code> 可一行命令创建 GitHub 仓库并关联远程</li>
+<li>新增功能前要让 AI 给出具体方案设计（技术选型 + 横向对比），遵循开闭原则</li>
+<li>使用 Context7 和联网搜索确保获取最新技术文档，避免过时代码</li>
+<li>Cookie 安全：涉及用户平台登录的功能应仅支持本地使用，不应让 cookie 泄露给第三方平台</li>
+</ul>
+<h3 id="面试方法论"><a href="#面试方法论" class="headerlink" title="面试方法论"></a>面试方法论</h3><ul>
+<li>项目梳理核心要素：业务背景 → 技术栈 → 我的角色 → 难点与解决 → 量化成果</li>
+<li>每个项目要推导”必会题”（如用 Redis 就要会限流算法、数据结构）</li>
+<li>话术准备分长短版本，适应不同深挖场景</li>
+</ul>
+<h3 id="历史与哲学"><a href="#历史与哲学" class="headerlink" title="历史与哲学"></a>历史与哲学</h3><ul>
+<li><strong>善念 ≠ 善果</strong>：善心本身无对错，关键是有没有本事把善心变成善果</li>
+<li><strong>不斗 ≠ 不为</strong>：不与命&#x2F;法&#x2F;理&#x2F;势斗，是在看清边界后，把精力花在自己能影响的事上</li>
+<li><strong>两头不靠最危险</strong>：对人既伤了又留在能反噬的位置，是最差的处理方式</li>
+<li><strong>“识”是核心</strong>：识别什么能改变、什么不能改变，在约束内寻找最大行动空间</li>
+</ul>
+<h2 id="💭-思考-情绪"><a href="#💭-思考-情绪" class="headerlink" title="💭 思考 &amp; 情绪"></a>💭 思考 &amp; 情绪</h2><ul>
+<li>视频下载器项目跑通核心流程后有成就感，但发现视频无声音时有点挫败，好在 AI 辅助定位并修复了</li>
+<li>开始认真对待面试准备，意识到之前对项目的梳理还远远不够</li>
+<li>读历史故事感触颇深：做事不能只凭善意，更要有执行力和后续安排</li>
+<li>“不斗”的哲学给了自己一种释然感，不是什么都得硬扛</li>
+</ul>
+<h2 id="⚠️-问题-阻碍"><a href="#⚠️-问题-阻碍" class="headerlink" title="⚠️ 问题 &amp; 阻碍"></a>⚠️ 问题 &amp; 阻碍</h2><ul>
+<li>视频下载器首次运行视频无声音，说明 AI 生成的代码需要实际测试验证</li>
+<li>前端 <code>app.js</code> 大量手动 DOM 操作，后续功能扩展维护性差，需要重构</li>
+<li>Cookie&#x2F;登录功能的安全方案尚未完全确定</li>
+<li>视频下载器项目不适合在公司环境做，有合规风险</li>
+<li>面试准备刚起步，项目话术还不熟练</li>
+</ul>
+<h2 id="🎯-明日计划（具体可执行）"><a href="#🎯-明日计划（具体可执行）" class="headerlink" title="🎯 明日计划（具体可执行）"></a>🎯 明日计划（具体可执行）</h2><ol>
+<li>继续开发视频下载器：完成 AI 视频总结功能的技术方案设计</li>
+<li>梳理 1 个项目卡片（农产品加工系统），写出完整话术稿</li>
+<li>SQL 每日一练，巩固 GROUP BY &#x2F; HAVING &#x2F; 子查询</li>
+</ol>
+
     </div>
 
     <!-- 标签 -->
@@ -242,7 +321,7 @@
     
       <div class="post-copyright">
         <p><strong>本文作者：</strong>Zwickyc</p>
-        <p><strong>本文链接：</strong><a href="http://example.com/2026/03/30/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E6%9C%AA%E5%91%BD%E5%90%8D%201/">http://example.com/2026/03/30/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E6%9C%AA%E5%91%BD%E5%90%8D%201/</a></p>
+        <p><strong>本文链接：</strong><a href="http://example.com/2026/04/09/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-09/">http://example.com/2026/04/09/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-09/</a></p>
         <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</p>
       </div>
     
@@ -250,16 +329,13 @@
     <!-- 上一篇 / 下一篇 -->
     <nav class="post-nav">
       
-        <a href="/2026/03/30/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E6%9C%AA%E5%91%BD%E5%90%8D%202/" class="post-nav-item prev">
-          <span class="post-nav-label">上一篇</span>
-          <span class="post-nav-title"></span>
-        </a>
+        <div class="post-nav-item prev disabled"></div>
       
       
       
-        <a href="/2026/03/30/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E7%AE%80%E5%8E%86%E5%8A%A0%E7%B2%97/" class="post-nav-item next">
+        <a href="/2026/04/09/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-09%201/" class="post-nav-item next">
           <span class="post-nav-label">下一篇</span>
-          <span class="post-nav-title"></span>
+          <span class="post-nav-title"> 2026-04-09</span>
         </a>
       
     </nav>
@@ -271,7 +347,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%85-%E4%BB%8A%E6%97%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📅 今日记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%BE-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%88%E5%AE%A2%E8%A7%82%E8%AE%B0%E5%BD%95%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">🧾 做了什么（客观记录）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%87%E8%83%BD%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%99%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">开发实践：万能视频下载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87"><span class="toc-number">1.1.2.</span> <span class="toc-text">面试准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%85%E8%AF%BB-%E6%80%9D%E8%80%83"><span class="toc-number">1.1.3.</span> <span class="toc-text">阅读 &amp; 思考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%88%E7%9F%A5%E8%AF%86-%E6%88%90%E9%95%BF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">🧠 学到了什么（知识&#x2F;成长）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text">开发经验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">1.2.2.</span> <span class="toc-text">面试方法论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E4%B8%8E%E5%93%B2%E5%AD%A6"><span class="toc-number">1.2.3.</span> <span class="toc-text">历史与哲学</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%AD-%E6%80%9D%E8%80%83-%E6%83%85%E7%BB%AA"><span class="toc-number">1.3.</span> <span class="toc-text">💭 思考 &amp; 情绪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E9%97%AE%E9%A2%98-%E9%98%BB%E7%A2%8D"><span class="toc-number">1.4.</span> <span class="toc-text">⚠️ 问题 &amp; 阻碍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%98%8E%E6%97%A5%E8%AE%A1%E5%88%92%EF%BC%88%E5%85%B7%E4%BD%93%E5%8F%AF%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">🎯 明日计划（具体可执行）</span></a></li></ol></li></ol>
         </div>
       </div>
     </aside>
