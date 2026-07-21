@@ -184,7 +184,7 @@
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20231%20%E5%B0%86%20employees%20%E8%A1%A8%E7%9A%84%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E7%9A%84%20last_name%20%E5%92%8C%20first_name%20%E6%8B%BC%E6%8E%A5%E8%B5%B7%E6%9D%A5%E4%BD%9C%E4%B8%BA%20Name/"></a>
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20236%20%E5%AF%B9%20first_name%20%E5%88%9B%E5%BB%BA%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%20uniq_idx_firstname/"></a>
             </h2>
             
             <!-- 元信息 -->
@@ -214,84 +214,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      892 字
-    </span>
-  
-
-  <!-- 阅读时间 -->
-  
-    <span class="meta-item meta-readtime">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
-      
-      约 3 分钟
-    </span>
-  
-
-  <!-- 标签（仅在列表页显示前几个） -->
-  
-</div>
-
-            
-            <!-- 摘要 -->
-            <div class="post-excerpt">
-              
-                SQL 231 将 employees 表的所有员工的 last_name 和 first_name 拼接起来作为 Name
-12345678910111213141516171819202122232425262728293031323334353637383940现有员工表employees如下：emp_no	birth_date	first_name	last_name	gender	hir...
-              
-            </div>
-            
-            <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20231%20%E5%B0%86%20employees%20%E8%A1%A8%E7%9A%84%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E7%9A%84%20last_name%20%E5%92%8C%20first_name%20%E6%8B%BC%E6%8E%A5%E8%B5%B7%E6%9D%A5%E4%BD%9C%E4%B8%BA%20Name/" class="read-more">
-              阅读全文
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      
-        <article class="post-card">
-          <!-- 封面图 -->
-          
-          
-          <div class="post-card-content">
-            <!-- 标题 -->
-            <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20235%20%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%20actor_name%20%E8%A1%A8/"></a>
-            </h2>
-            
-            <!-- 元信息 -->
-            <div class="post-meta">
-  <!-- 发布日期 -->
-  <span class="meta-item meta-date">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-      <line x1="16" x2="16" y1="2" y2="6"></line>
-      <line x1="8" x2="8" y1="2" y2="6"></line>
-      <line x1="3" x2="21" y1="10" y2="10"></line>
-    </svg>
-    <time datetime="2026-04-29">
-      2026-04-29
-    </time>
-  </span>
-
-  <!-- 更新日期 -->
-  
-
-  <!-- 字数统计 -->
-  
-    <span class="meta-item meta-wordcount">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 6.1H3"></path>
-        <path d="M21 12.1H3"></path>
-        <path d="M15.1 18H3"></path>
-      </svg>
-      
-      428 字
+      502 字
     </span>
   
 
@@ -315,13 +238,167 @@
             <!-- 摘要 -->
             <div class="post-excerpt">
               
-                SQL 235 创建一个 actor_name 表
-12345678910对于如下表actor，其对应的数据为:actor_id	first_name	last_name	last_update1	PENELOPE	GUINESS	2006-02-15 12:34:332	NICK	WAHLBERG	2006-02-15 12:34:33请你创建一个actor_name表，并且将actor表中的所...
+                SQL 236 对 first_name 创建唯一索引 uniq_idx_firstname
+1234567891011针对如下表actor结构创建索引：(注:在 SQLite 中,除了重命名表和在已有的表中添加列,ALTER TABLE 命令不支持其他操作，mysql支持ALTER TABLE创建索引)CREATE TABLE actor  (   actor_id  smallint(5)  ...
               
             </div>
             
             <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20235%20%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%20actor_name%20%E8%A1%A8/" class="read-more">
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20236%20%E5%AF%B9%20first_name%20%E5%88%9B%E5%BB%BA%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%20uniq_idx_firstname/" class="read-more">
+              阅读全文
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      
+        <article class="post-card">
+          <!-- 封面图 -->
+          
+          
+          <div class="post-card-content">
+            <!-- 标题 -->
+            <h2 class="post-title">
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20237%20%E9%92%88%E5%AF%B9%20actor%20%E8%A1%A8%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%20actor_name_view/"></a>
+            </h2>
+            
+            <!-- 元信息 -->
+            <div class="post-meta">
+  <!-- 发布日期 -->
+  <span class="meta-item meta-date">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+      <line x1="16" x2="16" y1="2" y2="6"></line>
+      <line x1="8" x2="8" y1="2" y2="6"></line>
+      <line x1="3" x2="21" y1="10" y2="10"></line>
+    </svg>
+    <time datetime="2026-04-29">
+      2026-04-29
+    </time>
+  </span>
+
+  <!-- 更新日期 -->
+  
+
+  <!-- 字数统计 -->
+  
+    <span class="meta-item meta-wordcount">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 6.1H3"></path>
+        <path d="M21 12.1H3"></path>
+        <path d="M15.1 18H3"></path>
+      </svg>
+      
+      721 字
+    </span>
+  
+
+  <!-- 阅读时间 -->
+  
+    <span class="meta-item meta-readtime">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+      
+      约 3 分钟
+    </span>
+  
+
+  <!-- 标签（仅在列表页显示前几个） -->
+  
+</div>
+
+            
+            <!-- 摘要 -->
+            <div class="post-excerpt">
+              
+                SQL 237 针对 actor 表创建视图 actor_name_view
+12345678910111213针对actor表创建视图actor_name_view，只包含first_name以及last_name两列，并对这两列重新命名，first_name为first_name_v，last_name修改为last_name_v：CREATE TABLE  actor  (   actor_...
+              
+            </div>
+            
+            <!-- 阅读更多 -->
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20237%20%E9%92%88%E5%AF%B9%20actor%20%E8%A1%A8%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%20actor_name_view/" class="read-more">
+              阅读全文
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      
+        <article class="post-card">
+          <!-- 封面图 -->
+          
+          
+          <div class="post-card-content">
+            <!-- 标题 -->
+            <h2 class="post-title">
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20238%20%E9%92%88%E5%AF%B9%E4%B8%8A%E9%9D%A2%E7%9A%84%20salaries%20%E8%A1%A8%20emp_no%20%E5%AD%97%E6%AE%B5%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%20idx_emp_no/"></a>
+            </h2>
+            
+            <!-- 元信息 -->
+            <div class="post-meta">
+  <!-- 发布日期 -->
+  <span class="meta-item meta-date">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+      <line x1="16" x2="16" y1="2" y2="6"></line>
+      <line x1="8" x2="8" y1="2" y2="6"></line>
+      <line x1="3" x2="21" y1="10" y2="10"></line>
+    </svg>
+    <time datetime="2026-04-29">
+      2026-04-29
+    </time>
+  </span>
+
+  <!-- 更新日期 -->
+  
+
+  <!-- 字数统计 -->
+  
+    <span class="meta-item meta-wordcount">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 6.1H3"></path>
+        <path d="M21 12.1H3"></path>
+        <path d="M15.1 18H3"></path>
+      </svg>
+      
+      429 字
+    </span>
+  
+
+  <!-- 阅读时间 -->
+  
+    <span class="meta-item meta-readtime">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+      
+      约 2 分钟
+    </span>
+  
+
+  <!-- 标签（仅在列表页显示前几个） -->
+  
+</div>
+
+            
+            <!-- 摘要 -->
+            <div class="post-excerpt">
+              
+                SQL 238 针对上面的 salaries 表 emp_no 字段创建索引 idx_emp_no
+12345678910针对salaries表emp_no字段创建索引idx_emp_no，查询emp_no为10005，使用强制索引。CREATE TABLE `salaries` ( `emp_no` int(11) NOT NULL, `salary` int(11) NOT NULL, `fr...
+              
+            </div>
+            
+            <!-- 阅读更多 -->
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20238%20%E9%92%88%E5%AF%B9%E4%B8%8A%E9%9D%A2%E7%9A%84%20salaries%20%E8%A1%A8%20emp_no%20%E5%AD%97%E6%AE%B5%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%20idx_emp_no/" class="read-more">
               阅读全文
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"></path>
@@ -492,160 +569,6 @@
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20238%20%E9%92%88%E5%AF%B9%E4%B8%8A%E9%9D%A2%E7%9A%84%20salaries%20%E8%A1%A8%20emp_no%20%E5%AD%97%E6%AE%B5%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%20idx_emp_no/"></a>
-            </h2>
-            
-            <!-- 元信息 -->
-            <div class="post-meta">
-  <!-- 发布日期 -->
-  <span class="meta-item meta-date">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-      <line x1="16" x2="16" y1="2" y2="6"></line>
-      <line x1="8" x2="8" y1="2" y2="6"></line>
-      <line x1="3" x2="21" y1="10" y2="10"></line>
-    </svg>
-    <time datetime="2026-04-29">
-      2026-04-29
-    </time>
-  </span>
-
-  <!-- 更新日期 -->
-  
-
-  <!-- 字数统计 -->
-  
-    <span class="meta-item meta-wordcount">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 6.1H3"></path>
-        <path d="M21 12.1H3"></path>
-        <path d="M15.1 18H3"></path>
-      </svg>
-      
-      429 字
-    </span>
-  
-
-  <!-- 阅读时间 -->
-  
-    <span class="meta-item meta-readtime">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
-      
-      约 2 分钟
-    </span>
-  
-
-  <!-- 标签（仅在列表页显示前几个） -->
-  
-</div>
-
-            
-            <!-- 摘要 -->
-            <div class="post-excerpt">
-              
-                SQL 238 针对上面的 salaries 表 emp_no 字段创建索引 idx_emp_no
-12345678910针对salaries表emp_no字段创建索引idx_emp_no，查询emp_no为10005，使用强制索引。CREATE TABLE `salaries` ( `emp_no` int(11) NOT NULL, `salary` int(11) NOT NULL, `fr...
-              
-            </div>
-            
-            <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20238%20%E9%92%88%E5%AF%B9%E4%B8%8A%E9%9D%A2%E7%9A%84%20salaries%20%E8%A1%A8%20emp_no%20%E5%AD%97%E6%AE%B5%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%20idx_emp_no/" class="read-more">
-              阅读全文
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      
-        <article class="post-card">
-          <!-- 封面图 -->
-          
-          
-          <div class="post-card-content">
-            <!-- 标题 -->
-            <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20237%20%E9%92%88%E5%AF%B9%20actor%20%E8%A1%A8%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%20actor_name_view/"></a>
-            </h2>
-            
-            <!-- 元信息 -->
-            <div class="post-meta">
-  <!-- 发布日期 -->
-  <span class="meta-item meta-date">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-      <line x1="16" x2="16" y1="2" y2="6"></line>
-      <line x1="8" x2="8" y1="2" y2="6"></line>
-      <line x1="3" x2="21" y1="10" y2="10"></line>
-    </svg>
-    <time datetime="2026-04-29">
-      2026-04-29
-    </time>
-  </span>
-
-  <!-- 更新日期 -->
-  
-
-  <!-- 字数统计 -->
-  
-    <span class="meta-item meta-wordcount">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 6.1H3"></path>
-        <path d="M21 12.1H3"></path>
-        <path d="M15.1 18H3"></path>
-      </svg>
-      
-      721 字
-    </span>
-  
-
-  <!-- 阅读时间 -->
-  
-    <span class="meta-item meta-readtime">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
-      
-      约 3 分钟
-    </span>
-  
-
-  <!-- 标签（仅在列表页显示前几个） -->
-  
-</div>
-
-            
-            <!-- 摘要 -->
-            <div class="post-excerpt">
-              
-                SQL 237 针对 actor 表创建视图 actor_name_view
-12345678910111213针对actor表创建视图actor_name_view，只包含first_name以及last_name两列，并对这两列重新命名，first_name为first_name_v，last_name修改为last_name_v：CREATE TABLE  actor  (   actor_...
-              
-            </div>
-            
-            <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20237%20%E9%92%88%E5%AF%B9%20actor%20%E8%A1%A8%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%20actor_name_view/" class="read-more">
-              阅读全文
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      
-        <article class="post-card">
-          <!-- 封面图 -->
-          
-          
-          <div class="post-card-content">
-            <!-- 标题 -->
-            <h2 class="post-title">
               <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20241%20%E5%88%A0%E9%99%A4%20emp_no%20%E9%87%8D%E5%A4%8D%E7%9A%84%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%8F%AA%E4%BF%9D%E7%95%99%E6%9C%80%E5%B0%8F%E7%9A%84%20id%20%E5%AF%B9%E5%BA%94%E7%9A%84%E8%AE%B0%E5%BD%95%E3%80%82/"></a>
             </h2>
             
@@ -723,7 +646,7 @@
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20236%20%E5%AF%B9%20first_name%20%E5%88%9B%E5%BB%BA%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%20uniq_idx_firstname/"></a>
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20242%20%E5%B0%86%E6%89%80%E6%9C%89%20to_date%20%E4%B8%BA%209999-01-01%20%E7%9A%84%E5%85%A8%E9%83%A8%E6%9B%B4%E6%96%B0%E4%B8%BA%20NULL/"></a>
             </h2>
             
             <!-- 元信息 -->
@@ -753,7 +676,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      502 字
+      1.7k 字
     </span>
   
 
@@ -765,7 +688,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 2 分钟
+      约 6 分钟
     </span>
   
 
@@ -777,13 +700,13 @@
             <!-- 摘要 -->
             <div class="post-excerpt">
               
-                SQL 236 对 first_name 创建唯一索引 uniq_idx_firstname
-1234567891011针对如下表actor结构创建索引：(注:在 SQLite 中,除了重命名表和在已有的表中添加列,ALTER TABLE 命令不支持其他操作，mysql支持ALTER TABLE创建索引)CREATE TABLE actor  (   actor_id  smallint(5)  ...
+                SQL 242 将所有 to_date 为 9999-01-01 的全部更新为 NULL
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657将所有to_date为9999-01-01的全部更新为NULL,且 from_date更新为2001...
               
             </div>
             
             <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20236%20%E5%AF%B9%20first_name%20%E5%88%9B%E5%BB%BA%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%20uniq_idx_firstname/" class="read-more">
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20242%20%E5%B0%86%E6%89%80%E6%9C%89%20to_date%20%E4%B8%BA%209999-01-01%20%E7%9A%84%E5%85%A8%E9%83%A8%E6%9B%B4%E6%96%B0%E4%B8%BA%20NULL/" class="read-more">
               阅读全文
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"></path>
@@ -877,7 +800,7 @@
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20247%20%E5%B0%86%E6%89%80%E6%9C%89%E8%8E%B7%E5%8F%96%E5%A5%96%E9%87%91%E7%9A%84%E5%91%98%E5%B7%A5%E5%BD%93%E5%89%8D%E7%9A%84%E8%96%AA%E6%B0%B4%E5%A2%9E%E5%8A%A0%2010pct/"></a>
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20245%20%E5%9C%A8%20audit%20%E8%A1%A8%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F%EF%BC%8C%E5%85%B6%20emp_no%20%E5%AF%B9%E5%BA%94%20employees_test%20%E8%A1%A8%E7%9A%84%E4%B8%BB%E9%94%AE%20id/"></a>
             </h2>
             
             <!-- 元信息 -->
@@ -907,7 +830,84 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      761 字
+      439 字
+    </span>
+  
+
+  <!-- 阅读时间 -->
+  
+    <span class="meta-item meta-readtime">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+      
+      约 2 分钟
+    </span>
+  
+
+  <!-- 标签（仅在列表页显示前几个） -->
+  
+</div>
+
+            
+            <!-- 摘要 -->
+            <div class="post-excerpt">
+              
+                SQL 245 在 audit 表上创建外键约束，其 emp_no 对应 employees_test 表的主键 id
+123456789101112131415161718在audit表上创建外键约束，其emp_no对应employees_test表的主键id。(以下2个表已经创建了)CREATE TABLE employees_test(ID INT PRIMARY KEY NOT NULL,...
+              
+            </div>
+            
+            <!-- 阅读更多 -->
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20245%20%E5%9C%A8%20audit%20%E8%A1%A8%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F%EF%BC%8C%E5%85%B6%20emp_no%20%E5%AF%B9%E5%BA%94%20employees_test%20%E8%A1%A8%E7%9A%84%E4%B8%BB%E9%94%AE%20id/" class="read-more">
+              阅读全文
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      
+        <article class="post-card">
+          <!-- 封面图 -->
+          
+          
+          <div class="post-card-content">
+            <!-- 标题 -->
+            <h2 class="post-title">
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20211%20%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E9%83%A8%E9%97%A8%E4%B8%AD%E8%96%AA%E6%B0%B4%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/"></a>
+            </h2>
+            
+            <!-- 元信息 -->
+            <div class="post-meta">
+  <!-- 发布日期 -->
+  <span class="meta-item meta-date">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+      <line x1="16" x2="16" y1="2" y2="6"></line>
+      <line x1="8" x2="8" y1="2" y2="6"></line>
+      <line x1="3" x2="21" y1="10" y2="10"></line>
+    </svg>
+    <time datetime="2026-04-29">
+      2026-04-29
+    </time>
+  </span>
+
+  <!-- 更新日期 -->
+  
+
+  <!-- 字数统计 -->
+  
+    <span class="meta-item meta-wordcount">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 6.1H3"></path>
+        <path d="M21 12.1H3"></path>
+        <path d="M15.1 18H3"></path>
+      </svg>
+      
+      780 字
     </span>
   
 
@@ -931,13 +931,13 @@
             <!-- 摘要 -->
             <div class="post-excerpt">
               
-                SQL 247 将所有获取奖金的员工当前的薪水增加 10%
-12345678910111213141516171819202122232425262728293031323334353637现有员工获取到的奖金简表emp_bonus如下：emp_no指获取到奖金的员工编号；bytpe指获取到的奖金类型。emp_no	btype10001	1有员工薪资简表salaries如下：emp_no指员工编号...
+                SQL 211 获取每个部门中薪水最高的员工相关信息
+123456789101112131415161718192021222324252627282930313233343536有一个员工表dept_emp简况如下:emp_nodept_nofrom_dateto_date10001	d0011986-06-26	9999-01-0110002	d0011996-08-03	9999-01-01...
               
             </div>
             
             <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20247%20%E5%B0%86%E6%89%80%E6%9C%89%E8%8E%B7%E5%8F%96%E5%A5%96%E9%87%91%E7%9A%84%E5%91%98%E5%B7%A5%E5%BD%93%E5%89%8D%E7%9A%84%E8%96%AA%E6%B0%B4%E5%A2%9E%E5%8A%A0%2010pct/" class="read-more">
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20211%20%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E9%83%A8%E9%97%A8%E4%B8%AD%E8%96%AA%E6%B0%B4%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" class="read-more">
               阅读全文
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"></path>
