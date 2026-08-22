@@ -200,8 +200,8 @@
         <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
         <path d="M21 3v5h-5"></path>
       </svg>
-      <time datetime="2026-08-18">
-        更新于 2026-08-18
+      <time datetime="2026-08-19">
+        更新于 2026-08-19
       </time>
     </span>
   
@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      509 字
+      3.1k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 2 分钟
+      约 11 分钟
     </span>
   
 
@@ -249,8 +249,79 @@
 <ol>
 <li>创建任务</li>
 <li>创建线程</li>
-<li>启动线程<br>发现：一个线程只能执行一个任务<br>如果有三个任务 那么无法连续执行<br>线程池的好处是 里面的线程可以复用，任务提交后 线程池会自动分配线程去执行提交过来的任务 最后调用 shutdown 方法关闭线程池（必须）<br>降低资源消耗：通过重复利用已创建的线程降低线程创建和销毁造成的消耗<br>提高响应速度：当有任务时，任务可以不需要等到线程创建就能立即执行<br>提高线程的可管理性：线程池可以进行统一的分配，调优和监控</li>
+<li>启动线程<br>发现：一个线程只能执行一个任务<br>如果有三个任务 那么无法连续执行</li>
 </ol>
+<h2 id="线程池的好处"><a href="#线程池的好处" class="headerlink" title="线程池的好处"></a>线程池的好处</h2><p>里面的线程可以复用，任务提交后 线程池会自动分配线程去执行提交过来的任务 最后调用 shutdown 方法关闭线程池（必须）<br>降低资源消耗：通过重复利用已创建的线程降低线程创建和销毁造成的消耗<br>提高响应速度：当有任务时，任务可以不需要等到线程创建就能立即执行<br>提高线程的可管理性：线程池可以进行统一的分配，调优和监控</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>线程池不允许使用 Executor 去创建，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险<br>核心线程 只要线程池不关闭 就不会被销毁<br>最大线程数是 25 25 个线程中除去核心线程外的是非核心线程<br>非核心线程没有执行任务的话会被定时清理（keepAliveTime）</p>
+<p>任务队列：提交给线程池的任务都存在这里<br>Up 主通常用 LInkedBlockingQueue 链表 阻塞队列<br>ArrayBlockingQueue</p>
+<p>可以在线程工厂中 重写线程名称 指定线程是否为后台线程</p>
+<p>什么情况下 提交给线程池的任务会被拒绝 满足以下这四种情况：</p>
+<ol>
+<li>线程池中线程已满</li>
+<li>线程池无法扩容</li>
+<li>线程池没有空闲线程，所有线程都在执行任务</li>
+<li>任务队列已满，无法提交新任务</li>
+</ol>
+<p>线程池的拒绝方式也有 4 种：</p>
+<ol>
+<li>AbortPolicy</li>
+<li>DiscardPolicy</li>
+<li>DiscardOldestPolicy</li>
+<li>CallerRunsPolicy</li>
+</ol>
+<p>![[Pasted image 20260818154408.png]]<br>这样不会出现线程安全问题<br>初始值为 1，该线程用于在线程名称中给线程编号<br>使用原生方式创建线程池，这种方式是阿里极为推荐的一种</p>
+<h2 id="这三种创建线程池的方式有风险"><a href="#这三种创建线程池的方式有风险" class="headerlink" title="这三种创建线程池的方式有风险"></a>这三种创建线程池的方式有风险</h2><ul>
+<li>FixedThreadPool</li>
+<li>SingleThreadExecutor</li>
+<li>CachedThreadPool</li>
+</ul>
+<h3 id="FixedThreadPool"><a href="#FixedThreadPool" class="headerlink" title="FixedThreadPool"></a>FixedThreadPool</h3><p>固定大小的线程池 内部采用 ThreadPoolExecutor 来创建线程池，并且核心线程数和最大线程数一样，意味着里面全是核心线程，此队列有资源耗尽的风险，因为 LinkedBlockingQueue 的容量为 integer 的最大值</p>
+<h3 id="SingleThreadExecutor"><a href="#SingleThreadExecutor" class="headerlink" title="SingleThreadExecutor"></a>SingleThreadExecutor</h3><p>同样采用 ThreadPoolExecutor 创建线程池，并且核心线程数和最大线程数也一样，都为 1，意味着里面全是核心线程</p>
+<h3 id="CachedThreadPool"><a href="#CachedThreadPool" class="headerlink" title="CachedThreadPool"></a>CachedThreadPool</h3><p>可缓存的意思是，里面除了核心线程外，还有非核心线程，也采用 ThreadPoolExecutor，可缓存意味着可缓存的线程池里面全都是非核心线程，非核心线程是要被销毁的，最大线程数是 Integer 的最大值（风险不言而喻）</p>
+<p>这三个都有资源耗尽的风险</p>
+<h2 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h2><p>Execute 方法位于 Executor 接口中，作用是向线程池中提交 Runnable 任务，Runnable 是一个无返回值的任务，执行完后是没有结果返回给你的</p>
+<p>如果你的任务是有返回值的，那么你需要创建 Callable 任务，Callable 任务执行完后，会将任务执行结果封装到 Future 对象中</p>
+<p><code>execute</code> 会在任务被拒绝时，引发该异常，提交的任务不能为 null，否则会抛空指针异常</p>
+<h2 id="阻塞式和定时式哪种获取任务的方式更好"><a href="#阻塞式和定时式哪种获取任务的方式更好" class="headerlink" title="阻塞式和定时式哪种获取任务的方式更好"></a>阻塞式和定时式哪种获取任务的方式更好</h2><p>阻塞式<br>Get 方法可以获取任务结果，但是它是阻塞式的，如果我们不想被无休止地阻塞住的话，可以试试带定时功能的 get 方法 <code>get(long, TimeUnit)</code> 比如定时 3 秒，如果还没获取到那么就不等了<br>日常开发一般使用无参的 <code>get()</code></p>
+<h2 id="取消任务的-cancel-方法"><a href="#取消任务的-cancel-方法" class="headerlink" title="取消任务的 cancel 方法"></a>取消任务的 cancel 方法</h2><p>可以根据任务的执行状态来区分如何取消</p>
+<ol>
+<li>未执行</li>
+<li>正在执行</li>
+<li>已完成</li>
+</ol>
+<p>You can:</p>
+<ul>
+<li><p>Recommended: Change ~&#x2F;.zshrc so that it does not perform console I&#x2F;O<br>after the instant prompt preamble. See the link below for details.</p>
+<ul>
+<li>You will not see this error message again.</li>
+<li>Zsh will start quickly and prompt will update smoothly.</li>
+</ul>
+</li>
+<li><p>Suppress this warning either by running p 10 k configure or by manually<br>defining the following parameter:</p>
+<p>  typeset -g POWERLEVEL 9 K_INSTANT_PROMPT&#x3D;quiet</p>
+<ul>
+<li>You will not see this error message again.</li>
+<li>Zsh will start quickly but prompt will jump down after initialization.</li>
+</ul>
+</li>
+<li><p>Disable instant prompt either by running p 10 k configure or by manually<br>defining the following parameter:</p>
+<p>  typeset -g POWERLEVEL 9 K_INSTANT_PROMPT&#x3D;off</p>
+<ul>
+<li>You will not see this error message again.</li>
+<li>Zsh will start slowly.</li>
+</ul>
+</li>
+<li><p>Do nothing.</p>
+<ul>
+<li>You will see this error message every time you start zsh.</li>
+<li>Zsh will start quickly but prompt will jump down after initialization.</li>
+</ul>
+</li>
+</ul>
+<p>For details, see:<br><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k#instant-prompt">https://github.com/romkatv/powerlevel10k#instant-prompt</a></p>
+<p>– console output produced during zsh initialization follows –</p>
+<p>Herdr 的配置文件在~&#x2F;.config&#x2F;herdr&#x2F;config.toml 中</p>
+<p><code>--build caddy</code> 是 docker compose 的一个特殊语法：<code>--build</code> 后接服务名时，只构建它 depends_on 链路上的服务<br><code>up caddy</code> 也只启动 caddy 以及它的依赖</p>
 
     </div>
 
@@ -302,7 +373,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%85-2026-08-14-%E4%BB%8A%E6%97%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📅 2026-08-14 今日记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">1.1.</span> <span class="toc-text">普通线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E6%B1%A0"><span class="toc-number">1.2.</span> <span class="toc-text">调度池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">1.3.</span> <span class="toc-text">为什么要使用线程池</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%85-2026-08-14-%E4%BB%8A%E6%97%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📅 2026-08-14 今日记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">1.1.</span> <span class="toc-text">普通线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E6%B1%A0"><span class="toc-number">1.2.</span> <span class="toc-text">调度池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">1.3.</span> <span class="toc-text">为什么要使用线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.4.</span> <span class="toc-text">线程池的好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E4%B8%89%E7%A7%8D%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E9%A3%8E%E9%99%A9"><span class="toc-number">1.6.</span> <span class="toc-text">这三种创建线程池的方式有风险</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FixedThreadPool"><span class="toc-number">1.6.1.</span> <span class="toc-text">FixedThreadPool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SingleThreadExecutor"><span class="toc-number">1.6.2.</span> <span class="toc-text">SingleThreadExecutor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CachedThreadPool"><span class="toc-number">1.6.3.</span> <span class="toc-text">CachedThreadPool</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Executor"><span class="toc-number">1.7.</span> <span class="toc-text">Executor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E%E5%BC%8F%E5%92%8C%E5%AE%9A%E6%97%B6%E5%BC%8F%E5%93%AA%E7%A7%8D%E8%8E%B7%E5%8F%96%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9B%B4%E5%A5%BD"><span class="toc-number">1.8.</span> <span class="toc-text">阻塞式和定时式哪种获取任务的方式更好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E4%BB%BB%E5%8A%A1%E7%9A%84-cancel-%E6%96%B9%E6%B3%95"><span class="toc-number">1.9.</span> <span class="toc-text">取消任务的 cancel 方法</span></a></li></ol></li></ol>
         </div>
       </div>
     </aside>
