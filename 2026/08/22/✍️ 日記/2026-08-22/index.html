@@ -200,8 +200,8 @@
         <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
         <path d="M21 3v5h-5"></path>
       </svg>
-      <time datetime="2026-08-22">
-        更新于 2026-08-22
+      <time datetime="2026-08-24">
+        更新于 2026-08-24
       </time>
     </span>
   
@@ -215,7 +215,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      455 字
+      4.1k 字
     </span>
   
 
@@ -227,7 +227,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 2 分钟
+      约 14 分钟
     </span>
   
 
@@ -247,7 +247,58 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull ubuntu@sha256:4bc3ae6596938cb0d9e5ac51a1152ec9dcac2a1c50829c74abd9c4361e321b26</span><br></pre></td></tr></table></figure>
 <h3 id="磁盘空间不足"><a href="#磁盘空间不足" class="headerlink" title="磁盘空间不足"></a>磁盘空间不足</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 清理未使用的镜像</span></span><br><span class="line">$ docker image prune</span><br><span class="line"></span><br><span class="line"><span class="comment">## 清理所有未使用资源</span></span><br><span class="line">$ docker system prune</span><br></pre></td></tr></table></figure>
 
-<h3 id="列出镜像"><a href="#列出镜像" class="headerlink" title="列出镜像"></a>列出镜像</h3>
+<h3 id="列出镜像"><a href="#列出镜像" class="headerlink" title="列出镜像"></a>列出镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看本地已下载的镜像</span></span><br><span class="line">$ docker image <span class="built_in">ls</span></span><br><span class="line">REPOSITORY   TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">redis        latest    5f515359c7f8   5 days ago     183MB</span><br><span class="line">nginx        latest    05a60462f8ba   5 days ago     181MB</span><br><span class="line">ubuntu       24.04     329ed837d508   3 days ago     78MB</span><br><span class="line">ubuntu       noble     329ed837d508   3 days ago     78MB</span><br></pre></td></tr></table></figure>
+
+<h3 id="虚悬镜像"><a href="#虚悬镜像" class="headerlink" title="虚悬镜像"></a>虚悬镜像</h3><p>仓库名和标签显示为 <code>&lt;none&gt;</code> 的镜像 通常是旧版本被新版本覆盖后产生的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 列出虚悬镜像</span></span><br><span class="line">$ docker images -f dangling=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除虚悬镜像</span></span><br><span class="line">$ docker image prune</span><br></pre></td></tr></table></figure>
+
+<h3 id="中间层镜像"><a href="#中间层镜像" class="headerlink" title="中间层镜像"></a>中间层镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker images -a</span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker images -q</span><br><span class="line">5f515359c7f8</span><br><span class="line">05a60462f8ba</span><br><span class="line">329ed837d508</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 删除所有镜像</span></span><br><span class="line">$ docker rmi $(docker images -q)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除所有 redis 镜像</span></span><br><span class="line"></span><br><span class="line">$ docker rmi $(docker images -q redis)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除本地镜像"><a href="#删除本地镜像" class="headerlink" title="删除本地镜像"></a>删除本地镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image <span class="built_in">rm</span> [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...]</span><br></pre></td></tr></table></figure>
+<p>可以用多种方式指定镜像<br><strong>短 ID</strong>    ID 的前几位 (通常 3-4 位)    <code>docker rmi 501</code></p>
+<h3 id="删除所有未使用的镜像"><a href="#删除所有未使用的镜像" class="headerlink" title="删除所有未使用的镜像"></a>删除所有未使用的镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 删除所有没有被容器使用的镜像</span></span><br><span class="line">$ docker image prune -a</span><br><span class="line"></span><br><span class="line"><span class="comment">## 保留最近 24 小时的</span></span><br><span class="line">$ docker image prune -a --filter <span class="string">&quot;until=24h&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="清理策略"><a href="#清理策略" class="headerlink" title="清理策略"></a>清理策略</h3><p><strong>开发环境</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 定期清理虚悬镜像</span></span><br><span class="line">$ docker image prune -f</span><br><span class="line"></span><br><span class="line"><span class="comment">## 一键清理所有未使用资源</span></span><br><span class="line">$ docker system prune -a</span><br></pre></td></tr></table></figure>
+<p><strong>CI&#x2F;CD 环境</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 只保留最近使用的镜像</span></span><br><span class="line">$ docker image prune -a --filter <span class="string">&quot;until=72h&quot;</span> -f</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看空间占用</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker system <span class="built_in">df</span></span><br><span class="line">TYPE            TOTAL   ACTIVE   SIZE      RECLAIMABLE</span><br><span class="line">Images          15      3        2.5GB     1.8GB (72%)</span><br><span class="line">Containers      5       2        100MB     80MB (80%)</span><br><span class="line">Local Volumes   8       2        500MB     400MB (80%)</span><br><span class="line">Build Cache     0       0        0B        0B</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --name webserver -d -p 8080:80 nginx</span><br></pre></td></tr></table></figure>
+<p>这条命令会用 <code>nginx</code> 镜像启动一个容器，命名为 <code>webserver</code>。其中 <code>-p 8080:80</code> 标识把宿主机的 <code>8080</code> 端口映射到容器内的 <code>80</code> 端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it webserver bash</span><br><span class="line">root@3729b97e8226:/# <span class="built_in">echo</span> <span class="string">&#x27;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&#x27;</span> &gt; /usr/share/nginx/html/index.html</span><br><span class="line">root@3729b97e8226:/# <span class="built_in">exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>以交互式终端方式进入 <code>webserver</code> 容器，并执行了 <code>bash</code> 命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker image <span class="built_in">ls</span> nginx</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">nginx               v2                  07e334659748        9 seconds ago       181.5 MB</span><br><span class="line">nginx               1.30                05a60462f8ba        12 days ago         181.5 MB</span><br><span class="line">nginx               latest              e43d811ce2f4        4 weeks ago         181.5 MB</span><br></pre></td></tr></table></figure>
+
+<p>可以用 <code>docker history</code> 具体查看镜像内的历史记录</p>
+<h3 id="慎用-docker-commit"><a href="#慎用-docker-commit" class="headerlink" title="慎用 docker commit"></a>慎用 <code>docker commit</code></h3><p>使用 <code>docker commit</code> 意味着所有对镜像的操作都是黑箱操作</p>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p><strong>Dockerfile</strong> 其实就是构建、定制镜像的脚本，它本质是一个文本文件，其内包含了一条条的指令</p>
+<h3 id="Docker-init"><a href="#Docker-init" class="headerlink" title="Docker init"></a>Docker init</h3><p><code>docker init</code> 命令可以根据项目类型自动生成 <code>Dockerfile</code>、<code>.dockerignore</code>、<code>compose.yaml</code> 和 <code>README.Docker.md</code> 等文件</p>
+<h3 id="手动创建-Dockerfile"><a href="#手动创建-Dockerfile" class="headerlink" title="手动创建 Dockerfile"></a>手动创建 Dockerfile</h3><p>在一个空白目录中，建立一个文本文件，并命名为 <code>Dockerfile</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> mynginx</span><br><span class="line">$ <span class="built_in">cd</span> mynginx</span><br><span class="line">$ <span class="built_in">touch</span> Dockerfile</span><br></pre></td></tr></table></figure>
+
+<h3 id="FROM-指定基础镜像"><a href="#FROM-指定基础镜像" class="headerlink" title="FROM 指定基础镜像"></a>FROM 指定基础镜像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FROM scratch</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="RUN-执行命令"><a href="#RUN-执行命令" class="headerlink" title="RUN 执行命令"></a>RUN 执行命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN <span class="built_in">echo</span> <span class="string">&#x27;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&#x27;</span> &gt; /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
+<h3 id="镜像构建上下文"><a href="#镜像构建上下文" class="headerlink" title="镜像构建上下文"></a>镜像构建上下文</h3><p><code>docker build</code> 默认会通过 Buildx 向 BuildKit 后端发起构建请求；无论后端运行在本地还是远端，位置参数指定的都是 <strong>构建上下文</strong><br>将本地文件复制进镜像：<code>COPY</code>、<code>ADD</code>，它能访问的范围正是传给 <code>docker build</code> 的那个上下文<br>如果上下文是本地目录，那么这个目录中的文件和子目录就会成为可用输入；如果上下文是远端 Git 仓库或 tar 包，那么构建器会直接获取对应内容。对于本地目录，BuildKit 会按需读取构建过程中真正需要的文件，而不是让 Dockerfile 任意访问宿主机上的任意路径<br>如果在 <code>Dockerfile</code> 中这么写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COPY ./package.json /app/</span><br></pre></td></tr></table></figure>
+<p>这并不是要复制执行 <code>docker build</code> 命令所在目录下的 package.json，也不是复制 <code>Dockerfile</code> 所在目录下的 <code>package.json</code>，而是复制 <strong>上下文</strong>目录下的 <code>package.json</code><br>把上下文切到硬盘根目录去构建镜像可能会导致上下文变得过大，导致构建缓慢甚至失败<br>如果不希望一些文件在构建时传给 Docker 引擎，可以用 <code>.dockerignore</code></p>
+<p><code>docker build</code> 支持从 URL 构建，可以直接从远端 Git 仓库作为上下文</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build https://github.com/user/myrepo.git#mybranch:docker</span><br></pre></td></tr></table></figure>
+<p>这行命令标识：把 Git 仓库作为构建上下文，使用 <code>mybranch</code> 分支中的 <code>docker/</code> 子目录来构建</p>
+<p>如果给的 URL 不是一个 Git repo，而是一个 <code>tar</code> 压缩包，那么 Docker 引擎会下载这个包，并自动解压缩，以其作为上下文，开始构建</p>
+<h3 id="Docker-镜像的导入和导出"><a href="#Docker-镜像的导入和导出" class="headerlink" title="Docker 镜像的导入和导出"></a>Docker 镜像的导入和导出</h3><p>使用 <code>docker save</code> 命令可以将镜像保存为归档文件<br>比如我希望保存 <code>alpine</code> 镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker image ls alpine</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">alpine              latest              baa5d63471ea        5 weeks ago         4.803 MB</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker save alpine -o filename</span><br><span class="line">$ file filename</span><br><span class="line">filename: POSIX tar archive</span><br></pre></td></tr></table></figure>
+<p><strong>如果同名则会覆盖（没有警告）</strong></p>
+
     </div>
 
     <!-- 标签 -->
@@ -277,7 +328,10 @@
     <!-- 上一篇 / 下一篇 -->
     <nav class="post-nav">
       
-        <div class="post-nav-item prev disabled"></div>
+        <a href="/2026/08/22/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/%E6%9C%AA%E5%91%BD%E5%90%8D%204/" class="post-nav-item prev">
+          <span class="post-nav-label">上一篇</span>
+          <span class="post-nav-title"></span>
+        </a>
       
       
       
@@ -295,7 +349,7 @@
       <div class="toc-wrapper">
         <h3 class="toc-title">目录</h3>
         <div class="toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%85-2026-08-22-%E4%BB%8A%E6%97%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📅 2026-08-22 今日记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E9%95%9C%E5%83%8F%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">验证镜像完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3"><span class="toc-number">1.2.</span> <span class="toc-text">磁盘空间不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E9%95%9C%E5%83%8F"><span class="toc-number">1.3.</span> <span class="toc-text">列出镜像</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%85-2026-08-22-%E4%BB%8A%E6%97%A5%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📅 2026-08-22 今日记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E9%95%9C%E5%83%8F%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">验证镜像完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3"><span class="toc-number">1.2.</span> <span class="toc-text">磁盘空间不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E9%95%9C%E5%83%8F"><span class="toc-number">1.3.</span> <span class="toc-text">列出镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%82%AC%E9%95%9C%E5%83%8F"><span class="toc-number">1.4.</span> <span class="toc-text">虚悬镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E5%B1%82%E9%95%9C%E5%83%8F"><span class="toc-number">1.5.</span> <span class="toc-text">中间层镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">1.6.</span> <span class="toc-text">格式化输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F"><span class="toc-number">1.7.</span> <span class="toc-text">删除本地镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E6%9C%AA%E4%BD%BF%E7%94%A8%E7%9A%84%E9%95%9C%E5%83%8F"><span class="toc-number">1.8.</span> <span class="toc-text">删除所有未使用的镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E7%AD%96%E7%95%A5"><span class="toc-number">1.9.</span> <span class="toc-text">清理策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%8E%E7%94%A8-docker-commit"><span class="toc-number">1.10.</span> <span class="toc-text">慎用 docker commit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">1.11.</span> <span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-init"><span class="toc-number">1.12.</span> <span class="toc-text">Docker init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA-Dockerfile"><span class="toc-number">1.13.</span> <span class="toc-text">手动创建 Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM-%E6%8C%87%E5%AE%9A%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F"><span class="toc-number">1.14.</span> <span class="toc-text">FROM 指定基础镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.15.</span> <span class="toc-text">RUN 执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E6%9E%84%E5%BB%BA%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">1.16.</span> <span class="toc-text">镜像构建上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-%E9%95%9C%E5%83%8F%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA"><span class="toc-number">1.17.</span> <span class="toc-text">Docker 镜像的导入和导出</span></a></li></ol></li></ol>
         </div>
       </div>
     </aside>
