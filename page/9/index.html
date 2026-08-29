@@ -184,7 +184,7 @@
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-28/%E6%B1%82%E6%AF%8F%E5%90%8D%E5%91%98%E5%B7%A5%E5%8D%A0%E5%85%A8%E9%83%A8%E5%91%98%E5%B7%A5%E6%9C%88%E8%96%AA%E7%BB%BC%E5%90%88%E7%9A%84%E6%AF%94%E4%BE%8B/"></a>
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20203%20%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E5%B7%B2%E7%BB%8F%E5%88%86%E9%85%8D%E9%83%A8%E9%97%A8%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84%20last_name%20%E5%92%8C%20first_name%20%E4%BB%A5%E5%8F%8A%20dept_no/"></a>
             </h2>
             
             <!-- 元信息 -->
@@ -214,7 +214,113 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      159 字
+      888 字
+    </span>
+  
+
+  <!-- 阅读时间 -->
+  
+    <span class="meta-item meta-readtime">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+      
+      约 3 分钟
+    </span>
+  
+
+  <!-- 标签（仅在列表页显示前几个） -->
+  
+</div>
+
+            
+            <!-- 摘要 -->
+            <div class="post-excerpt">
+              
+                SQL 203 查找所有已经分配部门的员工的 last_name 和 first_name 以及 dept_no
+描述有一个员工表，employees简况如下: 
+
+
+
+
+
+
+
+
+
+
+
+
+emp_no
+birth_date
+first_name
+last_name
+gender
+hire_date
+
+
+10001
+1953-09-02
+Georgi
+Facello
+M
+1986-06-26
+
+
+1...
+              
+            </div>
+            
+            <!-- 阅读更多 -->
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20203%20%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E5%B7%B2%E7%BB%8F%E5%88%86%E9%85%8D%E9%83%A8%E9%97%A8%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84%20last_name%20%E5%92%8C%20first_name%20%E4%BB%A5%E5%8F%8A%20dept_no/" class="read-more">
+              阅读全文
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      
+        <article class="post-card">
+          <!-- 封面图 -->
+          
+          
+          <div class="post-card-content">
+            <!-- 标题 -->
+            <h2 class="post-title">
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/Left%20join/"></a>
+            </h2>
+            
+            <!-- 元信息 -->
+            <div class="post-meta">
+  <!-- 发布日期 -->
+  <span class="meta-item meta-date">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+      <line x1="16" x2="16" y1="2" y2="6"></line>
+      <line x1="8" x2="8" y1="2" y2="6"></line>
+      <line x1="3" x2="21" y1="10" y2="10"></line>
+    </svg>
+    <time datetime="2026-04-29">
+      2026-04-29
+    </time>
+  </span>
+
+  <!-- 更新日期 -->
+  
+
+  <!-- 字数统计 -->
+  
+    <span class="meta-item meta-wordcount">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 6.1H3"></path>
+        <path d="M21 12.1H3"></path>
+        <path d="M15.1 18H3"></path>
+      </svg>
+      
+      15 字
     </span>
   
 
@@ -238,14 +344,91 @@
             <!-- 摘要 -->
             <div class="post-excerpt">
               
-                求每名员工占全部员工月薪综合的比例
-1234567select	emp_name,	salary,	sum(salary) over() as total_salary,	salary / sum(salary) over() as ratiofrom dm.employeeorder by ratio desc;
+                Left join
+多表查询
 ...
               
             </div>
             
             <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-28/%E6%B1%82%E6%AF%8F%E5%90%8D%E5%91%98%E5%B7%A5%E5%8D%A0%E5%85%A8%E9%83%A8%E5%91%98%E5%B7%A5%E6%9C%88%E8%96%AA%E7%BB%BC%E5%90%88%E7%9A%84%E6%AF%94%E4%BE%8B/" class="read-more">
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/Left%20join/" class="read-more">
+              阅读全文
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      
+        <article class="post-card">
+          <!-- 封面图 -->
+          
+          
+          <div class="post-card-content">
+            <!-- 标题 -->
+            <h2 class="post-title">
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20210%20%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E5%BD%93%E5%89%8D%E7%9A%84%20manager/"></a>
+            </h2>
+            
+            <!-- 元信息 -->
+            <div class="post-meta">
+  <!-- 发布日期 -->
+  <span class="meta-item meta-date">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+      <line x1="16" x2="16" y1="2" y2="6"></line>
+      <line x1="8" x2="8" y1="2" y2="6"></line>
+      <line x1="3" x2="21" y1="10" y2="10"></line>
+    </svg>
+    <time datetime="2026-04-29">
+      2026-04-29
+    </time>
+  </span>
+
+  <!-- 更新日期 -->
+  
+
+  <!-- 字数统计 -->
+  
+    <span class="meta-item meta-wordcount">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 6.1H3"></path>
+        <path d="M21 12.1H3"></path>
+        <path d="M15.1 18H3"></path>
+      </svg>
+      
+      594 字
+    </span>
+  
+
+  <!-- 阅读时间 -->
+  
+    <span class="meta-item meta-readtime">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+      
+      约 2 分钟
+    </span>
+  
+
+  <!-- 标签（仅在列表页显示前几个） -->
+  
+</div>
+
+            
+            <!-- 摘要 -->
+            <div class="post-excerpt">
+              
+                SQL 210 获取所有员工当前的 manager
+12345678910111213141516171819202122232425262728有一个员工表dept_emp简况如下:emp_nodept_no from_date to_date10001	d0011986-06-26	9999-01-0110002	d0011996-08-03	9999-01-0110003	d0021995-...
+              
+            </div>
+            
+            <!-- 阅读更多 -->
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20210%20%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E5%BD%93%E5%89%8D%E7%9A%84%20manager/" class="read-more">
               阅读全文
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"></path>
@@ -339,7 +522,7 @@
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-28/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89/"></a>
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20220%20%E6%9F%A5%E6%89%BE%E5%9C%A8%E8%81%8C%E5%91%98%E5%B7%A5%E8%87%AA%E5%85%A5%E8%81%8C%E4%BB%A5%E6%9D%A5%E7%9A%84%E8%96%AA%E6%B0%B4%E6%B6%A8%E5%B9%85%E6%83%85%E5%86%B5/"></a>
             </h2>
             
             <!-- 元信息 -->
@@ -369,7 +552,7 @@
         <path d="M15.1 18H3"></path>
       </svg>
       
-      510 字
+      928 字
     </span>
   
 
@@ -381,7 +564,7 @@
         <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       
-      约 2 分钟
+      约 4 分钟
     </span>
   
 
@@ -393,24 +576,13 @@
             <!-- 摘要 -->
             <div class="post-excerpt">
               
-                窗口函数定义
-1window_function ([expression]) over (partition by … order by … frame_clause)
-
-创建数据分区 partition by
-分区内的排序 order by
-指定窗口大小 frame_clause
-
-常见窗口函数
-
-排名窗口函数
-ROW_NUMBER
-可以为分区中的每行数据分配一个序列号，序列号从 1 开始
-1,...
+                SQL 220 查找在职员工自入职以来的薪水涨幅情况
+123456789101112131415161718192021222324252627282930313233343536373839有一个员工表employees简况如下:emp_no birth_date first_name last_name gender	hire_date 100011953-09-02Georgi     Fa...
               
             </div>
             
             <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-28/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89/" class="read-more">
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20220%20%E6%9F%A5%E6%89%BE%E5%9C%A8%E8%81%8C%E5%91%98%E5%B7%A5%E8%87%AA%E5%85%A5%E8%81%8C%E4%BB%A5%E6%9D%A5%E7%9A%84%E8%96%AA%E6%B0%B4%E6%B6%A8%E5%B9%85%E6%83%85%E5%86%B5/" class="read-more">
               阅读全文
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"></path>
@@ -504,83 +676,6 @@ ROW_NUMBER
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20220%20%E6%9F%A5%E6%89%BE%E5%9C%A8%E8%81%8C%E5%91%98%E5%B7%A5%E8%87%AA%E5%85%A5%E8%81%8C%E4%BB%A5%E6%9D%A5%E7%9A%84%E8%96%AA%E6%B0%B4%E6%B6%A8%E5%B9%85%E6%83%85%E5%86%B5/"></a>
-            </h2>
-            
-            <!-- 元信息 -->
-            <div class="post-meta">
-  <!-- 发布日期 -->
-  <span class="meta-item meta-date">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-      <line x1="16" x2="16" y1="2" y2="6"></line>
-      <line x1="8" x2="8" y1="2" y2="6"></line>
-      <line x1="3" x2="21" y1="10" y2="10"></line>
-    </svg>
-    <time datetime="2026-04-29">
-      2026-04-29
-    </time>
-  </span>
-
-  <!-- 更新日期 -->
-  
-
-  <!-- 字数统计 -->
-  
-    <span class="meta-item meta-wordcount">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 6.1H3"></path>
-        <path d="M21 12.1H3"></path>
-        <path d="M15.1 18H3"></path>
-      </svg>
-      
-      928 字
-    </span>
-  
-
-  <!-- 阅读时间 -->
-  
-    <span class="meta-item meta-readtime">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
-      
-      约 4 分钟
-    </span>
-  
-
-  <!-- 标签（仅在列表页显示前几个） -->
-  
-</div>
-
-            
-            <!-- 摘要 -->
-            <div class="post-excerpt">
-              
-                SQL 220 查找在职员工自入职以来的薪水涨幅情况
-123456789101112131415161718192021222324252627282930313233343536373839有一个员工表employees简况如下:emp_no birth_date first_name last_name gender	hire_date 100011953-09-02Georgi     Fa...
-              
-            </div>
-            
-            <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20220%20%E6%9F%A5%E6%89%BE%E5%9C%A8%E8%81%8C%E5%91%98%E5%B7%A5%E8%87%AA%E5%85%A5%E8%81%8C%E4%BB%A5%E6%9D%A5%E7%9A%84%E8%96%AA%E6%B0%B4%E6%B6%A8%E5%B9%85%E6%83%85%E5%86%B5/" class="read-more">
-              阅读全文
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      
-        <article class="post-card">
-          <!-- 封面图 -->
-          
-          
-          <div class="post-card-content">
-            <!-- 标题 -->
-            <h2 class="post-title">
               <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20221%20%E7%BB%9F%E8%AE%A1%E5%90%84%E4%B8%AA%E9%83%A8%E9%97%A8%E7%9A%84%E5%B7%A5%E8%B5%84%E8%AE%B0%E5%BD%95%E6%95%B0/"></a>
             </h2>
             
@@ -658,160 +753,6 @@ ROW_NUMBER
           <div class="post-card-content">
             <!-- 标题 -->
             <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20211%20%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E9%83%A8%E9%97%A8%E4%B8%AD%E8%96%AA%E6%B0%B4%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/"></a>
-            </h2>
-            
-            <!-- 元信息 -->
-            <div class="post-meta">
-  <!-- 发布日期 -->
-  <span class="meta-item meta-date">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-      <line x1="16" x2="16" y1="2" y2="6"></line>
-      <line x1="8" x2="8" y1="2" y2="6"></line>
-      <line x1="3" x2="21" y1="10" y2="10"></line>
-    </svg>
-    <time datetime="2026-04-29">
-      2026-04-29
-    </time>
-  </span>
-
-  <!-- 更新日期 -->
-  
-
-  <!-- 字数统计 -->
-  
-    <span class="meta-item meta-wordcount">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 6.1H3"></path>
-        <path d="M21 12.1H3"></path>
-        <path d="M15.1 18H3"></path>
-      </svg>
-      
-      780 字
-    </span>
-  
-
-  <!-- 阅读时间 -->
-  
-    <span class="meta-item meta-readtime">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
-      
-      约 3 分钟
-    </span>
-  
-
-  <!-- 标签（仅在列表页显示前几个） -->
-  
-</div>
-
-            
-            <!-- 摘要 -->
-            <div class="post-excerpt">
-              
-                SQL 211 获取每个部门中薪水最高的员工相关信息
-123456789101112131415161718192021222324252627282930313233343536有一个员工表dept_emp简况如下:emp_nodept_nofrom_dateto_date10001	d0011986-06-26	9999-01-0110002	d0011996-08-03	9999-01-01...
-              
-            </div>
-            
-            <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20211%20%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E9%83%A8%E9%97%A8%E4%B8%AD%E8%96%AA%E6%B0%B4%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" class="read-more">
-              阅读全文
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      
-        <article class="post-card">
-          <!-- 封面图 -->
-          
-          
-          <div class="post-card-content">
-            <!-- 标题 -->
-            <h2 class="post-title">
-              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20231%20%E5%B0%86%20employees%20%E8%A1%A8%E7%9A%84%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E7%9A%84%20last_name%20%E5%92%8C%20first_name%20%E6%8B%BC%E6%8E%A5%E8%B5%B7%E6%9D%A5%E4%BD%9C%E4%B8%BA%20Name/"></a>
-            </h2>
-            
-            <!-- 元信息 -->
-            <div class="post-meta">
-  <!-- 发布日期 -->
-  <span class="meta-item meta-date">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-      <line x1="16" x2="16" y1="2" y2="6"></line>
-      <line x1="8" x2="8" y1="2" y2="6"></line>
-      <line x1="3" x2="21" y1="10" y2="10"></line>
-    </svg>
-    <time datetime="2026-04-29">
-      2026-04-29
-    </time>
-  </span>
-
-  <!-- 更新日期 -->
-  
-
-  <!-- 字数统计 -->
-  
-    <span class="meta-item meta-wordcount">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 6.1H3"></path>
-        <path d="M21 12.1H3"></path>
-        <path d="M15.1 18H3"></path>
-      </svg>
-      
-      892 字
-    </span>
-  
-
-  <!-- 阅读时间 -->
-  
-    <span class="meta-item meta-readtime">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
-      
-      约 3 分钟
-    </span>
-  
-
-  <!-- 标签（仅在列表页显示前几个） -->
-  
-</div>
-
-            
-            <!-- 摘要 -->
-            <div class="post-excerpt">
-              
-                SQL 231 将 employees 表的所有员工的 last_name 和 first_name 拼接起来作为 Name
-12345678910111213141516171819202122232425262728293031323334353637383940现有员工表employees如下：emp_no	birth_date	first_name	last_name	gender	hir...
-              
-            </div>
-            
-            <!-- 阅读更多 -->
-            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20231%20%E5%B0%86%20employees%20%E8%A1%A8%E7%9A%84%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E7%9A%84%20last_name%20%E5%92%8C%20first_name%20%E6%8B%BC%E6%8E%A5%E8%B5%B7%E6%9D%A5%E4%BD%9C%E4%B8%BA%20Name/" class="read-more">
-              阅读全文
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      
-        <article class="post-card">
-          <!-- 封面图 -->
-          
-          
-          <div class="post-card-content">
-            <!-- 标题 -->
-            <h2 class="post-title">
               <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20229%20%E4%BD%BF%E7%94%A8%E5%AD%90%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%96%B9%E5%BC%8F%E6%89%BE%E5%87%BA%E5%B1%9E%E4%BA%8E%20Action%20%E5%88%86%E7%B1%BB%E7%9A%84%E6%89%80%E6%9C%89%E7%94%B5%E5%BD%B1%E5%AF%B9%E5%BA%94%E7%9A%84%20title,description/"></a>
             </h2>
             
@@ -873,6 +814,83 @@ ROW_NUMBER
             
             <!-- 阅读更多 -->
             <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20229%20%E4%BD%BF%E7%94%A8%E5%AD%90%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%96%B9%E5%BC%8F%E6%89%BE%E5%87%BA%E5%B1%9E%E4%BA%8E%20Action%20%E5%88%86%E7%B1%BB%E7%9A%84%E6%89%80%E6%9C%89%E7%94%B5%E5%BD%B1%E5%AF%B9%E5%BA%94%E7%9A%84%20title,description/" class="read-more">
+              阅读全文
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      
+        <article class="post-card">
+          <!-- 封面图 -->
+          
+          
+          <div class="post-card-content">
+            <!-- 标题 -->
+            <h2 class="post-title">
+              <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20211%20%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E9%83%A8%E9%97%A8%E4%B8%AD%E8%96%AA%E6%B0%B4%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/"></a>
+            </h2>
+            
+            <!-- 元信息 -->
+            <div class="post-meta">
+  <!-- 发布日期 -->
+  <span class="meta-item meta-date">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+      <line x1="16" x2="16" y1="2" y2="6"></line>
+      <line x1="8" x2="8" y1="2" y2="6"></line>
+      <line x1="3" x2="21" y1="10" y2="10"></line>
+    </svg>
+    <time datetime="2026-04-29">
+      2026-04-29
+    </time>
+  </span>
+
+  <!-- 更新日期 -->
+  
+
+  <!-- 字数统计 -->
+  
+    <span class="meta-item meta-wordcount">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 6.1H3"></path>
+        <path d="M21 12.1H3"></path>
+        <path d="M15.1 18H3"></path>
+      </svg>
+      
+      780 字
+    </span>
+  
+
+  <!-- 阅读时间 -->
+  
+    <span class="meta-item meta-readtime">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+      
+      约 3 分钟
+    </span>
+  
+
+  <!-- 标签（仅在列表页显示前几个） -->
+  
+</div>
+
+            
+            <!-- 摘要 -->
+            <div class="post-excerpt">
+              
+                SQL 211 获取每个部门中薪水最高的员工相关信息
+123456789101112131415161718192021222324252627282930313233343536有一个员工表dept_emp简况如下:emp_nodept_nofrom_dateto_date10001	d0011986-06-26	9999-01-0110002	d0011996-08-03	9999-01-01...
+              
+            </div>
+            
+            <!-- 阅读更多 -->
+            <a href="/2026/04/29/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-04-27/SQL%20211%20%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E9%83%A8%E9%97%A8%E4%B8%AD%E8%96%AA%E6%B0%B4%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" class="read-more">
               阅读全文
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"></path>
@@ -1041,7 +1059,7 @@ ROW_NUMBER
     <p class="author-desc">喜欢二次元、游戏，会发计算机和有时自己拍的照片，欢迎关注！</p>
     <div class="author-stats">
       <div class="stat-item">
-        <span class="stat-count">201</span>
+        <span class="stat-count">202</span>
         <span class="stat-label">文章</span>
       </div>
       <div class="stat-item">
@@ -1064,6 +1082,13 @@ ROW_NUMBER
     <div class="sidebar-widget recent-posts-widget">
       <h3 class="widget-title">最新文章</h3>
       <ul class="recent-posts-list">
+        
+          <li class="recent-post-item">
+            <a href="/2026/08/28/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-08-28/">
+              <span class="recent-post-title"> 2026-08-28</span>
+              <span class="recent-post-date">08-28</span>
+            </a>
+          </li>
         
           <li class="recent-post-item">
             <a href="/2026/08/27/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-08-27/">
@@ -1093,13 +1118,6 @@ ROW_NUMBER
             </a>
           </li>
         
-          <li class="recent-post-item">
-            <a href="/2026/08/23/%E2%9C%8D%EF%B8%8F%20%E6%97%A5%E8%A8%98/2026-08-23/">
-              <span class="recent-post-title"> 2026-08-23</span>
-              <span class="recent-post-date">08-23</span>
-            </a>
-          </li>
-        
       </ul>
     </div>
   
@@ -1123,7 +1141,7 @@ ROW_NUMBER
           </a>
         
           <a href="/tags/Daily/" class="sidebar-tag">
-            Daily<span class="tag-count">64</span>
+            Daily<span class="tag-count">65</span>
           </a>
         
           <a href="/tags/Monthly/" class="sidebar-tag">
@@ -1147,7 +1165,7 @@ ROW_NUMBER
           </a>
         
           <a href="/tags/%E8%AE%B0%E5%BD%95/" class="sidebar-tag">
-            记录<span class="tag-count">64</span>
+            记录<span class="tag-count">65</span>
           </a>
         
           <a href="/tags/%E9%9A%8F%E7%AC%94/" class="sidebar-tag">
@@ -1168,7 +1186,7 @@ ROW_NUMBER
           <li class="archive-item">
             <a href="/archives/2026/08/">
               <span class="archive-date">2026-08</span>
-              <span class="archive-count">(19)</span>
+              <span class="archive-count">(20)</span>
             </a>
           </li>
         
